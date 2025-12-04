@@ -1,0 +1,8 @@
+C:\Users\fuyfuy\Desktop\rental\RentalApp\bin\Debug\RentalApp.exe.config
+C:\Users\fuyfuy\Desktop\rental\RentalApp\bin\Debug\RentalApp.exe
+C:\Users\fuyfuy\Desktop\rental\RentalApp\bin\Debug\RentalApp.pdb
+C:\Users\fuyfuy\Desktop\rental\RentalApp\obj\Debug\RentalApp.csproj.AssemblyReference.cache
+C:\Users\fuyfuy\Desktop\rental\RentalApp\obj\Debug\RentalApp.csproj.CoreCompileInputs.cache
+C:\Users\fuyfuy\Desktop\rental\RentalApp\obj\Debug\RentalApp.exe
+C:\Users\fuyfuy\Desktop\rental\RentalApp\obj\Debug\RentalApp.pdb
+C:\Users\fuyfuy\Desktop\rental\RentalApp\obj\Debug\RentalApp.exe.config
