@@ -1,13 +1,16 @@
-using System;
+﻿using System;
 using System.Windows.Forms;
+using MaterialSkin.Controls;
 
 namespace RentalApp.UI
 {
-    public partial class LoginForm : Form
+
+    public partial class LoginForm : MaterialForm
     {
         public LoginForm()
         {
             InitializeComponent();
+            MessageBox.Show("LoginForm loaded!", "Test");
         }
 
         private void loginButton_Click(object sender, EventArgs e)
@@ -22,6 +25,11 @@ namespace RentalApp.UI
         private void exitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void roleComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

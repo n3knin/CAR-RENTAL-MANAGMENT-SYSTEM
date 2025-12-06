@@ -107,6 +107,16 @@ namespace RentalApp.UI
             currentView.Dock = DockStyle.Fill;
             contentPanel.Controls.Add(currentView);
         }
+
+        private void sidebarPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cardActiveRentals_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
 

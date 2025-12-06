@@ -80,6 +80,7 @@ namespace RentalApp.UI
             this.sidebarPanel.Name = "sidebarPanel";
             this.sidebarPanel.Size = new System.Drawing.Size(200, 600);
             this.sidebarPanel.TabIndex = 0;
+            this.sidebarPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.sidebarPanel_Paint);
             // 
             // reportsButton
             // 
@@ -92,7 +93,7 @@ namespace RentalApp.UI
             this.reportsButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.reportsButton.Size = new System.Drawing.Size(200, 40);
             this.reportsButton.TabIndex = 7;
-            this.reportsButton.Text = "Reports & Analytics";
+            this.reportsButton.Text = "Reports and Analytics";
             this.reportsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.reportsButton.UseVisualStyleBackColor = true;
             this.reportsButton.Click += new System.EventHandler(this.navButton_Click);
@@ -108,7 +109,7 @@ namespace RentalApp.UI
             this.billingButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.billingButton.Size = new System.Drawing.Size(200, 40);
             this.billingButton.TabIndex = 6;
-            this.billingButton.Text = "Billing & Payments";
+            this.billingButton.Text = "Billing and Payments";
             this.billingButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.billingButton.UseVisualStyleBackColor = true;
             this.billingButton.Click += new System.EventHandler(this.navButton_Click);
@@ -200,7 +201,7 @@ namespace RentalApp.UI
             this.logoLabel.ForeColor = System.Drawing.Color.White;
             this.logoLabel.Location = new System.Drawing.Point(20, 30);
             this.logoLabel.Name = "logoLabel";
-            this.logoLabel.Size = new System.Drawing.Size(141, 21);
+            this.logoLabel.Size = new System.Drawing.Size(139, 21);
             this.logoLabel.TabIndex = 0;
             this.logoLabel.Text = "Rental Dashboard";
             // 
@@ -239,7 +240,7 @@ namespace RentalApp.UI
             this.appTitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
             this.appTitleLabel.Location = new System.Drawing.Point(23, 20);
             this.appTitleLabel.Name = "appTitleLabel";
-            this.appTitleLabel.Size = new System.Drawing.Size(228, 20);
+            this.appTitleLabel.Size = new System.Drawing.Size(233, 20);
             this.appTitleLabel.TabIndex = 0;
             this.appTitleLabel.Text = "Vehicle Rental Management Hub";
             // 
@@ -251,7 +252,7 @@ namespace RentalApp.UI
             this.userRoleLabel.ForeColor = System.Drawing.Color.DimGray;
             this.userRoleLabel.Location = new System.Drawing.Point(560, 24);
             this.userRoleLabel.Name = "userRoleLabel";
-            this.userRoleLabel.Size = new System.Drawing.Size(149, 15);
+            this.userRoleLabel.Size = new System.Drawing.Size(144, 15);
             this.userRoleLabel.TabIndex = 1;
             this.userRoleLabel.Text = "Signed in as: Rental Agent";
             // 
@@ -318,7 +319,7 @@ namespace RentalApp.UI
             this.cardFleetValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(161)))), ((int)(((byte)(242)))));
             this.cardFleetValue.Location = new System.Drawing.Point(13, 34);
             this.cardFleetValue.Name = "cardFleetValue";
-            this.cardFleetValue.Size = new System.Drawing.Size(64, 30);
+            this.cardFleetValue.Size = new System.Drawing.Size(71, 30);
             this.cardFleetValue.TabIndex = 1;
             this.cardFleetValue.Text = "128 ▼";
             // 
@@ -329,7 +330,7 @@ namespace RentalApp.UI
             this.cardFleetLabel.ForeColor = System.Drawing.Color.DimGray;
             this.cardFleetLabel.Location = new System.Drawing.Point(15, 12);
             this.cardFleetLabel.Name = "cardFleetLabel";
-            this.cardFleetLabel.Size = new System.Drawing.Size(136, 15);
+            this.cardFleetLabel.Size = new System.Drawing.Size(139, 15);
             this.cardFleetLabel.TabIndex = 0;
             this.cardFleetLabel.Text = "Total Vehicles in the Fleet";
             // 
@@ -345,6 +346,7 @@ namespace RentalApp.UI
             this.cardActiveRentals.Padding = new System.Windows.Forms.Padding(10);
             this.cardActiveRentals.Size = new System.Drawing.Size(231, 80);
             this.cardActiveRentals.TabIndex = 1;
+            this.cardActiveRentals.Paint += new System.Windows.Forms.PaintEventHandler(this.cardActiveRentals_Paint);
             // 
             // cardActiveRentalsValue
             // 
@@ -353,7 +355,7 @@ namespace RentalApp.UI
             this.cardActiveRentalsValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(177)))), ((int)(((byte)(124)))));
             this.cardActiveRentalsValue.Location = new System.Drawing.Point(13, 34);
             this.cardActiveRentalsValue.Name = "cardActiveRentalsValue";
-            this.cardActiveRentalsValue.Size = new System.Drawing.Size(45, 30);
+            this.cardActiveRentalsValue.Size = new System.Drawing.Size(37, 30);
             this.cardActiveRentalsValue.TabIndex = 1;
             this.cardActiveRentalsValue.Text = "27";
             // 
@@ -364,7 +366,7 @@ namespace RentalApp.UI
             this.cardActiveRentalsLabel.ForeColor = System.Drawing.Color.DimGray;
             this.cardActiveRentalsLabel.Location = new System.Drawing.Point(15, 12);
             this.cardActiveRentalsLabel.Name = "cardActiveRentalsLabel";
-            this.cardActiveRentalsLabel.Size = new System.Drawing.Size(79, 15);
+            this.cardActiveRentalsLabel.Size = new System.Drawing.Size(81, 15);
             this.cardActiveRentalsLabel.TabIndex = 0;
             this.cardActiveRentalsLabel.Text = "Active Rentals";
             // 
@@ -388,7 +390,7 @@ namespace RentalApp.UI
             this.cardRevenueValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(152)))), ((int)(((byte)(39)))));
             this.cardRevenueValue.Location = new System.Drawing.Point(13, 34);
             this.cardRevenueValue.Name = "cardRevenueValue";
-            this.cardRevenueValue.Size = new System.Drawing.Size(143, 30);
+            this.cardRevenueValue.Size = new System.Drawing.Size(123, 30);
             this.cardRevenueValue.TabIndex = 1;
             this.cardRevenueValue.Text = "$ 12,450.00";
             // 
@@ -399,7 +401,7 @@ namespace RentalApp.UI
             this.cardRevenueLabel.ForeColor = System.Drawing.Color.DimGray;
             this.cardRevenueLabel.Location = new System.Drawing.Point(15, 12);
             this.cardRevenueLabel.Name = "cardRevenueLabel";
-            this.cardRevenueLabel.Size = new System.Drawing.Size(114, 15);
+            this.cardRevenueLabel.Size = new System.Drawing.Size(126, 15);
             this.cardRevenueLabel.TabIndex = 0;
             this.cardRevenueLabel.Text = "Revenue (Today/MTD)";
             // 
@@ -410,7 +412,7 @@ namespace RentalApp.UI
             this.sectionTitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
             this.sectionTitleLabel.Location = new System.Drawing.Point(20, 20);
             this.sectionTitleLabel.Name = "sectionTitleLabel";
-            this.sectionTitleLabel.Size = new System.Drawing.Size(119, 21);
+            this.sectionTitleLabel.Size = new System.Drawing.Size(117, 21);
             this.sectionTitleLabel.TabIndex = 0;
             this.sectionTitleLabel.Text = "Dashboard KPI";
             // 

@@ -8,11 +8,19 @@ namespace RentalApp
         [STAThread]
         private static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UI.LoginForm());
+            try
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new UI.LoginForm());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Application Error:\n\n" + ex.Message + "\n\n" + ex.StackTrace,
+                    "Fatal Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
     }
 }
-
-

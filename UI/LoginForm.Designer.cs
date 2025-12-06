@@ -29,9 +29,9 @@ namespace RentalApp.UI
         private void InitializeComponent()
         {
             this.leftPanel = new System.Windows.Forms.Panel();
-            this.appTitleLabel = new System.Windows.Forms.Label();
-            this.taglineLabel = new System.Windows.Forms.Label();
             this.kpiLabel = new System.Windows.Forms.Label();
+            this.taglineLabel = new System.Windows.Forms.Label();
+            this.appTitleLabel = new System.Windows.Forms.Label();
             this.logoPanel = new System.Windows.Forms.Panel();
             this.rightPanel = new System.Windows.Forms.Panel();
             this.roleComboBox = new System.Windows.Forms.ComboBox();
@@ -61,16 +61,16 @@ namespace RentalApp.UI
             this.leftPanel.Size = new System.Drawing.Size(260, 420);
             this.leftPanel.TabIndex = 0;
             // 
-            // appTitleLabel
+            // kpiLabel
             // 
-            this.appTitleLabel.AutoSize = true;
-            this.appTitleLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 16F, System.Drawing.FontStyle.Bold);
-            this.appTitleLabel.ForeColor = System.Drawing.Color.White;
-            this.appTitleLabel.Location = new System.Drawing.Point(28, 140);
-            this.appTitleLabel.Name = "appTitleLabel";
-            this.appTitleLabel.Size = new System.Drawing.Size(201, 30);
-            this.appTitleLabel.TabIndex = 1;
-            this.appTitleLabel.Text = "Rental Management";
+            this.kpiLabel.AutoSize = true;
+            this.kpiLabel.Font = new System.Drawing.Font("Segoe UI Semilight", 9.5F);
+            this.kpiLabel.ForeColor = System.Drawing.Color.Silver;
+            this.kpiLabel.Location = new System.Drawing.Point(30, 240);
+            this.kpiLabel.Name = "kpiLabel";
+            this.kpiLabel.Size = new System.Drawing.Size(133, 51);
+            this.kpiLabel.TabIndex = 3;
+            this.kpiLabel.Text = "Today:\r\n- Fleet utilization: 82%\r\n- Active rentals: 27";
             // 
             // taglineLabel
             // 
@@ -79,20 +79,20 @@ namespace RentalApp.UI
             this.taglineLabel.ForeColor = System.Drawing.Color.LightGray;
             this.taglineLabel.Location = new System.Drawing.Point(30, 180);
             this.taglineLabel.Name = "taglineLabel";
-            this.taglineLabel.Size = new System.Drawing.Size(178, 34);
+            this.taglineLabel.Size = new System.Drawing.Size(175, 34);
             this.taglineLabel.TabIndex = 2;
             this.taglineLabel.Text = "Manage fleet, reservations,\r\nreturns and billing with ease.";
             // 
-            // kpiLabel
+            // appTitleLabel
             // 
-            this.kpiLabel.AutoSize = true;
-            this.kpiLabel.Font = new System.Drawing.Font("Segoe UI Semilight", 9.5F);
-            this.kpiLabel.ForeColor = System.Drawing.Color.Silver;
-            this.kpiLabel.Location = new System.Drawing.Point(30, 240);
-            this.kpiLabel.Name = "kpiLabel";
-            this.kpiLabel.Size = new System.Drawing.Size(159, 51);
-            this.kpiLabel.TabIndex = 3;
-            this.kpiLabel.Text = "Today:\r\n- Fleet utilization: 82%\r\n- Active rentals: 27";
+            this.appTitleLabel.AutoSize = true;
+            this.appTitleLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 16F, System.Drawing.FontStyle.Bold);
+            this.appTitleLabel.ForeColor = System.Drawing.Color.White;
+            this.appTitleLabel.Location = new System.Drawing.Point(28, 140);
+            this.appTitleLabel.Name = "appTitleLabel";
+            this.appTitleLabel.Size = new System.Drawing.Size(214, 30);
+            this.appTitleLabel.TabIndex = 1;
+            this.appTitleLabel.Text = "Rental Management";
             // 
             // logoPanel
             // 
@@ -118,7 +118,7 @@ namespace RentalApp.UI
             this.rightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rightPanel.Location = new System.Drawing.Point(260, 0);
             this.rightPanel.Name = "rightPanel";
-            this.rightPanel.Padding = new System.Windows.Forms.Padding(40, 40, 40, 40);
+            this.rightPanel.Padding = new System.Windows.Forms.Padding(40);
             this.rightPanel.Size = new System.Drawing.Size(440, 420);
             this.rightPanel.TabIndex = 1;
             // 
@@ -134,6 +134,7 @@ namespace RentalApp.UI
             this.roleComboBox.Name = "roleComboBox";
             this.roleComboBox.Size = new System.Drawing.Size(350, 25);
             this.roleComboBox.TabIndex = 2;
+            this.roleComboBox.SelectedIndexChanged += new System.EventHandler(this.roleComboBox_SelectedIndexChanged);
             // 
             // roleLabel
             // 
@@ -142,7 +143,7 @@ namespace RentalApp.UI
             this.roleLabel.ForeColor = System.Drawing.Color.DimGray;
             this.roleLabel.Location = new System.Drawing.Point(40, 180);
             this.roleLabel.Name = "roleLabel";
-            this.roleLabel.Size = new System.Drawing.Size(67, 15);
+            this.roleLabel.Size = new System.Drawing.Size(65, 15);
             this.roleLabel.TabIndex = 8;
             this.roleLabel.Text = "Sign in as *";
             // 
@@ -192,7 +193,7 @@ namespace RentalApp.UI
             this.passwordLabel.ForeColor = System.Drawing.Color.DimGray;
             this.passwordLabel.Location = new System.Drawing.Point(40, 250);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(61, 15);
+            this.passwordLabel.Size = new System.Drawing.Size(57, 15);
             this.passwordLabel.TabIndex = 4;
             this.passwordLabel.Text = "Password";
             // 
@@ -211,7 +212,7 @@ namespace RentalApp.UI
             this.usernameLabel.ForeColor = System.Drawing.Color.DimGray;
             this.usernameLabel.Location = new System.Drawing.Point(40, 120);
             this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(63, 15);
+            this.usernameLabel.Size = new System.Drawing.Size(60, 15);
             this.usernameLabel.TabIndex = 2;
             this.usernameLabel.Text = "Username";
             // 
@@ -222,7 +223,7 @@ namespace RentalApp.UI
             this.welcomeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
             this.welcomeLabel.Location = new System.Drawing.Point(38, 40);
             this.welcomeLabel.Name = "welcomeLabel";
-            this.welcomeLabel.Size = new System.Drawing.Size(138, 30);
+            this.welcomeLabel.Size = new System.Drawing.Size(105, 30);
             this.welcomeLabel.TabIndex = 0;
             this.welcomeLabel.Text = "Welcome";
             // 
@@ -233,7 +234,7 @@ namespace RentalApp.UI
             this.subtitleLabel.ForeColor = System.Drawing.Color.DimGray;
             this.subtitleLabel.Location = new System.Drawing.Point(40, 80);
             this.subtitleLabel.Name = "subtitleLabel";
-            this.subtitleLabel.Size = new System.Drawing.Size(253, 15);
+            this.subtitleLabel.Size = new System.Drawing.Size(257, 15);
             this.subtitleLabel.TabIndex = 0;
             this.subtitleLabel.Text = "Sign in to manage rentals, fleet, and customers.";
             // 
