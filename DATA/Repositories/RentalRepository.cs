@@ -1,0 +1,164 @@
+using System;
+using System.Collections.Generic;
+using MySql.Data.MySqlClient;
+using RentalApp.Models.Core;
+
+namespace RentalApp.Data.Repositories
+{
+    public class RentalRepository
+    {
+        // CREATE
+        public int Add(Rental rental)
+        {
+            string sql = @"INSERT INTO Rentals 
+                          (ReservationID, CustomerID, VehicleID, RentalAgentID, 
+                           ActualPickupDate, ActualReturnDate, StartMileage, EndMileage, Status) 
+                          VALUES 
+                          (@resId, @custId, @vehId, @agentId, @pickup, @return, @startMile, @endMile, @status);
+                          SELECT LAST_INSERT_ID();";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@resId", rental.ReservationId.HasValue ? (object)rental.ReservationId.Value : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@custId", rental.CustomerId);
+                    cmd.Parameters.AddWithValue("@vehId", rental.VehicleId);
+                    cmd.Parameters.AddWithValue("@agentId", rental.RentalAgentId);
+                    cmd.Parameters.AddWithValue("@pickup", rental.ActualPickupDate);
+                    cmd.Parameters.AddWithValue("@return", rental.ActualReturnDate.HasValue ? (object)rental.ActualReturnDate.Value : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@startMile", rental.StartMileage);
+                    cmd.Parameters.AddWithValue("@endMile", rental.EndMileage.HasValue ? (object)rental.EndMileage.Value : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@status", rental.Status.ToString());
+
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+        }
+
+        // READ
+        public Rental GetById(int id)
+        {
+            string sql = "SELECT * FROM Rentals WHERE ID = @id";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return MapReaderToRental(reader);
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+        public List<Rental> GetAll()
+        {
+            List<Rental> rentals = new List<Rental>();
+            string sql = "SELECT * FROM Rentals ORDER BY ActualPickupDate DESC";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            rentals.Add(MapReaderToRental(reader));
+                        }
+                    }
+                }
+            }
+            return rentals;
+        }
+
+        public List<Rental> GetActiveRentals()
+        {
+            List<Rental> rentals = new List<Rental>();
+            string sql = "SELECT * FROM Rentals WHERE Status = 'Active'";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            rentals.Add(MapReaderToRental(reader));
+                        }
+                    }
+                }
+            }
+            return rentals;
+        }
+
+        // UPDATE
+        public void Update(Rental rental)
+        {
+            string sql = @"UPDATE Rentals SET 
+                          ActualReturnDate = @return, EndMileage = @endMile, Status = @status
+                          WHERE ID = @id";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", rental.Id);
+                    cmd.Parameters.AddWithValue("@return", rental.ActualReturnDate.HasValue ? (object)rental.ActualReturnDate.Value : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@endMile", rental.EndMileage.HasValue ? (object)rental.EndMileage.Value : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@status", rental.Status.ToString());
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        // DELETE
+        public void Delete(int id)
+        {
+            string sql = "DELETE FROM Rentals WHERE ID = @id";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        // HELPER
+        private Rental MapReaderToRental(MySqlDataReader reader)
+        {
+            return new Rental
+            {
+                Id = reader.GetInt32("ID"),
+                ReservationId = reader.IsDBNull(reader.GetOrdinal("ReservationID")) ? (int?)null : reader.GetInt32("ReservationID"),
+                CustomerId = reader.GetInt32("CustomerID"),
+                VehicleId = reader.GetInt32("VehicleID"),
+                RentalAgentId = reader.GetInt32("RentalAgentID"),
+                ActualPickupDate = reader.GetDateTime("ActualPickupDate"),
+                ActualReturnDate = reader.IsDBNull(reader.GetOrdinal("ActualReturnDate")) ? (DateTime?)null : reader.GetDateTime("ActualReturnDate"),
+                StartMileage = reader.GetInt32("StartMileage"),
+                EndMileage = reader.IsDBNull(reader.GetOrdinal("EndMileage")) ? (int?)null : reader.GetInt32("EndMileage"),
+                Status = (RentalStatus)Enum.Parse(typeof(RentalStatus), reader.GetString("Status"))
+            };
+        }
+    }
+}

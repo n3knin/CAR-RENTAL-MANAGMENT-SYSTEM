@@ -3,7 +3,23 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F5F0A5A7-9B7D-4A9F-9F58-1D7B5B4E9C11}|RentalApp.csproj|C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\ui\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{F5F0A5A7-9B7D-4A9F-9F58-1D7B5B4E9C11}|RentalApp.csproj|c:\\users\\admin\\source\\repos\\rental-management-system\\models\\vehicles\\vehicles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5F0A5A7-9B7D-4A9F-9F58-1D7B5B4E9C11}|RentalApp.csproj|solutionrelative:models\\vehicles\\vehicles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F5F0A5A7-9B7D-4A9F-9F58-1D7B5B4E9C11}|RentalApp.csproj|c:\\users\\admin\\source\\repos\\rental-management-system\\models\\users\\rentalagent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5F0A5A7-9B7D-4A9F-9F58-1D7B5B4E9C11}|RentalApp.csproj|solutionrelative:models\\users\\rentalagent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F5F0A5A7-9B7D-4A9F-9F58-1D7B5B4E9C11}|RentalApp.csproj|c:\\users\\admin\\source\\repos\\rental-management-system\\models\\users\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5F0A5A7-9B7D-4A9F-9F58-1D7B5B4E9C11}|RentalApp.csproj|solutionrelative:models\\users\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F5F0A5A7-9B7D-4A9F-9F58-1D7B5B4E9C11}|RentalApp.csproj|c:\\users\\admin\\source\\repos\\rental-management-system\\models\\users\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5F0A5A7-9B7D-4A9F-9F58-1D7B5B4E9C11}|RentalApp.csproj|solutionrelative:models\\users\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F5F0A5A7-9B7D-4A9F-9F58-1D7B5B4E9C11}|RentalApp.csproj|c:\\users\\admin\\source\\repos\\rental-management-system\\ui\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F5F0A5A7-9B7D-4A9F-9F58-1D7B5B4E9C11}|RentalApp.csproj|solutionrelative:ui\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -19,15 +35,15 @@
       "RelativeMoniker": "D:0:0:{F5F0A5A7-9B7D-4A9F-9F58-1D7B5B4E9C11}|RentalApp.csproj|solutionrelative:ui\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F5F0A5A7-9B7D-4A9F-9F58-1D7B5B4E9C11}|RentalApp.csproj|c:\\users\\admin\\source\\repos\\rental-management-system\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F5F0A5A7-9B7D-4A9F-9F58-1D7B5B4E9C11}|RentalApp.csproj|C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F5F0A5A7-9B7D-4A9F-9F58-1D7B5B4E9C11}|RentalApp.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F5F0A5A7-9B7D-4A9F-9F58-1D7B5B4E9C11}|RentalApp.csproj|c:\\users\\admin\\source\\repos\\rental-management-system\\data\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F5F0A5A7-9B7D-4A9F-9F58-1D7B5B4E9C11}|RentalApp.csproj|C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\data\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F5F0A5A7-9B7D-4A9F-9F58-1D7B5B4E9C11}|RentalApp.csproj|solutionrelative:data\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F5F0A5A7-9B7D-4A9F-9F58-1D7B5B4E9C11}|RentalApp.csproj|c:\\users\\admin\\source\\repos\\rental-management-system\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{F5F0A5A7-9B7D-4A9F-9F58-1D7B5B4E9C11}|RentalApp.csproj|C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{F5F0A5A7-9B7D-4A9F-9F58-1D7B5B4E9C11}|RentalApp.csproj|solutionrelative:app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
@@ -66,7 +82,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -78,19 +94,70 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainDashboardForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\UI\\MainDashboardForm.cs",
-              "RelativeDocumentMoniker": "UI\\MainDashboardForm.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\UI\\MainDashboardForm.cs [Design]*",
-              "RelativeToolTip": "UI\\MainDashboardForm.cs [Design]*",
+              "DocumentIndex": 0,
+              "Title": "Vehicles.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\Models\\Vehicles\\Vehicles.cs",
+              "RelativeDocumentMoniker": "Models\\Vehicles\\Vehicles.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\Models\\Vehicles\\Vehicles.cs",
+              "RelativeToolTip": "Models\\Vehicles\\Vehicles.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAkwFIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-04T15:02:02.087Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-12-07T14:14:33.056Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RentalAgent.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\Models\\Users\\RentalAgent.cs",
+              "RelativeDocumentMoniker": "Models\\Users\\RentalAgent.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\Models\\Users\\RentalAgent.cs",
+              "RelativeToolTip": "Models\\Users\\RentalAgent.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAkwCUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T13:54:32.495Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Admin.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\Models\\Users\\Admin.cs",
+              "RelativeDocumentMoniker": "Models\\Users\\Admin.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\Models\\Users\\Admin.cs",
+              "RelativeToolTip": "Models\\Users\\Admin.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAYwCEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T13:50:23.823Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\Models\\Users\\User.cs",
+              "RelativeDocumentMoniker": "Models\\Users\\User.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\Models\\Users\\User.cs",
+              "RelativeToolTip": "Models\\Users\\User.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwBsAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T13:48:21.877Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainDashboardForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\UI\\MainDashboardForm.cs",
+              "RelativeDocumentMoniker": "UI\\MainDashboardForm.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\UI\\MainDashboardForm.cs [Design]",
+              "RelativeToolTip": "UI\\MainDashboardForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T15:02:02.087Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "LoginForm.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\UI\\LoginForm.cs",
               "RelativeDocumentMoniker": "UI\\LoginForm.cs",
@@ -103,7 +170,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "App.config",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\App.config",
               "RelativeDocumentMoniker": "App.config",
@@ -111,12 +178,11 @@
               "RelativeToolTip": "App.config",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-12-04T15:08:02.552Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-04T15:08:02.552Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "LoginForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\UI\\LoginForm.cs",
               "RelativeDocumentMoniker": "UI\\LoginForm.cs",
@@ -128,7 +194,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "DatabaseHelper.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\DATA\\DatabaseHelper.cs",
               "RelativeDocumentMoniker": "DATA\\DatabaseHelper.cs",
@@ -136,25 +202,23 @@
               "RelativeToolTip": "DATA\\DatabaseHelper.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T07:40:32.63Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-06T07:40:32.63Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "MainDashboardForm.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\UI\\MainDashboardForm.cs",
               "RelativeDocumentMoniker": "UI\\MainDashboardForm.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\UI\\MainDashboardForm.cs*",
-              "RelativeToolTip": "UI\\MainDashboardForm.cs*",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\UI\\MainDashboardForm.cs",
+              "RelativeToolTip": "UI\\MainDashboardForm.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAHUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-04T15:09:32.563Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-04T15:09:32.563Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "ReservationsView.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\UI\\Sections\\ReservationsView.cs",
               "RelativeDocumentMoniker": "UI\\Sections\\ReservationsView.cs",
@@ -165,7 +229,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -173,12 +237,11 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T07:45:23.771Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-06T07:45:23.771Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "VehiclesView.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\UI\\Sections\\VehiclesView.cs",
               "RelativeDocumentMoniker": "UI\\Sections\\VehiclesView.cs",
@@ -189,7 +252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "PickupsView.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\UI\\Sections\\PickupsView.cs",
               "RelativeDocumentMoniker": "UI\\Sections\\PickupsView.cs",
@@ -200,7 +263,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "CustomersView.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\UI\\Sections\\CustomersView.cs",
               "RelativeDocumentMoniker": "UI\\Sections\\CustomersView.cs",
@@ -211,7 +274,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "BillingView.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\UI\\Sections\\BillingView.cs",
               "RelativeDocumentMoniker": "UI\\Sections\\BillingView.cs",
@@ -222,7 +285,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "ReportsView.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\UI\\Sections\\ReportsView.cs",
               "RelativeDocumentMoniker": "UI\\Sections\\ReportsView.cs",
@@ -233,7 +296,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "ReturnsView.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\RENTAL-MANAGEMENT-SYSTEM\\UI\\Sections\\ReturnsView.cs",
               "RelativeDocumentMoniker": "UI\\Sections\\ReturnsView.cs",

@@ -98,6 +98,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DATA\DatabaseHelper.cs" />
+    <Compile Include="Models\Users\Admin.cs" />
+    <Compile Include="Models\Users\RentalAgent.cs" />
+    <Compile Include="Models\Users\User.cs" />
+    <Compile Include="Models\Vehicles\Vehicles.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="UI\LoginForm.cs">
       <SubType>Form</SubType>
@@ -153,6 +157,24 @@
     <Compile Include="UI\Sections\ReportsView.Designer.cs">
       <DependentUpon>ReportsView.cs</DependentUpon>
     </Compile>
+    <!-- Core Models -->
+    <Compile Include="Models\Core\Customer.cs" />
+    <Compile Include="Models\Core\VehicleCategory.cs" />
+    <Compile Include="Models\Core\Reservation.cs" />
+    <Compile Include="Models\Core\Rental.cs" />
+    <Compile Include="Models\Core\Invoice.cs" />
+    <Compile Include="Models\Core\Payment.cs" />
+    <Compile Include="Models\Core\Deposit.cs" />
+    <Compile Include="Models\Core\VehicleInspection.cs" />
+    <Compile Include="Models\Core\DamageReport.cs" />
+    <Compile Include="Models\Core\MaintenanceRecord.cs" />
+    <!-- Vehicle Models -->
+    <Compile Include="Models\Vehicles\Vehicle.cs" />
+    <Compile Include="Models\Vehicles\Sedan.cs" />
+    <Compile Include="Models\Vehicles\SUV.cs" />
+    <Compile Include="Models\Vehicles\Hatchback.cs" />
+    <Compile Include="Models\Vehicles\Van.cs" />
+    <Compile Include="Models\Vehicles\Pickup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
