@@ -213,8 +213,24 @@ namespace RentalApp.Data.Repositories
         // HELPER - Map database reader to Vehicle object
         private Vehicle MapReaderToVehicle(MySqlDataReader reader)
         {
-            // Create a generic Sedan for now (you can improve this later based on CategoryID)
-            Vehicle vehicle = new Sedan();
+            Vehicle vehicle;
+            int categoryId = reader.GetInt32("CategoryID");
+
+            // DISCRIMINATOR: Decide which Child Class to create based on Category
+            // 1=Sedan, 2=SUV, 3=Pickup (Example IDs)
+            switch (categoryId)
+            {
+                case 2:
+                    vehicle = new SUV();
+                    break;
+                case 3:
+                    vehicle = new Pickup();
+                    break;
+                case 1:
+                default:
+                    vehicle = new Sedan();
+                    break;
+            }
 
             vehicle.VehicleId = reader.GetInt32("ID");
             vehicle.Make = reader.GetString("Make");
@@ -233,5 +249,7 @@ namespace RentalApp.Data.Repositories
 
             return vehicle;
         }
+
+
     }
 }

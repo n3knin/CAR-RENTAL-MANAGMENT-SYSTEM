@@ -13,7 +13,7 @@ namespace RentalApp.Models.Core
         public ReservationStatus Status { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        // Navigation properties (optional - for easier access)
+        
         public Customer Customer { get; set; }
         public Vehicles.Vehicle Vehicle { get; set; }
 

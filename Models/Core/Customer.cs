@@ -21,6 +21,10 @@ namespace RentalApp.Models.Core
         public bool IsBlacklisted { get; set; }
         public DateTime CreatedAt { get; set; }
 
+        // Dashboard Display Properties (Not in Customers Table)
+        public string CurrentVehicleInfo { get; set; } // e.g. "Toyota Camry"
+        public int? ActiveReservationId { get; set; } // ID of any active reservation
+
         // Constructor
         public Customer()
         {

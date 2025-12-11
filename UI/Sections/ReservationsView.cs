@@ -1,14 +1,21 @@
 using System.Windows.Forms;
 using System;
 using System.IO;
-
+using RentalApp.Models.Services;
+using RentalApp.Models.Core;
 namespace RentalApp.UI.Sections
 {
     public partial class ReservationsView : UserControl
     {
+        private ReservationManager _reservationManager;
         public ReservationsView()
         {
             InitializeComponent();
+            _reservationManager = new ReservationManager();
+            
+            // Fix 1: Load data on startup
+            LoadReservations();
+            
             InitializeDragAndDrop();
         }
 
@@ -47,6 +54,28 @@ namespace RentalApp.UI.Sections
                 "Files Dropped", 
                 MessageBoxButtons.OK, 
                 MessageBoxIcon.Information);
+        }
+
+        private void LoadReservations()
+        {
+            try{
+                var reservations = _reservationManager.GetAllReservations();
+                var bindingSource = new BindingSource();
+                bindingSource.DataSource = reservations;
+
+                reservationsGrid.AutoGenerateColumns = true;
+                reservationsGrid.DataSource = bindingSource;
+                reservationsGrid.Refresh();
+            }
+            catch(Exception ex){
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Fix 2: Added missing event handler
+        private void reservationsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }

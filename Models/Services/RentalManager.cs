@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RentalApp.Models.Services
 {
-    internal class RentalManager
+    public class RentalManager
     {
     }
 }

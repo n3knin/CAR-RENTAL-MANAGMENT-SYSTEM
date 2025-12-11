@@ -31,9 +31,9 @@ namespace RentalApp.UI.Sections
             this.headerLabel.AutoSize = true;
             this.headerLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.headerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
-            this.headerLabel.Location = new System.Drawing.Point(15, 15);
+            this.headerLabel.Location = new System.Drawing.Point(13, 13);
             this.headerLabel.Name = "headerLabel";
-            this.headerLabel.Size = new System.Drawing.Size(148, 20);
+            this.headerLabel.Size = new System.Drawing.Size(145, 20);
             this.headerLabel.TabIndex = 0;
             this.headerLabel.Text = "Reservations Queue";
             // 
@@ -41,18 +41,18 @@ namespace RentalApp.UI.Sections
             // 
             this.dateFromPicker.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dateFromPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateFromPicker.Location = new System.Drawing.Point(101, 45);
+            this.dateFromPicker.Location = new System.Drawing.Point(87, 39);
             this.dateFromPicker.Name = "dateFromPicker";
-            this.dateFromPicker.Size = new System.Drawing.Size(110, 23);
+            this.dateFromPicker.Size = new System.Drawing.Size(95, 23);
             this.dateFromPicker.TabIndex = 2;
             // 
             // dateToPicker
             // 
             this.dateToPicker.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dateToPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateToPicker.Location = new System.Drawing.Point(241, 45);
+            this.dateToPicker.Location = new System.Drawing.Point(207, 39);
             this.dateToPicker.Name = "dateToPicker";
-            this.dateToPicker.Size = new System.Drawing.Size(110, 23);
+            this.dateToPicker.Size = new System.Drawing.Size(95, 23);
             this.dateToPicker.TabIndex = 3;
             // 
             // toLabel
@@ -60,7 +60,7 @@ namespace RentalApp.UI.Sections
             this.toLabel.AutoSize = true;
             this.toLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.toLabel.Location = new System.Drawing.Point(217, 49);
+            this.toLabel.Location = new System.Drawing.Point(186, 42);
             this.toLabel.Name = "toLabel";
             this.toLabel.Size = new System.Drawing.Size(18, 15);
             this.toLabel.TabIndex = 0;
@@ -75,12 +75,13 @@ namespace RentalApp.UI.Sections
             | System.Windows.Forms.AnchorStyles.Right)));
             this.reservationsGrid.BackgroundColor = System.Drawing.Color.White;
             this.reservationsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.reservationsGrid.Location = new System.Drawing.Point(18, 80);
+            this.reservationsGrid.Location = new System.Drawing.Point(15, 69);
             this.reservationsGrid.Name = "reservationsGrid";
             this.reservationsGrid.ReadOnly = true;
             this.reservationsGrid.RowHeadersVisible = false;
-            this.reservationsGrid.Size = new System.Drawing.Size(732, 280);
+            this.reservationsGrid.Size = new System.Drawing.Size(627, 243);
             this.reservationsGrid.TabIndex = 5;
+            this.reservationsGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.reservationsGrid_CellContentClick);
             // 
             // newReservationButton
             // 
@@ -90,9 +91,9 @@ namespace RentalApp.UI.Sections
             this.newReservationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.newReservationButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.newReservationButton.ForeColor = System.Drawing.Color.White;
-            this.newReservationButton.Location = new System.Drawing.Point(566, 45);
+            this.newReservationButton.Location = new System.Drawing.Point(485, 39);
             this.newReservationButton.Name = "newReservationButton";
-            this.newReservationButton.Size = new System.Drawing.Size(110, 23);
+            this.newReservationButton.Size = new System.Drawing.Size(94, 20);
             this.newReservationButton.TabIndex = 6;
             this.newReservationButton.Text = "New Reservation";
             this.newReservationButton.UseVisualStyleBackColor = false;
@@ -105,9 +106,9 @@ namespace RentalApp.UI.Sections
             this.viewDetailsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.viewDetailsButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.viewDetailsButton.ForeColor = System.Drawing.Color.DimGray;
-            this.viewDetailsButton.Location = new System.Drawing.Point(682, 45);
+            this.viewDetailsButton.Location = new System.Drawing.Point(585, 39);
             this.viewDetailsButton.Name = "viewDetailsButton";
-            this.viewDetailsButton.Size = new System.Drawing.Size(68, 23);
+            this.viewDetailsButton.Size = new System.Drawing.Size(58, 20);
             this.viewDetailsButton.TabIndex = 7;
             this.viewDetailsButton.Text = "Details";
             this.viewDetailsButton.UseVisualStyleBackColor = false;
@@ -117,15 +118,15 @@ namespace RentalApp.UI.Sections
             this.dateRangeLabel.AutoSize = true;
             this.dateRangeLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dateRangeLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.dateRangeLabel.Location = new System.Drawing.Point(18, 49);
+            this.dateRangeLabel.Location = new System.Drawing.Point(15, 42);
             this.dateRangeLabel.Name = "dateRangeLabel";
-            this.dateRangeLabel.Size = new System.Drawing.Size(68, 15);
+            this.dateRangeLabel.Size = new System.Drawing.Size(67, 15);
             this.dateRangeLabel.TabIndex = 1;
             this.dateRangeLabel.Text = "Date Range";
             // 
             // ReservationsView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.dateRangeLabel);
@@ -137,7 +138,7 @@ namespace RentalApp.UI.Sections
             this.Controls.Add(this.dateFromPicker);
             this.Controls.Add(this.headerLabel);
             this.Name = "ReservationsView";
-            this.Size = new System.Drawing.Size(770, 380);
+            this.Size = new System.Drawing.Size(660, 329);
             ((System.ComponentModel.ISupportInitialize)(this.reservationsGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

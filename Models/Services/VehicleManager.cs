@@ -79,5 +79,43 @@ namespace RentalApp.Models.Services
 
             _vehicleRepository.Add(vehicle);
         }
+
+        public List<Vehicle> GetAllVehicles()
+        {
+            return _vehicleRepository.GetAll();
+        }
+
+        public Vehicle GetVehicleById(int id)
+        {
+            return _vehicleRepository.GetById(id);
+        }
+
+        public List<Vehicle> GetAvailableVehicles()
+        {
+            return _vehicleRepository.GetAvailable();
+        }
+
+        public void UpdateVehicle(Vehicle vehicle)
+        {
+            // Basic validation for update (similar to Add but simpler)
+            if (string.IsNullOrEmpty(vehicle.Make) || string.IsNullOrEmpty(vehicle.Model))
+            {
+                throw new ArgumentException("Make and Model are required.");
+            }
+            // You can add more specific validation here if needed
+
+            _vehicleRepository.Update(vehicle);
+        }
+
+        public void DeleteVehicle(int id)
+        {
+            _vehicleRepository.Delete(id);
+        }
+
+        public void UpdateVehicleStatus(int id, VehicleStatus status)
+        {
+            _vehicleRepository.UpdateStatus(id, status);
+        }
+
     }
 }

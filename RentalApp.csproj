@@ -101,6 +101,8 @@
     <!-- Repositories -->
     <Compile Include="DATA\Repositories\UserRepository.cs" />
     <Compile Include="DATA\Repositories\VehicleRepository.cs" />
+    <Compile Include="DATA\Repositories\CategoryRespository.cs" />
+    <Compile Include="DATA\Repositories\FeatureRepository.cs" />
     <Compile Include="DATA\Repositories\CustomerRepository.cs" />
     <Compile Include="DATA\Repositories\ReservationRepository.cs" />
     <Compile Include="DATA\Repositories\RentalRepository.cs" />
@@ -139,6 +141,18 @@
     </Compile>
     <Compile Include="UI\Sections\VehiclesView.Designer.cs">
       <DependentUpon>VehiclesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Popups\VehicleDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Popups\VehicleDetailsForm.Designer.cs">
+      <DependentUpon>VehicleDetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Popups\CustomerDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Popups\CustomerDetailsForm.Designer.cs">
+      <DependentUpon>CustomerDetailsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Sections\CustomersView.cs">
       <SubType>UserControl</SubType>
@@ -205,8 +219,23 @@
     <EmbeddedResource Include="UI\MainDashboardForm.resx">
       <DependentUpon>MainDashboardForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Sections\CustomersView.resx">
+      <DependentUpon>CustomersView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Sections\PickupsView.resx">
       <DependentUpon>PickupsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Sections\ReservationsView.resx">
+      <DependentUpon>ReservationsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Sections\VehiclesView.resx">
+      <DependentUpon>VehiclesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Popups\VehicleDetailsForm.resx">
+      <DependentUpon>VehicleDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Popups\CustomerDetailsForm.resx">
+      <DependentUpon>CustomerDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

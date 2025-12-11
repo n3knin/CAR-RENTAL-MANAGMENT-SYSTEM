@@ -43,9 +43,9 @@ namespace RentalApp.UI.Sections
             this.headerLabel.AutoSize = true;
             this.headerLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.headerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
-            this.headerLabel.Location = new System.Drawing.Point(15, 15);
+            this.headerLabel.Location = new System.Drawing.Point(13, 13);
             this.headerLabel.Name = "headerLabel";
-            this.headerLabel.Size = new System.Drawing.Size(108, 20);
+            this.headerLabel.Size = new System.Drawing.Size(107, 20);
             this.headerLabel.TabIndex = 0;
             this.headerLabel.Text = "Vehicle Fleet   ";
             // 
@@ -53,9 +53,9 @@ namespace RentalApp.UI.Sections
             // 
             this.searchTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.searchTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.searchTextBox.Location = new System.Drawing.Point(530, 45);
+            this.searchTextBox.Location = new System.Drawing.Point(454, 39);
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(220, 23);
+            this.searchTextBox.Size = new System.Drawing.Size(189, 23);
             this.searchTextBox.TabIndex = 2;
             // 
             // searchLabel
@@ -64,9 +64,9 @@ namespace RentalApp.UI.Sections
             this.searchLabel.AutoSize = true;
             this.searchLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.searchLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.searchLabel.Location = new System.Drawing.Point(480, 48);
+            this.searchLabel.Location = new System.Drawing.Point(411, 42);
             this.searchLabel.Name = "searchLabel";
-            this.searchLabel.Size = new System.Drawing.Size(44, 15);
+            this.searchLabel.Size = new System.Drawing.Size(42, 15);
             this.searchLabel.TabIndex = 1;
             this.searchLabel.Text = "Search";
             // 
@@ -79,12 +79,14 @@ namespace RentalApp.UI.Sections
             | System.Windows.Forms.AnchorStyles.Right)));
             this.vehiclesGrid.BackgroundColor = System.Drawing.Color.White;
             this.vehiclesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.vehiclesGrid.Location = new System.Drawing.Point(18, 80);
+            this.vehiclesGrid.Location = new System.Drawing.Point(15, 69);
             this.vehiclesGrid.Name = "vehiclesGrid";
             this.vehiclesGrid.ReadOnly = true;
             this.vehiclesGrid.RowHeadersVisible = false;
-            this.vehiclesGrid.Size = new System.Drawing.Size(732, 280);
+            this.vehiclesGrid.Size = new System.Drawing.Size(627, 243);
             this.vehiclesGrid.TabIndex = 3;
+            this.vehiclesGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.vehiclesGrid_CellContentClick);
+            this.vehiclesGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.vehiclesGrid_CellContentDoubleClick);
             // 
             // addButton
             // 
@@ -93,9 +95,9 @@ namespace RentalApp.UI.Sections
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.addButton.ForeColor = System.Drawing.Color.White;
-            this.addButton.Location = new System.Drawing.Point(18, 45);
+            this.addButton.Location = new System.Drawing.Point(15, 39);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(80, 23);
+            this.addButton.Size = new System.Drawing.Size(69, 20);
             this.addButton.TabIndex = 4;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = false;
@@ -107,9 +109,9 @@ namespace RentalApp.UI.Sections
             this.editButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.editButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.editButton.ForeColor = System.Drawing.Color.DimGray;
-            this.editButton.Location = new System.Drawing.Point(104, 45);
+            this.editButton.Location = new System.Drawing.Point(89, 39);
             this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(80, 23);
+            this.editButton.Size = new System.Drawing.Size(69, 20);
             this.editButton.TabIndex = 5;
             this.editButton.Text = "Edit";
             this.editButton.UseVisualStyleBackColor = false;
@@ -121,16 +123,16 @@ namespace RentalApp.UI.Sections
             this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.deleteButton.ForeColor = System.Drawing.Color.DimGray;
-            this.deleteButton.Location = new System.Drawing.Point(190, 45);
+            this.deleteButton.Location = new System.Drawing.Point(163, 39);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(80, 23);
+            this.deleteButton.Size = new System.Drawing.Size(69, 20);
             this.deleteButton.TabIndex = 6;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = false;
             // 
             // VehiclesView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.deleteButton);
@@ -141,7 +143,7 @@ namespace RentalApp.UI.Sections
             this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.headerLabel);
             this.Name = "VehiclesView";
-            this.Size = new System.Drawing.Size(770, 380);
+            this.Size = new System.Drawing.Size(660, 329);
             ((System.ComponentModel.ISupportInitialize)(this.vehiclesGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

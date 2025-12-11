@@ -49,3 +49,8 @@ C:\Users\Admin\Source\Repos\RENTAL-MANAGEMENT-SYSTEM\bin\Debug\System.Threading.
 C:\Users\Admin\Source\Repos\RENTAL-MANAGEMENT-SYSTEM\obj\Debug\RentalApp.csproj.Up2Date
 C:\Users\Admin\Source\Repos\RENTAL-MANAGEMENT-SYSTEM\obj\Debug\RentalApp.exe
 C:\Users\Admin\Source\Repos\RENTAL-MANAGEMENT-SYSTEM\obj\Debug\RentalApp.pdb
+C:\Users\Admin\Source\Repos\RENTAL-MANAGEMENT-SYSTEM\obj\Debug\RentalApp.UI.Sections.VehiclesView.resources
+C:\Users\Admin\Source\Repos\RENTAL-MANAGEMENT-SYSTEM\obj\Debug\RentalApp.UI.Sections.CustomersView.resources
+C:\Users\Admin\Source\Repos\RENTAL-MANAGEMENT-SYSTEM\obj\Debug\RentalApp.UI.Sections.ReservationsView.resources
+C:\Users\Admin\Source\Repos\RENTAL-MANAGEMENT-SYSTEM\obj\Debug\RentalApp.UI.Popups.VehicleDetailsForm.resources
+C:\Users\Admin\Source\Repos\RENTAL-MANAGEMENT-SYSTEM\obj\Debug\RentalApp.UI.Popups.CustomerDetailsForm.resources

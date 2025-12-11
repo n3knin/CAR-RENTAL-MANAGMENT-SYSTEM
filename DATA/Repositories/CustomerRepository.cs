@@ -71,7 +71,18 @@ namespace RentalApp.Data.Repositories
         public List<Customer> GetAll()
         {
             List<Customer> customers = new List<Customer>();
-            string sql = "SELECT * FROM Customers ORDER BY FirstName, LastName";
+            
+            // JOIN query to see if there is an ACTIVE reservation (Pending or Confirmed)
+            // We group by Customer.ID to ensure we don't get duplicates if data is messy,
+            // though logically a customer should only have one active rental at a time.
+            string sql = @"SELECT c.*, 
+                                  r.ID as ReservationID, 
+                                  v.Make, v.Model 
+                           FROM Customers c
+                           LEFT JOIN Reservations r ON c.ID = r.CustomerID 
+                                     AND (r.Status = 'Pending' OR r.Status = 'Confirmed')
+                           LEFT JOIN Vehicles v ON r.VehicleID = v.ID
+                           ORDER BY c.FirstName, c.LastName";
 
             using (var conn = DatabaseHelper.GetConnection())
             {
@@ -132,10 +143,26 @@ namespace RentalApp.Data.Repositories
             }
         }
 
+        // BLACKLIST
+        public void BlacklistCustomer(int id)
+        {
+            string sql = "UPDATE Customers SET IsBlacklisted = 1 WHERE ID = @id";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         // HELPER
         private Customer MapReaderToCustomer(MySqlDataReader reader)
         {
-            return new Customer
+            var customer = new Customer
             {
                 Id = reader.GetInt32("ID"),
                 FirstName = reader.GetString("FirstName"),
@@ -153,6 +180,23 @@ namespace RentalApp.Data.Repositories
                 IsBlacklisted = reader.GetBoolean("IsBlacklisted"),
                 CreatedAt = reader.GetDateTime("CreatedAt")
             };
+
+            // Populate active rental info if found (from the JOIN)
+            try
+            {
+                if (!reader.IsDBNull(reader.GetOrdinal("ReservationID")))
+                {
+                    customer.ActiveReservationId = reader.GetInt32("ReservationID");
+                    
+                    if (!reader.IsDBNull(reader.GetOrdinal("Make")))
+                    {
+                        customer.CurrentVehicleInfo = $"{reader.GetString("Make")} {reader.GetString("Model")}";
+                    }
+                }
+            }
+            catch { /* Ignore if columns not found */ }
+
+            return customer;
         }
     }
 }

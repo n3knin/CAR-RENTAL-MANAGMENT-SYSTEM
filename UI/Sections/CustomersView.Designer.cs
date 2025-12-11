@@ -29,9 +29,9 @@ namespace RentalApp.UI.Sections
             this.headerLabel.AutoSize = true;
             this.headerLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.headerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
-            this.headerLabel.Location = new System.Drawing.Point(15, 15);
+            this.headerLabel.Location = new System.Drawing.Point(13, 13);
             this.headerLabel.Name = "headerLabel";
-            this.headerLabel.Size = new System.Drawing.Size(136, 20);
+            this.headerLabel.Size = new System.Drawing.Size(129, 20);
             this.headerLabel.TabIndex = 0;
             this.headerLabel.Text = "Customer Profiles";
             // 
@@ -45,9 +45,9 @@ namespace RentalApp.UI.Sections
             "Frequent renters",
             "Corporate clients",
             "Blacklisted"});
-            this.filterComboBox.Location = new System.Drawing.Point(70, 45);
+            this.filterComboBox.Location = new System.Drawing.Point(60, 39);
             this.filterComboBox.Name = "filterComboBox";
-            this.filterComboBox.Size = new System.Drawing.Size(200, 23);
+            this.filterComboBox.Size = new System.Drawing.Size(172, 23);
             this.filterComboBox.TabIndex = 2;
             // 
             // filterLabel
@@ -55,9 +55,9 @@ namespace RentalApp.UI.Sections
             this.filterLabel.AutoSize = true;
             this.filterLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.filterLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.filterLabel.Location = new System.Drawing.Point(18, 48);
+            this.filterLabel.Location = new System.Drawing.Point(15, 42);
             this.filterLabel.Name = "filterLabel";
-            this.filterLabel.Size = new System.Drawing.Size(46, 15);
+            this.filterLabel.Size = new System.Drawing.Size(49, 15);
             this.filterLabel.TabIndex = 1;
             this.filterLabel.Text = "Filter by";
             // 
@@ -70,12 +70,14 @@ namespace RentalApp.UI.Sections
             | System.Windows.Forms.AnchorStyles.Right)));
             this.customersGrid.BackgroundColor = System.Drawing.Color.White;
             this.customersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.customersGrid.Location = new System.Drawing.Point(18, 80);
+            this.customersGrid.Location = new System.Drawing.Point(15, 69);
             this.customersGrid.Name = "customersGrid";
             this.customersGrid.ReadOnly = true;
             this.customersGrid.RowHeadersVisible = false;
-            this.customersGrid.Size = new System.Drawing.Size(732, 280);
+            this.customersGrid.Size = new System.Drawing.Size(627, 243);
             this.customersGrid.TabIndex = 3;
+            this.customersGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.customersGrid_CellContentClick);
+            this.customersGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.customersGrid_CellContentDoubleClick);
             // 
             // addButton
             // 
@@ -85,9 +87,9 @@ namespace RentalApp.UI.Sections
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.addButton.ForeColor = System.Drawing.Color.White;
-            this.addButton.Location = new System.Drawing.Point(590, 45);
+            this.addButton.Location = new System.Drawing.Point(506, 39);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(80, 23);
+            this.addButton.Size = new System.Drawing.Size(69, 20);
             this.addButton.TabIndex = 4;
             this.addButton.Text = "New";
             this.addButton.UseVisualStyleBackColor = false;
@@ -100,16 +102,16 @@ namespace RentalApp.UI.Sections
             this.viewProfileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.viewProfileButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.viewProfileButton.ForeColor = System.Drawing.Color.DimGray;
-            this.viewProfileButton.Location = new System.Drawing.Point(676, 45);
+            this.viewProfileButton.Location = new System.Drawing.Point(579, 39);
             this.viewProfileButton.Name = "viewProfileButton";
-            this.viewProfileButton.Size = new System.Drawing.Size(74, 23);
+            this.viewProfileButton.Size = new System.Drawing.Size(63, 20);
             this.viewProfileButton.TabIndex = 5;
             this.viewProfileButton.Text = "View";
             this.viewProfileButton.UseVisualStyleBackColor = false;
             // 
             // CustomersView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.viewProfileButton);
@@ -119,7 +121,7 @@ namespace RentalApp.UI.Sections
             this.Controls.Add(this.filterLabel);
             this.Controls.Add(this.headerLabel);
             this.Name = "CustomersView";
-            this.Size = new System.Drawing.Size(770, 380);
+            this.Size = new System.Drawing.Size(660, 329);
             ((System.ComponentModel.ISupportInitialize)(this.customersGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
