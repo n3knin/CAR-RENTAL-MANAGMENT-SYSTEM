@@ -76,6 +76,7 @@ namespace RentalApp.UI.Sections
                 
                 vehiclesGrid.AutoGenerateColumns = true;
                 vehiclesGrid.DataSource = bindingSource;
+                vehiclesGrid.ReadOnly = true;
 
                 vehiclesGrid.Columns["VehicleId"].Visible = false;
                 vehiclesGrid.Columns["ImageUrl"].Visible = false;

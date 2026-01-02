@@ -78,12 +78,12 @@
             // 
             this.txt.AutoSize = true;
             this.txt.Depth = 0;
-            this.txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.txt.Font = new System.Drawing.Font("Roboto", 11F);
             this.txt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txt.Location = new System.Drawing.Point(13, 98);
             this.txt.MouseState = MaterialSkin.MouseState.HOVER;
             this.txt.Name = "txt";
-            this.txt.Size = new System.Drawing.Size(62, 18);
+            this.txt.Size = new System.Drawing.Size(64, 19);
             this.txt.TabIndex = 2;
             this.txt.Text = "Address";
             this.txt.Click += new System.EventHandler(this.txt_Click);
@@ -249,7 +249,7 @@
             this.btclose.UseVisualStyleBackColor = true;
             this.btclose.Click += new System.EventHandler(this.btclose_Click);
             // 
-            // Form1
+            // CustomerDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -268,7 +268,7 @@
             this.Controls.Add(this.txt);
             this.Controls.Add(this.txtlastname);
             this.Controls.Add(this.txtname);
-            this.Name = "Form1";
+            this.Name = "CustomerDetailsForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.customergrid)).EndInit();

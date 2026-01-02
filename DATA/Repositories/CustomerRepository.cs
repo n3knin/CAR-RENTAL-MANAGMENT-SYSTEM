@@ -67,6 +67,34 @@ namespace RentalApp.Data.Repositories
             }
             return null;
         }
+        public int CountBlacklisted()
+        {
+            string sql = "SELECT COUNT(*) FROM Customers WHERE IsBlacklisted = 1";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            return 0;
+        }
+        public int CountNewCustomers()
+        {
+            string sql = "SELECT COUNT(*) FROM Customers WHERE CreatedAt >= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY);";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            return 0;
+        }
 
         public List<Customer> GetAll()
         {

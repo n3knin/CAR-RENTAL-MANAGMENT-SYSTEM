@@ -60,5 +60,13 @@ namespace RentalApp.Models.Services
             _customerRepository.BlacklistCustomer(id);
             return _customerRepository.GetById(id);
         }
+        public int CountBlacklisted()
+        {
+            return _customerRepository.CountBlacklisted();
+        }
+        public int CountNewCustomers()
+        {
+            return _customerRepository.CountNewCustomers();
+        }
     }
 }

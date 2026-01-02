@@ -97,6 +97,7 @@ namespace RentalApp.UI.Sections
             this.newReservationButton.TabIndex = 6;
             this.newReservationButton.Text = "New Reservation";
             this.newReservationButton.UseVisualStyleBackColor = false;
+            this.newReservationButton.Click += new System.EventHandler(this.newReservationButton_Click);
             // 
             // viewDetailsButton
             // 

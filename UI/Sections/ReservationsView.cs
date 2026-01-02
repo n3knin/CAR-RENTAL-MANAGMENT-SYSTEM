@@ -65,6 +65,29 @@ namespace RentalApp.UI.Sections
 
                 reservationsGrid.AutoGenerateColumns = true;
                 reservationsGrid.DataSource = bindingSource;
+
+                // Configure Columns Programmatically
+                if (reservationsGrid.Columns["Id"] != null) reservationsGrid.Columns["Id"].Visible = false;
+                if (reservationsGrid.Columns["CustomerId"] != null) reservationsGrid.Columns["CustomerId"].Visible = false;
+                if (reservationsGrid.Columns["VehicleId"] != null) reservationsGrid.Columns["VehicleId"].Visible = false;
+                if (reservationsGrid.Columns["CreatedAt"] != null) reservationsGrid.Columns["CreatedAt"].Visible = false;
+                if (reservationsGrid.Columns["Customer"] != null) reservationsGrid.Columns["Customer"].Visible = false;
+                if (reservationsGrid.Columns["Vehicle"] != null) reservationsGrid.Columns["Vehicle"].Visible = false;
+
+                // Rename Headers for Display Properties
+                if (reservationsGrid.Columns["CustomerName"] != null) 
+                {
+                    reservationsGrid.Columns["CustomerName"].HeaderText = "Customer";
+                    reservationsGrid.Columns["CustomerName"].DisplayIndex = 0;
+                }
+                if (reservationsGrid.Columns["VehicleInfo"] != null) 
+                {
+                    reservationsGrid.Columns["VehicleInfo"].HeaderText = "Vehicle";
+                    reservationsGrid.Columns["VehicleInfo"].DisplayIndex = 1;
+                }
+                if (reservationsGrid.Columns["StartDate"] != null) reservationsGrid.Columns["StartDate"].HeaderText = "From";
+                if (reservationsGrid.Columns["EndDate"] != null) reservationsGrid.Columns["EndDate"].HeaderText = "To";
+
                 reservationsGrid.Refresh();
             }
             catch(Exception ex){
@@ -76,6 +99,17 @@ namespace RentalApp.UI.Sections
         private void reservationsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             
+        }
+
+        private void newReservationButton_Click(object sender, EventArgs e)
+        {
+            using (var form = new Popups.ReservationForm())
+            {
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    LoadReservations(); // Refresh grid after adding
+                }
+            }
         }
     }
 }

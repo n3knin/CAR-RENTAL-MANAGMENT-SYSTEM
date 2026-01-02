@@ -4,18 +4,40 @@ namespace RentalApp.Models.Core
 {
     public class Reservation
     {
-        
+        [System.ComponentModel.Browsable(false)]
         public int Id { get; set; }
+
+        [System.ComponentModel.Browsable(false)]
         public int CustomerId { get; set; }
+        
+        [System.ComponentModel.Browsable(false)]
         public int VehicleId { get; set; }
+
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public ReservationStatus Status { get; set; }
+
+        [System.ComponentModel.Browsable(false)]
         public DateTime CreatedAt { get; set; }
 
         
+        [System.ComponentModel.Browsable(false)]
         public Customer Customer { get; set; }
+
+        [System.ComponentModel.Browsable(false)]
         public Vehicles.Vehicle Vehicle { get; set; }
+
+        // --- DISPLAY PROPERTIES (For DataGridView) ---
+        public string CustomerName 
+        { 
+            get { return Customer != null ? Customer.GetFullName() : "Unknown"; } 
+        }
+
+        public string VehicleInfo 
+        { 
+            get { return Vehicle != null ? Vehicle.GetDisplayName() : "Unknown"; } 
+        }
+        // ---------------------------------------------
 
         // Constructor
         public Reservation()

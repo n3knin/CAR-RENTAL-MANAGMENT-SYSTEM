@@ -209,6 +209,32 @@ namespace RentalApp.Data.Repositories
                 }
             }
         }
+        public int CountAvailable()
+        {
+            string sql = "SELECT COUNT(*) FROM Vehicles WHERE Status = 'Available'";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+        }
+        public int CountRented()
+        {
+            string sql = "SELECT COUNT(*) FROM Vehicles WHERE Status = 'Rented'";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+        }
 
         // HELPER - Map database reader to Vehicle object
         private Vehicle MapReaderToVehicle(MySqlDataReader reader)

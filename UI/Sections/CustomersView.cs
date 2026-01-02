@@ -59,6 +59,7 @@ namespace RentalApp.UI.Sections
                 
                 customersGrid.AutoGenerateColumns = true;
                 customersGrid.DataSource = bindingSource;
+                customersGrid.ReadOnly = true;
                 customersGrid.Columns["DriverLicenseNumber"].Visible = false;
                 customersGrid.Columns["LicenseIssueDate"].Visible = false;
                 customersGrid.Columns["LicenseExpiryDate"].Visible = false;
@@ -67,6 +68,7 @@ namespace RentalApp.UI.Sections
                 customersGrid.Columns["Address"].Visible = false;
                 customersGrid.Columns["LicenseState"].Visible = false;
                 customersGrid.Columns["LastName"].Visible = false;
+                customersGrid.Columns["CreatedAt"].Visible = false;
                 customersGrid.Refresh();
             }
             catch (Exception ex)

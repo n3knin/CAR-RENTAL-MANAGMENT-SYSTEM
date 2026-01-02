@@ -47,5 +47,13 @@ namespace RentalApp.Models.Services
                  _reservationRepository.Update(reservation);
              }
         }
+        public int CountPending()
+        {
+            return _reservationRepository.CountPending();
+        }
+        public int CountConfirmed()
+        {
+            return _reservationRepository.CountConfirmed();
+        }
     }
 }

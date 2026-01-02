@@ -59,7 +59,7 @@ namespace RentalApp.Data.Repositories
             // JOIN query to get related names
             string sql = @"SELECT r.*, 
                                   c.FirstName, c.LastName, 
-                                  v.Make, v.Model 
+                                  v.Make, v.Model, v.Year 
                            FROM Reservations r
                            LEFT JOIN Customers c ON r.CustomerID = c.ID
                            LEFT JOIN Vehicles v ON r.VehicleID = v.ID
@@ -88,7 +88,7 @@ namespace RentalApp.Data.Repositories
             List<Reservation> reservations = new List<Reservation>();
             string sql = @"SELECT r.*, 
                                   c.FirstName, c.LastName, 
-                                  v.Make, v.Model 
+                                  v.Make, v.Model, v.Year 
                            FROM Reservations r
                            LEFT JOIN Customers c ON r.CustomerID = c.ID
                            LEFT JOIN Vehicles v ON r.VehicleID = v.ID
@@ -117,7 +117,7 @@ namespace RentalApp.Data.Repositories
         {
             string sql = @"SELECT r.*, 
                                   c.FirstName, c.LastName, 
-                                  v.Make, v.Model 
+                                  v.Make, v.Model, v.Year 
                            FROM Reservations r
                            LEFT JOIN Customers c ON r.CustomerID = c.ID
                            LEFT JOIN Vehicles v ON r.VehicleID = v.ID
@@ -178,6 +178,34 @@ namespace RentalApp.Data.Repositories
                 }
             }
         }
+        public int CountPending()
+        {
+            string sql = "SELECT COUNT(*) FROM Reservations WHERE Status = 'Pending';";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            return 0;
+        }
+        public int CountConfirmed()
+        {
+            string sql = "SELECT COUNT(*) FROM Reservations WHERE Status = 'Confirmed';";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            return 0;
+        }
 
         // HELPER
         private Reservation MapReaderToReservation(MySqlDataReader reader)
@@ -218,7 +246,8 @@ namespace RentalApp.Data.Repositories
                     {
                         VehicleId = reservation.VehicleId,
                         Make = reader.GetString("Make"),
-                        Model = reader.GetString("Model")
+                        Model = reader.GetString("Model"),
+                        Year = reader.GetInt32("Year")
                     };
                 }
             }

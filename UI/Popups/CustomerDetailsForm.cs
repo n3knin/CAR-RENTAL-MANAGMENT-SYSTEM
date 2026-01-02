@@ -57,6 +57,15 @@ namespace RentalApp.UI.Popups
             {
                 var history = _reservationManager.GetCustomerHistory(_customer.Id);
                 customergrid.DataSource = history;
+                customergrid.ReadOnly = true;
+                customergrid.Columns["CustomerID"].Visible = false;
+                customergrid.Columns["VehicleID"].Visible = false;
+                customergrid.Columns["ID"].Visible = false;
+                customergrid.Columns["StartDate"].Visible = false;
+                customergrid.Columns["EndDate"].Visible = false;
+                customergrid.Columns["Status"].Visible = false;
+                customergrid.Columns["CreatedAt"].Visible = false;
+                
             }
             catch (Exception ex)
             {

@@ -19,7 +19,6 @@ namespace RentalApp.UI.Sections
             this.filterComboBox = new System.Windows.Forms.ComboBox();
             this.filterLabel = new System.Windows.Forms.Label();
             this.customersGrid = new System.Windows.Forms.DataGridView();
-            this.addButton = new System.Windows.Forms.Button();
             this.viewProfileButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.customersGrid)).BeginInit();
             this.SuspendLayout();
@@ -79,21 +78,6 @@ namespace RentalApp.UI.Sections
             this.customersGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.customersGrid_CellContentClick);
             this.customersGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.customersGrid_CellContentDoubleClick);
             // 
-            // addButton
-            // 
-            this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(161)))), ((int)(((byte)(242)))));
-            this.addButton.FlatAppearance.BorderSize = 0;
-            this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.addButton.ForeColor = System.Drawing.Color.White;
-            this.addButton.Location = new System.Drawing.Point(506, 39);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(69, 20);
-            this.addButton.TabIndex = 4;
-            this.addButton.Text = "New";
-            this.addButton.UseVisualStyleBackColor = false;
-            // 
             // viewProfileButton
             // 
             this.viewProfileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -115,7 +99,6 @@ namespace RentalApp.UI.Sections
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.viewProfileButton);
-            this.Controls.Add(this.addButton);
             this.Controls.Add(this.customersGrid);
             this.Controls.Add(this.filterComboBox);
             this.Controls.Add(this.filterLabel);
@@ -132,7 +115,6 @@ namespace RentalApp.UI.Sections
         private System.Windows.Forms.ComboBox filterComboBox;
         private System.Windows.Forms.Label filterLabel;
         private System.Windows.Forms.DataGridView customersGrid;
-        private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button viewProfileButton;
     }
 }

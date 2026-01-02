@@ -68,6 +68,11 @@ namespace RentalApp.Models.Vehicles
             return $"{Year} {Make} {Model}";
         }
 
+        public override string ToString()
+        {
+            return GetDisplayName();
+        }
+
         public bool IsAvailable()
         {
             return Status == VehicleStatus.Available;

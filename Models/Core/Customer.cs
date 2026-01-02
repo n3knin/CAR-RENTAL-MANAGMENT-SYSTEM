@@ -39,6 +39,11 @@ namespace RentalApp.Models.Core
             return $"{FirstName} {LastName}";
         }
 
+        public override string ToString()
+        {
+            return GetFullName();
+        }
+
         public int GetAge()
         {
             return DateTime.Now.Year - DateOfBirth.Year;

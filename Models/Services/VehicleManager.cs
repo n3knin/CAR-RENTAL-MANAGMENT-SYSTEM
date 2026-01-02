@@ -116,6 +116,13 @@ namespace RentalApp.Models.Services
         {
             _vehicleRepository.UpdateStatus(id, status);
         }
-
+        public int CountAvailable()
+        {
+            return _vehicleRepository.CountAvailable();
+        }
+        public int CountRented()
+        {
+            return _vehicleRepository.CountRented();
+        }
     }
 }
