@@ -50,6 +50,7 @@
             this.cmbCustomers.Name = "cmbCustomers";
             this.cmbCustomers.Size = new System.Drawing.Size(260, 25);
             this.cmbCustomers.TabIndex = 1;
+            this.cmbCustomers.SelectedIndexChanged += new System.EventHandler(this.cmbCustomers_SelectedIndexChanged);
             // 
             // btnAddCustomer
             // 
@@ -68,7 +69,7 @@
             this.lblVehicle.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblVehicle.Location = new System.Drawing.Point(30, 100);
             this.lblVehicle.Name = "lblVehicle";
-            this.lblVehicle.Size = new System.Drawing.Size(50, 19);
+            this.lblVehicle.Size = new System.Drawing.Size(51, 19);
             this.lblVehicle.TabIndex = 3;
             this.lblVehicle.Text = "Vehicle";
             // 
@@ -101,6 +102,7 @@
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(296, 25);
             this.dtpStartDate.TabIndex = 6;
+            this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
             // 
             // lblEndDate
             // 
@@ -121,6 +123,7 @@
             this.dtpEndDate.Name = "dtpEndDate";
             this.dtpEndDate.Size = new System.Drawing.Size(296, 25);
             this.dtpEndDate.TabIndex = 8;
+            this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpEndDate_ValueChanged);
             // 
             // btnSave
             // 

@@ -64,7 +64,13 @@ namespace RentalApp.Data.Repositories
         public List<Rental> GetAll()
         {
             List<Rental> rentals = new List<Rental>();
-            string sql = "SELECT * FROM Rentals ORDER BY ActualPickupDate DESC";
+            string sql = @"SELECT r.*, 
+                                  c.FirstName, c.LastName, 
+                                  v.Make, v.Model, v.Year 
+                           FROM Rentals r
+                           LEFT JOIN Customers c ON r.CustomerID = c.ID
+                           LEFT JOIN Vehicles v ON r.VehicleID = v.ID
+                           ORDER BY r.ActualPickupDate DESC";
 
             using (var conn = DatabaseHelper.GetConnection())
             {
@@ -86,7 +92,14 @@ namespace RentalApp.Data.Repositories
         public List<Rental> GetActiveRentals()
         {
             List<Rental> rentals = new List<Rental>();
-            string sql = "SELECT * FROM Rentals WHERE Status = 'Active'";
+            string sql = @"SELECT r.*, 
+                                  c.FirstName, c.LastName, 
+                                  v.Make, v.Model, v.Year 
+                           FROM Rentals r
+                           LEFT JOIN Customers c ON r.CustomerID = c.ID
+                           LEFT JOIN Vehicles v ON r.VehicleID = v.ID
+                           WHERE r.Status = 'Active'
+                           ORDER BY r.ActualPickupDate DESC";
 
             using (var conn = DatabaseHelper.GetConnection())
             {
@@ -146,7 +159,7 @@ namespace RentalApp.Data.Repositories
         // HELPER
         private Rental MapReaderToRental(MySqlDataReader reader)
         {
-            return new Rental
+            var rental = new Rental
             {
                 Id = reader.GetInt32("ID"),
                 ReservationId = reader.IsDBNull(reader.GetOrdinal("ReservationID")) ? (int?)null : reader.GetInt32("ReservationID"),
@@ -159,6 +172,39 @@ namespace RentalApp.Data.Repositories
                 EndMileage = reader.IsDBNull(reader.GetOrdinal("EndMileage")) ? (int?)null : reader.GetInt32("EndMileage"),
                 Status = (RentalStatus)Enum.Parse(typeof(RentalStatus), reader.GetString("Status"))
             };
+
+            // Populate Customer if available from JOIN
+            try
+            {
+                if (!reader.IsDBNull(reader.GetOrdinal("FirstName")))
+                {
+                    rental.Customer = new Customer
+                    {
+                        Id = rental.CustomerId,
+                        FirstName = reader.GetString("FirstName"),
+                        LastName = reader.GetString("LastName")
+                    };
+                }
+            }
+            catch { /* Columns not found, ignore */ }
+
+            // Populate Vehicle if available from JOIN
+            try
+            {
+                if (!reader.IsDBNull(reader.GetOrdinal("Make")))
+                {
+                    rental.Vehicle = new RentalApp.Models.Vehicles.Sedan
+                    {
+                        VehicleId = rental.VehicleId,
+                        Make = reader.GetString("Make"),
+                        Model = reader.GetString("Model"),
+                        Year = reader.GetInt32("Year")
+                    };
+                }
+            }
+            catch { /* Columns not found, ignore */ }
+
+            return rental;
         }
     }
 }

@@ -109,6 +109,7 @@
     <Compile Include="DATA\Repositories\MaintenanceRepository.cs" />
     <Compile Include="DATA\Repositories\InvoiceRepository.cs" />
     <Compile Include="DATA\Repositories\PaymentRepository.cs" />
+    <Compile Include="Models\Core\Session.cs" />
     <!-- Services (if you have them) -->
     <Compile Include="Models\Services\BillingManager.cs" />
     <Compile Include="Models\Services\CustomerManager.cs" />
@@ -148,11 +149,23 @@
     <Compile Include="UI\Popups\AddnewCustomer.Designer.cs">
       <DependentUpon>AddnewCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Popups\PickupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Popups\PickupForm.Designer.cs">
+      <DependentUpon>PickupForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Popups\ReservationForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Popups\ReservationForm.Designer.cs">
       <DependentUpon>ReservationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Popups\STARTrentalform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Popups\STARTrentalform.Designer.cs">
+      <DependentUpon>STARTrentalform.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Sections\VehiclesView.cs">
       <SubType>UserControl</SubType>
@@ -244,8 +257,14 @@
     <EmbeddedResource Include="UI\Popups\AddnewCustomer.resx">
       <DependentUpon>AddnewCustomer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Popups\PickupForm.resx">
+      <DependentUpon>PickupForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Popups\ReservationForm.resx">
       <DependentUpon>ReservationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Popups\STARTrentalform.resx">
+      <DependentUpon>STARTrentalform.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Sections\CustomersView.resx">
       <DependentUpon>CustomersView.cs</DependentUpon>
@@ -255,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Sections\ReservationsView.resx">
       <DependentUpon>ReservationsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Sections\ReturnsView.resx">
+      <DependentUpon>ReturnsView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Sections\VehiclesView.resx">
       <DependentUpon>VehiclesView.cs</DependentUpon>

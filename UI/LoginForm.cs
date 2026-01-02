@@ -2,7 +2,8 @@
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using RentalApp.Data.Repositories;  
-using RentalApp.Models.Users;   
+using RentalApp.Models.Users;
+using RentalApp.Models.Core;
 namespace RentalApp.UI
 {
 
@@ -32,6 +33,10 @@ namespace RentalApp.UI
 
                 if (user != null && user.VerifyPassword(password))
                 {
+                    Session.CurrentUserId = user.Id;
+                    Session.CurrentUsername = user.Username;
+                    Session.CurrentUserRole = user.GetRoleName();
+
                     MessageBox.Show("Login successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     var dashboard = new MainDashboardForm();
                     dashboard.StartPosition = FormStartPosition.CenterScreen;
@@ -59,6 +64,11 @@ namespace RentalApp.UI
         }
 
         private void passwordLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void usernameTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }

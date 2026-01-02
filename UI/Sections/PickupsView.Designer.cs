@@ -18,10 +18,10 @@ namespace RentalApp.UI.Sections
             this.headerLabel = new System.Windows.Forms.Label();
             this.todayLabel = new System.Windows.Forms.Label();
             this.pickupsGrid = new System.Windows.Forms.DataGridView();
-            this.startPickupButton = new System.Windows.Forms.Button();
-            this.viewChecklistButton = new System.Windows.Forms.Button();
             this.quickFilterComboBox = new System.Windows.Forms.ComboBox();
             this.quickFilterLabel = new System.Windows.Forms.Label();
+            this.viewChecklistButton = new System.Windows.Forms.Button();
+            this.startPickupButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pickupsGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,42 +56,13 @@ namespace RentalApp.UI.Sections
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pickupsGrid.BackgroundColor = System.Drawing.Color.White;
             this.pickupsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.pickupsGrid.Location = new System.Drawing.Point(16, 60);
+            this.pickupsGrid.Location = new System.Drawing.Point(3, 60);
             this.pickupsGrid.Name = "pickupsGrid";
             this.pickupsGrid.ReadOnly = true;
             this.pickupsGrid.RowHeadersVisible = false;
             this.pickupsGrid.Size = new System.Drawing.Size(627, 255);
             this.pickupsGrid.TabIndex = 5;
-            // 
-            // startPickupButton
-            // 
-            this.startPickupButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.startPickupButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(161)))), ((int)(((byte)(242)))));
-            this.startPickupButton.FlatAppearance.BorderSize = 0;
-            this.startPickupButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.startPickupButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.startPickupButton.ForeColor = System.Drawing.Color.White;
-            this.startPickupButton.Location = new System.Drawing.Point(485, 39);
-            this.startPickupButton.Name = "startPickupButton";
-            this.startPickupButton.Size = new System.Drawing.Size(94, 20);
-            this.startPickupButton.TabIndex = 6;
-            this.startPickupButton.Text = "Start Pickup";
-            this.startPickupButton.UseVisualStyleBackColor = false;
-            // 
-            // viewChecklistButton
-            // 
-            this.viewChecklistButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.viewChecklistButton.BackColor = System.Drawing.Color.White;
-            this.viewChecklistButton.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.viewChecklistButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.viewChecklistButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.viewChecklistButton.ForeColor = System.Drawing.Color.DimGray;
-            this.viewChecklistButton.Location = new System.Drawing.Point(585, 39);
-            this.viewChecklistButton.Name = "viewChecklistButton";
-            this.viewChecklistButton.Size = new System.Drawing.Size(58, 20);
-            this.viewChecklistButton.TabIndex = 7;
-            this.viewChecklistButton.Text = "Checklist";
-            this.viewChecklistButton.UseVisualStyleBackColor = false;
+            this.pickupsGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pickupsGrid_CellContentClick);
             // 
             // quickFilterComboBox
             // 
@@ -102,7 +73,7 @@ namespace RentalApp.UI.Sections
             "All pickups",
             "Due in next hour",
             "Overdue"});
-            this.quickFilterComboBox.Location = new System.Drawing.Point(250, 39);
+            this.quickFilterComboBox.Location = new System.Drawing.Point(268, 34);
             this.quickFilterComboBox.Name = "quickFilterComboBox";
             this.quickFilterComboBox.Size = new System.Drawing.Size(129, 23);
             this.quickFilterComboBox.TabIndex = 3;
@@ -117,6 +88,37 @@ namespace RentalApp.UI.Sections
             this.quickFilterLabel.Size = new System.Drawing.Size(65, 15);
             this.quickFilterLabel.TabIndex = 2;
             this.quickFilterLabel.Text = "Quick filter";
+            // 
+            // viewChecklistButton
+            // 
+            this.viewChecklistButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.viewChecklistButton.BackColor = System.Drawing.Color.White;
+            this.viewChecklistButton.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.viewChecklistButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.viewChecklistButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.viewChecklistButton.ForeColor = System.Drawing.Color.DimGray;
+            this.viewChecklistButton.Location = new System.Drawing.Point(585, 37);
+            this.viewChecklistButton.Name = "viewChecklistButton";
+            this.viewChecklistButton.Size = new System.Drawing.Size(58, 20);
+            this.viewChecklistButton.TabIndex = 7;
+            this.viewChecklistButton.Text = "Checklist";
+            this.viewChecklistButton.UseVisualStyleBackColor = false;
+            // 
+            // startPickupButton
+            // 
+            this.startPickupButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.startPickupButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(161)))), ((int)(((byte)(242)))));
+            this.startPickupButton.FlatAppearance.BorderSize = 0;
+            this.startPickupButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.startPickupButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.startPickupButton.ForeColor = System.Drawing.Color.White;
+            this.startPickupButton.Location = new System.Drawing.Point(485, 37);
+            this.startPickupButton.Name = "startPickupButton";
+            this.startPickupButton.Size = new System.Drawing.Size(94, 20);
+            this.startPickupButton.TabIndex = 6;
+            this.startPickupButton.Text = "Start Pickup";
+            this.startPickupButton.UseVisualStyleBackColor = false;
+            this.startPickupButton.Click += new System.EventHandler(this.startPickupButton_Click);
             // 
             // PickupsView
             // 
@@ -141,10 +143,10 @@ namespace RentalApp.UI.Sections
         private System.Windows.Forms.Label headerLabel;
         private System.Windows.Forms.Label todayLabel;
         private System.Windows.Forms.DataGridView pickupsGrid;
-        private System.Windows.Forms.Button startPickupButton;
-        private System.Windows.Forms.Button viewChecklistButton;
         private System.Windows.Forms.ComboBox quickFilterComboBox;
         private System.Windows.Forms.Label quickFilterLabel;
+        private System.Windows.Forms.Button viewChecklistButton;
+        private System.Windows.Forms.Button startPickupButton;
     }
 }
 

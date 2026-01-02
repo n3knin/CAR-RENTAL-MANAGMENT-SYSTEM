@@ -21,6 +21,18 @@ namespace RentalApp.Models.Core
         public Vehicles.Vehicle Vehicle { get; set; }
         public Users.User RentalAgent { get; set; }
 
+        // --- DISPLAY PROPERTIES (For DataGridView) ---
+        public string CustomerName 
+        { 
+            get { return Customer != null ? Customer.GetFullName() : "Unknown"; } 
+        }
+
+        public string VehicleInfo 
+        { 
+            get { return Vehicle != null ? Vehicle.GetDisplayName() : "Unknown"; } 
+        }
+        // ---------------------------------------------
+
         // Constructor
         public Rental()
         {

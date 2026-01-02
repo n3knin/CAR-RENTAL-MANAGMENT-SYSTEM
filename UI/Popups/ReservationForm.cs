@@ -94,7 +94,7 @@ namespace RentalApp.UI.Popups
             try 
             {
                  _reservationManager.CreateReservation(newReservation);
-                _vehicleManager.UpdateVehicleStatus(selectedVehicle.VehicleId, VehicleStatus.Reserved);
+                _vehicleManager.UpdateVehicleStatus(selectedVehicle.VehicleId, VehicleStatus.Rented);
                 this.DialogResult = DialogResult.OK;
                  this.Close();
             }
@@ -107,6 +107,21 @@ namespace RentalApp.UI.Popups
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dtpStartDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbCustomers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpEndDate_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -28,9 +28,9 @@ namespace RentalApp.UI.Sections
             this.headerLabel.AutoSize = true;
             this.headerLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.headerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
-            this.headerLabel.Location = new System.Drawing.Point(15, 15);
+            this.headerLabel.Location = new System.Drawing.Point(13, 13);
             this.headerLabel.Name = "headerLabel";
-            this.headerLabel.Size = new System.Drawing.Size(130, 20);
+            this.headerLabel.Size = new System.Drawing.Size(126, 20);
             this.headerLabel.TabIndex = 0;
             this.headerLabel.Text = "Vehicle Returns   ";
             // 
@@ -43,12 +43,13 @@ namespace RentalApp.UI.Sections
             | System.Windows.Forms.AnchorStyles.Right)));
             this.returnsGrid.BackgroundColor = System.Drawing.Color.White;
             this.returnsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.returnsGrid.Location = new System.Drawing.Point(18, 80);
+            this.returnsGrid.Location = new System.Drawing.Point(15, 69);
             this.returnsGrid.Name = "returnsGrid";
             this.returnsGrid.ReadOnly = true;
             this.returnsGrid.RowHeadersVisible = false;
-            this.returnsGrid.Size = new System.Drawing.Size(732, 280);
+            this.returnsGrid.Size = new System.Drawing.Size(627, 243);
             this.returnsGrid.TabIndex = 3;
+            this.returnsGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.returnsGrid_CellContentClick);
             // 
             // startReturnButton
             // 
@@ -58,9 +59,9 @@ namespace RentalApp.UI.Sections
             this.startReturnButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.startReturnButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.startReturnButton.ForeColor = System.Drawing.Color.White;
-            this.startReturnButton.Location = new System.Drawing.Point(566, 45);
+            this.startReturnButton.Location = new System.Drawing.Point(485, 39);
             this.startReturnButton.Name = "startReturnButton";
-            this.startReturnButton.Size = new System.Drawing.Size(110, 23);
+            this.startReturnButton.Size = new System.Drawing.Size(94, 20);
             this.startReturnButton.TabIndex = 4;
             this.startReturnButton.Text = "Start Return";
             this.startReturnButton.UseVisualStyleBackColor = false;
@@ -73,9 +74,9 @@ namespace RentalApp.UI.Sections
             this.damageAssessmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.damageAssessmentButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.damageAssessmentButton.ForeColor = System.Drawing.Color.DimGray;
-            this.damageAssessmentButton.Location = new System.Drawing.Point(682, 45);
+            this.damageAssessmentButton.Location = new System.Drawing.Point(585, 39);
             this.damageAssessmentButton.Name = "damageAssessmentButton";
-            this.damageAssessmentButton.Size = new System.Drawing.Size(68, 23);
+            this.damageAssessmentButton.Size = new System.Drawing.Size(58, 20);
             this.damageAssessmentButton.TabIndex = 5;
             this.damageAssessmentButton.Text = "Damage";
             this.damageAssessmentButton.UseVisualStyleBackColor = false;
@@ -85,15 +86,15 @@ namespace RentalApp.UI.Sections
             this.summaryLabel.AutoSize = true;
             this.summaryLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.summaryLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.summaryLabel.Location = new System.Drawing.Point(18, 48);
+            this.summaryLabel.Location = new System.Drawing.Point(15, 42);
             this.summaryLabel.Name = "summaryLabel";
-            this.summaryLabel.Size = new System.Drawing.Size(270, 15);
+            this.summaryLabel.Size = new System.Drawing.Size(279, 15);
             this.summaryLabel.TabIndex = 1;
             this.summaryLabel.Text = "Inspect condition, record odometer and finalize bill.";
             // 
             // ReturnsView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.summaryLabel);
@@ -102,7 +103,7 @@ namespace RentalApp.UI.Sections
             this.Controls.Add(this.returnsGrid);
             this.Controls.Add(this.headerLabel);
             this.Name = "ReturnsView";
-            this.Size = new System.Drawing.Size(770, 380);
+            this.Size = new System.Drawing.Size(660, 329);
             ((System.ComponentModel.ISupportInitialize)(this.returnsGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

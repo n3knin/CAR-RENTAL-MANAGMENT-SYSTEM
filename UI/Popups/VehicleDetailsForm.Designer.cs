@@ -20,6 +20,8 @@ namespace RentalApp.UI.Popups
             this.lblStatus = new System.Windows.Forms.Label();
             this.lblType = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.lblFeatures = new System.Windows.Forms.Label();
+            this.lstFeatures = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // lblMakeModel
@@ -28,7 +30,7 @@ namespace RentalApp.UI.Popups
             this.lblMakeModel.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblMakeModel.Location = new System.Drawing.Point(20, 20);
             this.lblMakeModel.Name = "lblMakeModel";
-            this.lblMakeModel.Size = new System.Drawing.Size(150, 30);
+            this.lblMakeModel.Size = new System.Drawing.Size(154, 30);
             this.lblMakeModel.TabIndex = 0;
             this.lblMakeModel.Text = "Vehicle Name";
             // 
@@ -38,7 +40,7 @@ namespace RentalApp.UI.Popups
             this.lblLicense.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.lblLicense.Location = new System.Drawing.Point(22, 60);
             this.lblLicense.Name = "lblLicense";
-            this.lblLicense.Size = new System.Drawing.Size(65, 21);
+            this.lblLicense.Size = new System.Drawing.Size(61, 21);
             this.lblLicense.TabIndex = 1;
             this.lblLicense.Text = "License";
             // 
@@ -62,27 +64,6 @@ namespace RentalApp.UI.Popups
             this.lblType.TabIndex = 3;
             this.lblType.Text = "Type";
             // 
-            // 
-            // lblFeatures
-            // 
-            this.lblFeatures = new System.Windows.Forms.Label();
-            this.lblFeatures.AutoSize = true;
-            this.lblFeatures.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblFeatures.Location = new System.Drawing.Point(22, 140);
-            this.lblFeatures.Name = "lblFeatures";
-            this.lblFeatures.Size = new System.Drawing.Size(66, 19);
-            this.lblFeatures.TabIndex = 5;
-            this.lblFeatures.Text = "Features";
-            // 
-            // lstFeatures
-            // 
-            this.lstFeatures = new System.Windows.Forms.ListBox();
-            this.lstFeatures.FormattingEnabled = true;
-            this.lstFeatures.Location = new System.Drawing.Point(26, 165);
-            this.lstFeatures.Name = "lstFeatures";
-            this.lstFeatures.Size = new System.Drawing.Size(249, 95);
-            this.lstFeatures.TabIndex = 6;
-            // 
             // btnClose
             // 
             this.btnClose.Location = new System.Drawing.Point(200, 280);
@@ -92,6 +73,25 @@ namespace RentalApp.UI.Popups
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // lblFeatures
+            // 
+            this.lblFeatures.AutoSize = true;
+            this.lblFeatures.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblFeatures.Location = new System.Drawing.Point(22, 140);
+            this.lblFeatures.Name = "lblFeatures";
+            this.lblFeatures.Size = new System.Drawing.Size(65, 19);
+            this.lblFeatures.TabIndex = 5;
+            this.lblFeatures.Text = "Features";
+            // 
+            // lstFeatures
+            // 
+            this.lstFeatures.FormattingEnabled = true;
+            this.lstFeatures.Location = new System.Drawing.Point(26, 165);
+            this.lstFeatures.Name = "lstFeatures";
+            this.lstFeatures.Size = new System.Drawing.Size(249, 95);
+            this.lstFeatures.TabIndex = 6;
+            this.lstFeatures.SelectedIndexChanged += new System.EventHandler(this.lstFeatures_SelectedIndexChanged);
             // 
             // VehicleDetailsForm
             // 

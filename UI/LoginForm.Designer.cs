@@ -29,6 +29,7 @@ namespace RentalApp.UI
         private void InitializeComponent()
         {
             this.leftPanel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.taglineLabel = new System.Windows.Forms.Label();
             this.appTitleLabel = new System.Windows.Forms.Label();
             this.rightPanel = new System.Windows.Forms.Panel();
@@ -41,10 +42,9 @@ namespace RentalApp.UI
             this.usernameLabel = new System.Windows.Forms.Label();
             this.welcomeLabel = new System.Windows.Forms.Label();
             this.subtitleLabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.leftPanel.SuspendLayout();
-            this.rightPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.rightPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // leftPanel
@@ -58,6 +58,16 @@ namespace RentalApp.UI
             this.leftPanel.Name = "leftPanel";
             this.leftPanel.Size = new System.Drawing.Size(260, 420);
             this.leftPanel.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::RentalApp.Properties.Resources._3f854611_2392_4611_8d7c_e67094331d91_removebg_preview;
+            this.pictureBox1.Location = new System.Drawing.Point(33, 40);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(119, 95);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // taglineLabel
             // 
@@ -168,6 +178,7 @@ namespace RentalApp.UI
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(350, 24);
             this.usernameTextBox.TabIndex = 1;
+            this.usernameTextBox.TextChanged += new System.EventHandler(this.usernameTextBox_TextChanged);
             // 
             // usernameLabel
             // 
@@ -202,16 +213,6 @@ namespace RentalApp.UI
             this.subtitleLabel.TabIndex = 0;
             this.subtitleLabel.Text = "Sign in to manage rentals, fleet, and customers.";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::RentalApp.Properties.Resources._3f854611_2392_4611_8d7c_e67094331d91_removebg_preview;
-            this.pictureBox1.Location = new System.Drawing.Point(33, 40);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(119, 95);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -228,9 +229,9 @@ namespace RentalApp.UI
             this.Text = "Vehicle Rental Management - Login";
             this.leftPanel.ResumeLayout(false);
             this.leftPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.rightPanel.ResumeLayout(false);
             this.rightPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

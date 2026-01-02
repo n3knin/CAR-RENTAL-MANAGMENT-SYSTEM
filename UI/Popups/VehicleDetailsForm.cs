@@ -52,5 +52,10 @@ namespace RentalApp.UI.Popups
         {
             this.Close();
         }
+
+        private void lstFeatures_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

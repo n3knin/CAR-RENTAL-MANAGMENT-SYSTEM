@@ -58,13 +58,18 @@ namespace RentalApp.UI.Popups
                 var history = _reservationManager.GetCustomerHistory(_customer.Id);
                 customergrid.DataSource = history;
                 customergrid.ReadOnly = true;
-                customergrid.Columns["CustomerID"].Visible = false;
-                customergrid.Columns["VehicleID"].Visible = false;
-                customergrid.Columns["ID"].Visible = false;
-                customergrid.Columns["StartDate"].Visible = false;
-                customergrid.Columns["EndDate"].Visible = false;
-                customergrid.Columns["Status"].Visible = false;
-                customergrid.Columns["CreatedAt"].Visible = false;
+                if (customergrid.Columns["CustomerID"] != null) customergrid.Columns["CustomerID"].Visible = false;
+                if (customergrid.Columns["VehicleID"] != null) customergrid.Columns["VehicleID"].Visible = false;
+                if (customergrid.Columns["ID"] != null) customergrid.Columns["ID"].Visible = false;
+                if (customergrid.Columns["StartDate"] != null) customergrid.Columns["StartDate"].Visible = false;
+                if (customergrid.Columns["EndDate"] != null) customergrid.Columns["EndDate"].Visible = false;
+                if (customergrid.Columns["Status"] != null) customergrid.Columns["Status"].Visible = false;
+                if (customergrid.Columns["CreatedAt"] != null) customergrid.Columns["CreatedAt"].Visible = false;
+                if (customergrid.Columns["Customer"] != null) customergrid.Columns["Customer"].Visible = false;
+                if (customergrid.Columns["Vehicle"] != null) customergrid.Columns["Vehicle"].Visible = false;
+                if (customergrid.Columns["CustomerId"] != null) customergrid.Columns["CustomerId"].Visible = false;
+                if (customergrid.Columns["VehicleId"] != null) customergrid.Columns["VehicleId"].Visible = false;
+                if (customergrid.Columns["Id"] != null) customergrid.Columns["Id"].Visible = false;
                 
             }
             catch (Exception ex)

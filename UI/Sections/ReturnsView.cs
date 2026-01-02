@@ -48,6 +48,11 @@ namespace RentalApp.UI.Sections
                 MessageBoxButtons.OK, 
                 MessageBoxIcon.Information);
         }
+
+        private void returnsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 

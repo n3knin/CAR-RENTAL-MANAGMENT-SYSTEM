@@ -63,6 +63,7 @@ namespace RentalApp.Data.Repositories
                            FROM Reservations r
                            LEFT JOIN Customers c ON r.CustomerID = c.ID
                            LEFT JOIN Vehicles v ON r.VehicleID = v.ID
+                           WHERE r.Status = 'Confirmed'
                            ORDER BY r.StartDate DESC";
 
             using (var conn = DatabaseHelper.GetConnection())
