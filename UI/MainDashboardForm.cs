@@ -86,19 +86,19 @@ namespace RentalApp.UI
             }
             else if (button == pickupsButton)
             {
-                // ShowSection(new PickupsView());
+                ShowSection(new PickupsView());
             }
             else if (button == returnsButton)
             {
-                // ShowSection(new ReturnsView());
+                ShowSection(new ReturnsView());
             }
             else if (button == billingButton)
             {
-                // ShowSection(new BillingView());
+                ShowSection(new BillingView());
             }
             else if (button == reportsButton)
             {
-                // ShowSection(new ReportsView());
+                ShowSection(new ReportsView());
             }
         }
 
@@ -138,6 +138,42 @@ namespace RentalApp.UI
 
                     cardRevenueLabel.Text = "Confirmed";
                     cardRevenueValue.Text = _reservationManager.CountConfirmed().ToString();
+                }
+                else if (section == "Pickups")
+                {
+                    cardFleetLabel.Text = "Today's Pickups";
+                    cardFleetValue.Text = "5"; // Placeholder
+                    cardActiveRentalsLabel.Text = "Pending";
+                    cardActiveRentalsValue.Text = "2"; // Placeholder
+                    cardRevenueLabel.Text = "Completed";
+                    cardRevenueValue.Text = "3"; // Placeholder
+                }
+                else if (section == "Returns")
+                {
+                    cardFleetLabel.Text = "Pending Returns";
+                    cardFleetValue.Text = "3"; // Placeholder
+                    cardActiveRentalsLabel.Text = "Inspections Due";
+                    cardActiveRentalsValue.Text = "1"; // Placeholder
+                    cardRevenueLabel.Text = "Processed";
+                    cardRevenueValue.Text = "2"; // Placeholder
+                }
+                else if (section == "Billing")
+                {
+                    cardFleetLabel.Text = "Outstanding";
+                    cardFleetValue.Text = "$4,320"; // Placeholder
+                    cardActiveRentalsLabel.Text = "Invoiced Today";
+                    cardActiveRentalsValue.Text = "$1,250"; // Placeholder
+                    cardRevenueLabel.Text = "Paid Today";
+                    cardRevenueValue.Text = "$850"; // Placeholder
+                }
+                else if (section == "Reports")
+                {
+                    cardFleetLabel.Text = "Reports Generated";
+                    cardFleetValue.Text = "12"; // Placeholder
+                    cardActiveRentalsLabel.Text = "Exports";
+                    cardActiveRentalsValue.Text = "5"; // Placeholder
+                    cardRevenueLabel.Text = "Data Points";
+                    cardRevenueValue.Text = "15k"; // Placeholder
                 }
                 else 
                 {
