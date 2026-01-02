@@ -149,6 +149,12 @@
     <Compile Include="UI\Popups\AddnewCustomer.Designer.cs">
       <DependentUpon>AddnewCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Popups\AddVehicleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Popups\AddVehicleForm.Designer.cs">
+      <DependentUpon>AddVehicleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Popups\PickupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -256,6 +262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Popups\AddnewCustomer.resx">
       <DependentUpon>AddnewCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Popups\AddVehicleForm.resx">
+      <DependentUpon>AddVehicleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Popups\PickupForm.resx">
       <DependentUpon>PickupForm.cs</DependentUpon>

@@ -112,5 +112,13 @@ namespace RentalApp.UI.Sections
                 detailsForm.ShowDialog();
             }
         }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            using (var addForm = new Popups.AddVehicleForm())
+            {
+                addForm.ShowDialog();
+            }
+        }
     }
 }

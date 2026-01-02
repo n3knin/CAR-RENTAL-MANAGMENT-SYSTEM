@@ -46,7 +46,7 @@ namespace RentalApp.Data.Repositories
         public List<Vehicle> GetAll()
         {
             List<Vehicle> vehicles = new List<Vehicle>();
-            string sql = "SELECT * FROM Vehicles ORDER BY Make, Model";
+            string sql = "SELECT * FROM Vehicles ORDER BY ID DESC";
 
             using (var conn = DatabaseHelper.GetConnection())
             {

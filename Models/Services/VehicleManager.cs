@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +19,7 @@ namespace RentalApp.Models.Services
             _vehicleRepository = new VehicleRepository();
         }
 
-        public void Add(Vehicle vehicle)
+        public int Add(Vehicle vehicle)
         {
 
             if (string.IsNullOrEmpty(vehicle.Make) || string.IsNullOrEmpty(vehicle.Model))
@@ -52,24 +52,10 @@ namespace RentalApp.Models.Services
                 throw new ArgumentException("Category is required.");
             }
 
-            if (vehicle.Status == 0)
-            {
-                throw new ArgumentException("Status is required.");
-            }
 
             if (vehicle.Mileage < 0)
             {
                 throw new ArgumentException("Mileage must be greater than or equal to 0.");
-            }
-
-            if (vehicle.Fuel== 0)
-            {
-                throw new ArgumentException("Fuel is required.");
-            }
-
-            if (vehicle.Transmission == 0)
-            {
-                throw new ArgumentException("Transmission is required.");
             }
 
             if (vehicle.SeatingCapacity < 1)
@@ -77,7 +63,7 @@ namespace RentalApp.Models.Services
                 throw new ArgumentException("Seating Capacity must be greater than 0.");
             }   
 
-            _vehicleRepository.Add(vehicle);
+            return _vehicleRepository.Add(vehicle);
         }
 
         public List<Vehicle> GetAllVehicles()
