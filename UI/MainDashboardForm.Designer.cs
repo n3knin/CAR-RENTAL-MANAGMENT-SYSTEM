@@ -55,6 +55,7 @@ namespace RentalApp.UI
             this.cardRevenueLabel = new System.Windows.Forms.Label();
             this.sectionTitleLabel = new System.Windows.Forms.Label();
             this.placeholderLabel = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.sidebarPanel.SuspendLayout();
             this.topBarPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -62,11 +63,13 @@ namespace RentalApp.UI
             this.cardFleet.SuspendLayout();
             this.cardActiveRentals.SuspendLayout();
             this.cardRevenue.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // sidebarPanel
             // 
             this.sidebarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
+            this.sidebarPanel.Controls.Add(this.pictureBox1);
             this.sidebarPanel.Controls.Add(this.reportsButton);
             this.sidebarPanel.Controls.Add(this.billingButton);
             this.sidebarPanel.Controls.Add(this.returnsButton);
@@ -88,7 +91,7 @@ namespace RentalApp.UI
             this.reportsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.reportsButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.reportsButton.ForeColor = System.Drawing.Color.White;
-            this.reportsButton.Location = new System.Drawing.Point(0, 360);
+            this.reportsButton.Location = new System.Drawing.Point(0, 376);
             this.reportsButton.Name = "reportsButton";
             this.reportsButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.reportsButton.Size = new System.Drawing.Size(200, 40);
@@ -104,7 +107,7 @@ namespace RentalApp.UI
             this.billingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.billingButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.billingButton.ForeColor = System.Drawing.Color.White;
-            this.billingButton.Location = new System.Drawing.Point(0, 320);
+            this.billingButton.Location = new System.Drawing.Point(0, 336);
             this.billingButton.Name = "billingButton";
             this.billingButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.billingButton.Size = new System.Drawing.Size(200, 40);
@@ -120,7 +123,7 @@ namespace RentalApp.UI
             this.returnsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.returnsButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.returnsButton.ForeColor = System.Drawing.Color.White;
-            this.returnsButton.Location = new System.Drawing.Point(0, 280);
+            this.returnsButton.Location = new System.Drawing.Point(0, 296);
             this.returnsButton.Name = "returnsButton";
             this.returnsButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.returnsButton.Size = new System.Drawing.Size(200, 40);
@@ -136,7 +139,7 @@ namespace RentalApp.UI
             this.pickupsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pickupsButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.pickupsButton.ForeColor = System.Drawing.Color.White;
-            this.pickupsButton.Location = new System.Drawing.Point(0, 240);
+            this.pickupsButton.Location = new System.Drawing.Point(0, 256);
             this.pickupsButton.Name = "pickupsButton";
             this.pickupsButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.pickupsButton.Size = new System.Drawing.Size(200, 40);
@@ -152,7 +155,7 @@ namespace RentalApp.UI
             this.reservationsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.reservationsButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.reservationsButton.ForeColor = System.Drawing.Color.White;
-            this.reservationsButton.Location = new System.Drawing.Point(0, 200);
+            this.reservationsButton.Location = new System.Drawing.Point(0, 216);
             this.reservationsButton.Name = "reservationsButton";
             this.reservationsButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.reservationsButton.Size = new System.Drawing.Size(200, 40);
@@ -168,7 +171,7 @@ namespace RentalApp.UI
             this.customersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customersButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.customersButton.ForeColor = System.Drawing.Color.White;
-            this.customersButton.Location = new System.Drawing.Point(0, 160);
+            this.customersButton.Location = new System.Drawing.Point(0, 176);
             this.customersButton.Name = "customersButton";
             this.customersButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.customersButton.Size = new System.Drawing.Size(200, 40);
@@ -184,7 +187,7 @@ namespace RentalApp.UI
             this.vehiclesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vehiclesButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.vehiclesButton.ForeColor = System.Drawing.Color.White;
-            this.vehiclesButton.Location = new System.Drawing.Point(0, 120);
+            this.vehiclesButton.Location = new System.Drawing.Point(0, 136);
             this.vehiclesButton.Name = "vehiclesButton";
             this.vehiclesButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.vehiclesButton.Size = new System.Drawing.Size(200, 40);
@@ -199,7 +202,7 @@ namespace RentalApp.UI
             this.logoLabel.AutoSize = true;
             this.logoLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.logoLabel.ForeColor = System.Drawing.Color.White;
-            this.logoLabel.Location = new System.Drawing.Point(20, 30);
+            this.logoLabel.Location = new System.Drawing.Point(21, 94);
             this.logoLabel.Name = "logoLabel";
             this.logoLabel.Size = new System.Drawing.Size(139, 21);
             this.logoLabel.TabIndex = 0;
@@ -427,6 +430,16 @@ namespace RentalApp.UI
             this.placeholderLabel.TabIndex = 2;
             this.placeholderLabel.Text = "Click a section on the left to manage vehicles, customers, rentals and billing.";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::RentalApp.Properties.Resources._3f854611_2392_4611_8d7c_e67094331d91_removebg_preview;
+            this.pictureBox1.Location = new System.Drawing.Point(54, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(78, 76);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
             // MainDashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -455,6 +468,7 @@ namespace RentalApp.UI
             this.cardActiveRentals.PerformLayout();
             this.cardRevenue.ResumeLayout(false);
             this.cardRevenue.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -488,6 +502,7 @@ namespace RentalApp.UI
         private System.Windows.Forms.Label sectionTitleLabel;
         private System.Windows.Forms.Label placeholderLabel;
         private System.Windows.Forms.Panel contentPanel;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
