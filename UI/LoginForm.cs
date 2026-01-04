@@ -72,6 +72,11 @@ namespace RentalApp.UI
         {
 
         }
+
+        private void rightPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
 

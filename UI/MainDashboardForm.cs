@@ -215,6 +215,11 @@ namespace RentalApp.UI
         {
 
         }
+
+        private void MainDashboardForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
