@@ -227,6 +227,12 @@
     <Compile Include="UI\Sections\ReportsView.Designer.cs">
       <DependentUpon>ReportsView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Sections\DashboardView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Sections\DashboardView.Designer.cs">
+      <DependentUpon>DashboardView.cs</DependentUpon>
+    </Compile>
     <!-- Core Models -->
     <Compile Include="Models\Core\Customer.cs" />
     <Compile Include="Models\Core\VehicleCategory.cs" />
@@ -278,6 +284,9 @@
     <EmbeddedResource Include="UI\Sections\CustomersView.resx">
       <DependentUpon>CustomersView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Sections\DashboardView.resx">
+      <DependentUpon>DashboardView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Sections\PickupsView.resx">
       <DependentUpon>PickupsView.cs</DependentUpon>
     </EmbeddedResource>
@@ -302,6 +311,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\3f854611-2392-4611-8d7c-e67094331d91-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rectangle 1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

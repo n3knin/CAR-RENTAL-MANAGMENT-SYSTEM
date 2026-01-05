@@ -28,10 +28,6 @@ namespace RentalApp.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.leftPanel = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.taglineLabel = new System.Windows.Forms.Label();
-            this.appTitleLabel = new System.Windows.Forms.Label();
             this.rightPanel = new System.Windows.Forms.Panel();
             this.roleLabel = new System.Windows.Forms.Label();
             this.exitButton = new System.Windows.Forms.Button();
@@ -42,54 +38,14 @@ namespace RentalApp.UI
             this.usernameLabel = new System.Windows.Forms.Label();
             this.welcomeLabel = new System.Windows.Forms.Label();
             this.subtitleLabel = new System.Windows.Forms.Label();
+            this.leftPanel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.taglineLabel = new System.Windows.Forms.Label();
+            this.appTitleLabel = new System.Windows.Forms.Label();
+            this.rightPanel.SuspendLayout();
             this.leftPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.rightPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // leftPanel
-            // 
-            this.leftPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
-            this.leftPanel.Controls.Add(this.pictureBox1);
-            this.leftPanel.Controls.Add(this.taglineLabel);
-            this.leftPanel.Controls.Add(this.appTitleLabel);
-            this.leftPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.leftPanel.Location = new System.Drawing.Point(0, 0);
-            this.leftPanel.Name = "leftPanel";
-            this.leftPanel.Size = new System.Drawing.Size(260, 420);
-            this.leftPanel.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::RentalApp.Properties.Resources._3f854611_2392_4611_8d7c_e67094331d91_removebg_preview;
-            this.pictureBox1.Location = new System.Drawing.Point(71, 49);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(119, 95);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
-            // taglineLabel
-            // 
-            this.taglineLabel.AutoSize = true;
-            this.taglineLabel.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.taglineLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.taglineLabel.Location = new System.Drawing.Point(30, 216);
-            this.taglineLabel.Name = "taglineLabel";
-            this.taglineLabel.Size = new System.Drawing.Size(209, 42);
-            this.taglineLabel.TabIndex = 2;
-            this.taglineLabel.Text = "Manage fleet, reservations,\r\nreturns and billing with ease.";
-            // 
-            // appTitleLabel
-            // 
-            this.appTitleLabel.AutoSize = true;
-            this.appTitleLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 16F, System.Drawing.FontStyle.Bold);
-            this.appTitleLabel.ForeColor = System.Drawing.Color.White;
-            this.appTitleLabel.Location = new System.Drawing.Point(26, 175);
-            this.appTitleLabel.Name = "appTitleLabel";
-            this.appTitleLabel.Size = new System.Drawing.Size(264, 37);
-            this.appTitleLabel.TabIndex = 1;
-            this.appTitleLabel.Text = "Rental Management";
             // 
             // rightPanel
             // 
@@ -107,7 +63,7 @@ namespace RentalApp.UI
             this.rightPanel.Location = new System.Drawing.Point(260, 0);
             this.rightPanel.Name = "rightPanel";
             this.rightPanel.Padding = new System.Windows.Forms.Padding(40);
-            this.rightPanel.Size = new System.Drawing.Size(448, 420);
+            this.rightPanel.Size = new System.Drawing.Size(451, 461);
             this.rightPanel.TabIndex = 1;
             this.rightPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.rightPanel_Paint);
             // 
@@ -214,12 +170,60 @@ namespace RentalApp.UI
             this.subtitleLabel.TabIndex = 0;
             this.subtitleLabel.Text = "Sign in to manage rentals, fleet, and customers.";
             // 
+            // leftPanel
+            // 
+            this.leftPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
+            this.leftPanel.BackgroundImage = global::RentalApp.Properties.Resources.Rectangle_1;
+            this.leftPanel.Controls.Add(this.pictureBox1);
+            this.leftPanel.Controls.Add(this.taglineLabel);
+            this.leftPanel.Controls.Add(this.appTitleLabel);
+            this.leftPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.leftPanel.Location = new System.Drawing.Point(0, 0);
+            this.leftPanel.Name = "leftPanel";
+            this.leftPanel.Size = new System.Drawing.Size(260, 461);
+            this.leftPanel.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::RentalApp.Properties.Resources._3f854611_2392_4611_8d7c_e67094331d91_removebg_preview;
+            this.pictureBox1.Location = new System.Drawing.Point(71, 49);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(119, 95);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // taglineLabel
+            // 
+            this.taglineLabel.AutoSize = true;
+            this.taglineLabel.BackColor = System.Drawing.Color.Transparent;
+            this.taglineLabel.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.taglineLabel.ForeColor = System.Drawing.Color.LightGray;
+            this.taglineLabel.Location = new System.Drawing.Point(30, 216);
+            this.taglineLabel.Name = "taglineLabel";
+            this.taglineLabel.Size = new System.Drawing.Size(209, 42);
+            this.taglineLabel.TabIndex = 2;
+            this.taglineLabel.Text = "Manage fleet, reservations,\r\nreturns and billing with ease.";
+            // 
+            // appTitleLabel
+            // 
+            this.appTitleLabel.AutoSize = true;
+            this.appTitleLabel.BackColor = System.Drawing.Color.Transparent;
+            this.appTitleLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 16F, System.Drawing.FontStyle.Bold);
+            this.appTitleLabel.ForeColor = System.Drawing.Color.White;
+            this.appTitleLabel.Location = new System.Drawing.Point(26, 175);
+            this.appTitleLabel.Name = "appTitleLabel";
+            this.appTitleLabel.Size = new System.Drawing.Size(264, 37);
+            this.appTitleLabel.TabIndex = 1;
+            this.appTitleLabel.Text = "Rental Management";
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(708, 420);
+            this.ClientSize = new System.Drawing.Size(711, 461);
             this.Controls.Add(this.rightPanel);
             this.Controls.Add(this.leftPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -228,11 +232,11 @@ namespace RentalApp.UI
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vehicle Rental Management - Login";
+            this.rightPanel.ResumeLayout(false);
+            this.rightPanel.PerformLayout();
             this.leftPanel.ResumeLayout(false);
             this.leftPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.rightPanel.ResumeLayout(false);
-            this.rightPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -1,8 +1,10 @@
 using System.Windows.Forms;
 using System;
 using System.IO;
+using System.Drawing;
 using RentalApp.UI.Sections;
 using RentalApp.Models.Services;
+
 
 namespace RentalApp.UI
 {
@@ -13,7 +15,15 @@ namespace RentalApp.UI
         public MainDashboardForm()
         {
             InitializeComponent();
-            ShowSection(new VehiclesView());
+            // Default to Dashboard
+            sectionTitleLabel.Visible = false;
+            cardsTableLayout.Visible = false;
+            placeholderLabel.Visible = false;
+            
+            contentPanel.Location = new Point(23, 20);
+            contentPanel.Size = new Size(1497, 806);
+            
+            ShowSection(new DashboardView());
             InitializeDragAndDrop();
         }
 
@@ -68,6 +78,32 @@ namespace RentalApp.UI
         {
             var button = sender as Button;
             if (button == null) return;
+
+            // Dashboard View Logic
+            if (button.Name == "dashboardButton") // Use name as I can't access private field easily without recompiling designer or checking field name match
+            {
+                sectionTitleLabel.Visible = false;
+                cardsTableLayout.Visible = false;
+                placeholderLabel.Visible = false;
+                
+                // Move content panel up
+                contentPanel.Location = new Point(23, 20);
+                contentPanel.Size = new Size(1497, 806);
+
+                ShowSection(new DashboardView());
+                return;
+            }
+            else
+            {
+                // Restore default view elements for other sections
+                sectionTitleLabel.Visible = true;
+                cardsTableLayout.Visible = true;
+                placeholderLabel.Visible = true;
+                
+                // Restore content panel position
+                contentPanel.Location = new Point(23, 190);
+                contentPanel.Size = new Size(1497, 636);
+            }
 
             sectionTitleLabel.Text = button.Text;
             UpdateKPIs(button.Text); // Update Cards dynamically!
