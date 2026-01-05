@@ -63,8 +63,37 @@ namespace RentalApp.Data.Repositories
                            FROM Reservations r
                            LEFT JOIN Customers c ON r.CustomerID = c.ID
                            LEFT JOIN Vehicles v ON r.VehicleID = v.ID
-                           WHERE r.Status = 'Confirmed'
+                           WHERE r.Status = 'Pending'
                            ORDER BY r.StartDate DESC";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            reservations.Add(MapReaderToReservation(reader));
+                        }
+                    }
+                }
+            }
+            return reservations;
+        }
+        public List<Reservation> GetConfirmed()
+        {
+            List<Reservation> reservations = new List<Reservation>();
+            
+            // JOIN query to get related names
+            string sql = @"SELECT r.*, 
+                                  c.FirstName, c.LastName, 
+                                  v.Make, v.Model, v.Year 
+                           FROM Reservations r
+                           LEFT JOIN Customers c ON r.CustomerID = c.ID
+                           LEFT JOIN Vehicles v ON r.VehicleID = v.ID
+                           ORDER BY r.CreatedAt DESC";
 
             using (var conn = DatabaseHelper.GetConnection())
             {
@@ -146,7 +175,11 @@ namespace RentalApp.Data.Repositories
         public void Update(Reservation reservation)
         {
             string sql = @"UPDATE Reservations SET 
-                           Status = @status, StartDate = @start, EndDate = @end
+                           CustomerID = @customerId,
+                           VehicleID = @vehicleId,
+                           StartDate = @start, 
+                           EndDate = @end,
+                           Status = @status
                            WHERE ID = @id";
 
             using (var conn = DatabaseHelper.GetConnection())
@@ -155,9 +188,29 @@ namespace RentalApp.Data.Repositories
                 using (var cmd = new MySqlCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@id", reservation.Id);
-                    cmd.Parameters.AddWithValue("@status", reservation.Status.ToString());
+                    cmd.Parameters.AddWithValue("@customerId", reservation.CustomerId);
+                    cmd.Parameters.AddWithValue("@vehicleId", reservation.VehicleId);
                     cmd.Parameters.AddWithValue("@start", reservation.StartDate);
                     cmd.Parameters.AddWithValue("@end", reservation.EndDate);
+                    cmd.Parameters.AddWithValue("@status", reservation.Status.ToString());
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        // UPDATE STATUS ONLY
+        public void UpdateStatus(int reservationId, ReservationStatus status)
+        {
+            string sql = "UPDATE Reservations SET Status = @status WHERE ID = @id";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", reservationId);
+                    cmd.Parameters.AddWithValue("@status", status.ToString());
 
                     cmd.ExecuteNonQuery();
                 }

@@ -56,11 +56,11 @@ namespace RentalApp.UI.Sections
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pickupsGrid.BackgroundColor = System.Drawing.Color.White;
             this.pickupsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.pickupsGrid.Location = new System.Drawing.Point(3, 60);
+            this.pickupsGrid.Location = new System.Drawing.Point(17, 63);
             this.pickupsGrid.Name = "pickupsGrid";
             this.pickupsGrid.ReadOnly = true;
             this.pickupsGrid.RowHeadersVisible = false;
-            this.pickupsGrid.Size = new System.Drawing.Size(627, 255);
+            this.pickupsGrid.Size = new System.Drawing.Size(613, 252);
             this.pickupsGrid.TabIndex = 5;
             this.pickupsGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pickupsGrid_CellContentClick);
             // 

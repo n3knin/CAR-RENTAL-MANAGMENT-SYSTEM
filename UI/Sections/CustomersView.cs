@@ -14,6 +14,10 @@ namespace RentalApp.UI.Sections
         {
             InitializeComponent();
             InitializeDragAndDrop();
+            
+            // Make columns stretch to fill width
+            customersGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            
             _customerManager = new CustomerManager();
 
             LoadCustomers();

@@ -50,6 +50,7 @@ namespace RentalApp.UI.Sections
             this.returnsGrid.Size = new System.Drawing.Size(627, 243);
             this.returnsGrid.TabIndex = 3;
             this.returnsGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.returnsGrid_CellContentClick);
+            this.returnsGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.returnsGrid_CellContentDoubleClick);
             // 
             // startReturnButton
             // 
@@ -65,6 +66,7 @@ namespace RentalApp.UI.Sections
             this.startReturnButton.TabIndex = 4;
             this.startReturnButton.Text = "Start Return";
             this.startReturnButton.UseVisualStyleBackColor = false;
+            this.startReturnButton.Click += new System.EventHandler(this.startReturnButton_Click);
             // 
             // damageAssessmentButton
             // 

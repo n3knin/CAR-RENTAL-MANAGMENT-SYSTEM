@@ -19,7 +19,24 @@ namespace RentalApp.UI.Popups
             _customerManager = new CustomerManager();
             _vehicleManager = new VehicleManager();
             _reservationManager = new ReservationManager();
+            
+            // Configure DateTimePickers for 12-hour format
+            ConfigureDateTimePickers();
+            
             LoadFormData();
+        }
+
+        private void ConfigureDateTimePickers()
+        {
+            // Start Date picker
+            dtpStartDate.Format = DateTimePickerFormat.Custom;
+            dtpStartDate.CustomFormat = "MM/dd/yyyy hh:mm tt";
+            dtpStartDate.ShowUpDown = true;
+
+            // End Date picker
+            dtpEndDate.Format = DateTimePickerFormat.Custom;
+            dtpEndDate.CustomFormat = "MM/dd/yyyy hh:mm tt";
+            dtpEndDate.ShowUpDown = true;
         }
 
         private void LoadFormData()
@@ -77,6 +94,16 @@ namespace RentalApp.UI.Popups
             var selectedCustomer = (Customer)cmbCustomers.SelectedItem;
             var selectedVehicle = (Vehicle)cmbVehicles.SelectedItem;
             
+            // Check if vehicle is available
+            if (selectedVehicle.Status != VehicleStatus.Available)
+            {
+                MessageBox.Show($"This vehicle is currently {selectedVehicle.Status}. Please select an available vehicle.", 
+                    "Vehicle Not Available", 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Warning);
+                return;
+            }
+            
             var newReservation = new Reservation
             {
                 Customer = selectedCustomer,
@@ -94,9 +121,9 @@ namespace RentalApp.UI.Popups
             try 
             {
                  _reservationManager.CreateReservation(newReservation);
-                _vehicleManager.UpdateVehicleStatus(selectedVehicle.VehicleId, VehicleStatus.Rented);
+                _vehicleManager.UpdateVehicleStatus(selectedVehicle.VehicleId, VehicleStatus.Reserved);
                 this.DialogResult = DialogResult.OK;
-                 this.Close();
+                this.Close();
             }
             catch (Exception ex)
             {

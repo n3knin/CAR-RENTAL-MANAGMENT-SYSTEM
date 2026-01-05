@@ -55,5 +55,44 @@ namespace RentalApp.Models.Services
         {
             return _reservationRepository.CountConfirmed();
         }
+
+        // Get pending reservations
+        public List<Reservation> GetAllPending()
+        {
+            return _reservationRepository.GetAll();
+        }
+
+        // Get confirmed reservations
+        public List<Reservation> GetConfirmed()
+        {
+            return _reservationRepository.GetConfirmed();
+        }
+
+        // Update reservation   
+        public void UpdateReservation(Reservation reservation)
+        {
+            if (reservation.Id <= 0)
+            {
+                throw new ArgumentException("Invalid reservation ID.");
+            }
+
+            if (reservation.EndDate <= reservation.StartDate)
+            {
+                throw new ArgumentException("End date must be after start date.");
+            }
+
+            _reservationRepository.Update(reservation);
+        }
+
+        // Update reservation status only
+        public void UpdateReservationStatus(int reservationId, ReservationStatus status)
+        {
+            if (reservationId <= 0)
+            {
+                throw new ArgumentException("Invalid reservation ID.");
+            }
+
+            _reservationRepository.UpdateStatus(reservationId, status);
+        }
     }
 }

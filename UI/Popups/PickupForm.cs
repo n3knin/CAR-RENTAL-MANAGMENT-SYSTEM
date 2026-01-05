@@ -26,7 +26,7 @@ namespace RentalApp.UI.Popups
         {
             try
             {
-                var reservationlist = _reservationManager.GetAllReservations();
+                var reservationlist = _reservationManager.GetAllPending();
 
                 var bindingSource = new BindingSource();
                 bindingSource.DataSource = reservationlist;

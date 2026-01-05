@@ -166,5 +166,10 @@ namespace RentalApp.UI.Popups
             MessageBox.Show("Vehicle added successfully.");
             this.Close();
         }
+
+        private void btncancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

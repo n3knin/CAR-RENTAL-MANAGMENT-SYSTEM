@@ -100,6 +100,7 @@
     <Compile Include="DATA\DatabaseHelper.cs" />
     <!-- Repositories -->
     <Compile Include="DATA\Repositories\UserRepository.cs" />
+    <Compile Include="DATA\Repositories\VehicleInspectionRepository.cs" />
     <Compile Include="DATA\Repositories\VehicleRepository.cs" />
     <Compile Include="DATA\Repositories\CategoryRespository.cs" />
     <Compile Include="DATA\Repositories\FeatureRepository.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Models\Services\RentalManager.cs" />
     <Compile Include="Models\Services\ReportManager.cs" />
     <Compile Include="Models\Services\ReservationManager.cs" />
+    <Compile Include="Models\Services\VehicleInspectionManager.cs" />
     <Compile Include="Models\Services\VehicleManager.cs" />
     <!-- User Models -->
     <Compile Include="Models\Users\Admin.cs" />
@@ -154,6 +156,12 @@
     </Compile>
     <Compile Include="UI\Popups\AddVehicleForm.Designer.cs">
       <DependentUpon>AddVehicleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Popups\InspectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Popups\InspectionForm.Designer.cs">
+      <DependentUpon>InspectionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Popups\PickupForm.cs">
       <SubType>Form</SubType>
@@ -271,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Popups\AddVehicleForm.resx">
       <DependentUpon>AddVehicleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Popups\InspectionForm.resx">
+      <DependentUpon>InspectionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Popups\PickupForm.resx">
       <DependentUpon>PickupForm.cs</DependentUpon>

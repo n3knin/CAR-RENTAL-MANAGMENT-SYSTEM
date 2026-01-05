@@ -4,16 +4,21 @@ using System;
 using System.IO;
 using RentalApp.Models.Services; // Needed for VehicleManager
 using RentalApp.Models.Vehicles; // Needed for Vehicle list
+using System.Collections.Generic;
 
 namespace RentalApp.UI.Sections
 {
     public partial class VehiclesView : UserControl
     {
         private VehicleManager _vehicleManager;
+        private List<Vehicle> _allVehicles;
 
         public VehiclesView()
         {
             InitializeComponent();
+            
+            // Make columns stretch to fill width
+            vehiclesGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             
             // Initialize Manager
             _vehicleManager = new VehicleManager();
@@ -22,6 +27,9 @@ namespace RentalApp.UI.Sections
             LoadVehicles();
 
             InitializeDragAndDrop();
+
+            // Link search event
+            searchTextBox.TextChanged += searchTextBox_TextChanged;
         }
 
         private void InitializeDragAndDrop()
@@ -66,23 +74,8 @@ namespace RentalApp.UI.Sections
             try 
             {
                 // Fetch data from DB
-                var vehicleList = _vehicleManager.GetAllVehicles();
-                
-          
-
-                // Bind to Grid using BindingSource (Better for DataGridView)
-                var bindingSource = new BindingSource();
-                bindingSource.DataSource = vehicleList;
-                
-                vehiclesGrid.AutoGenerateColumns = true;
-                vehiclesGrid.DataSource = bindingSource;
-                vehiclesGrid.ReadOnly = true;
-
-                vehiclesGrid.Columns["VehicleId"].Visible = false;
-                vehiclesGrid.Columns["ImageUrl"].Visible = false;
-                vehiclesGrid.Columns["CategoryId"].Visible = false;
-                vehiclesGrid.Columns["VIN"].Visible = false;
-                vehiclesGrid.Refresh();
+                _allVehicles = _vehicleManager.GetAllVehicles();
+                UpdateGrid(_allVehicles);
             }
             catch (Exception ex)
             {
@@ -90,9 +83,44 @@ namespace RentalApp.UI.Sections
             }
         }
 
-       
+        private void UpdateGrid(List<Vehicle> list)
+        {
+            var bindingSource = new BindingSource();
+            bindingSource.DataSource = list;
+            
+            vehiclesGrid.AutoGenerateColumns = true;
+            vehiclesGrid.DataSource = bindingSource;
+            vehiclesGrid.ReadOnly = true;
 
-        
+            if (vehiclesGrid.Columns["VehicleId"] != null) vehiclesGrid.Columns["VehicleId"].Visible = false;
+            if (vehiclesGrid.Columns["ImageUrl"] != null) vehiclesGrid.Columns["ImageUrl"].Visible = false;
+            if (vehiclesGrid.Columns["CategoryId"] != null) vehiclesGrid.Columns["CategoryId"].Visible = false;
+            if (vehiclesGrid.Columns["VIN"] != null) vehiclesGrid.Columns["VIN"].Visible = false;
+            
+            vehiclesGrid.Refresh();
+        }
+
+        private void searchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (_allVehicles == null) return;
+
+            string searchText = searchTextBox.Text.ToLower();
+            
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                UpdateGrid(_allVehicles);
+                return;
+            }
+
+            var filteredList = _allVehicles.FindAll(v => 
+                v.Make.ToLower().Contains(searchText) || 
+                v.Model.ToLower().Contains(searchText) || 
+                v.LicensePlate.ToLower().Contains(searchText) ||
+                v.Year.ToString().Contains(searchText)
+            );
+
+            UpdateGrid(filteredList);
+        }
 
         private void vehiclesGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -103,9 +131,7 @@ namespace RentalApp.UI.Sections
         {
             if (e.RowIndex < 0) return;
 
-
-            var selectedVehicle = (Vehicle)vehiclesGrid.CurrentRow.DataBoundItem;
-
+            var selectedVehicle = (Vehicle)vehiclesGrid.Rows[e.RowIndex].DataBoundItem;
 
             using (var detailsForm = new Popups.VehicleDetailsForm(selectedVehicle))
             {

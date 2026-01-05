@@ -9,6 +9,10 @@ namespace RentalApp.UI.Sections
         public BillingView()
         {
             InitializeComponent();
+            
+            // Make columns stretch to fill width
+            billingGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            
             InitializeDragAndDrop();
         }
 

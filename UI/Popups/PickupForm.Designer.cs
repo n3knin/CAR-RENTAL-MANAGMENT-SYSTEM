@@ -36,9 +36,9 @@
             // pickupgrid
             // 
             this.pickupgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.pickupgrid.Location = new System.Drawing.Point(0, 66);
+            this.pickupgrid.Location = new System.Drawing.Point(12, 66);
             this.pickupgrid.Name = "pickupgrid";
-            this.pickupgrid.Size = new System.Drawing.Size(390, 197);
+            this.pickupgrid.Size = new System.Drawing.Size(431, 211);
             this.pickupgrid.TabIndex = 0;
             this.pickupgrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -48,7 +48,7 @@
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(12, 9);
+            this.materialLabel1.Location = new System.Drawing.Point(12, 20);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(93, 19);
@@ -59,7 +59,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 264);
+            this.ClientSize = new System.Drawing.Size(455, 289);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.pickupgrid);
             this.Name = "PickupForm";

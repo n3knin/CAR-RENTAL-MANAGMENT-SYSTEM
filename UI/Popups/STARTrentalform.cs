@@ -10,6 +10,7 @@
     using RentalApp.Models.Core;
     using RentalApp.Models.Services;
     using RentalApp.Models.Vehicles;  
+    using RentalApp.Data.Repositories;
 
     namespace RentalApp.UI.Popups
     {
@@ -17,6 +18,7 @@
         public partial class STARTrentalform : Form
         {
             private Reservation reservation;
+            private ReservationManager _reservationmanager;
             private RentalManager _rentalmanager;
             private VehicleManager _vehiclemanager;
             public STARTrentalform(Reservation selectedReservation)
@@ -25,6 +27,7 @@
                 reservation = selectedReservation;
                 _rentalmanager = new RentalManager();
                 _vehiclemanager = new VehicleManager();
+                _reservationmanager = new ReservationManager();
                 loadcustemerdata(); 
             }
 
@@ -36,17 +39,21 @@
                     ReservationId = reservation.Id,
                     CustomerId = reservation.CustomerId,
                     VehicleId = reservation.VehicleId,
-                    Status = RentalStatus.Active,
+                    ActualPickupDate = pickupdt.Value,
+                    
                     StartMileage = int.Parse(lblmileage.Text),
                     EndMileage = null,
-                    ActualPickupDate = pickupdt.Value,
-                    RentalAgentId = Session.CurrentUserId
+                    ExpectedReturnDate = reservation.EndDate,
+                    ActualReturnDate = null,
+                    RentalAgentId = Session.CurrentUserId,
+                    Status = RentalStatus.Active
                 };
 
                 try
                 {
+                    _reservationmanager.UpdateReservationStatus(reservation.Id, ReservationStatus.Confirmed);
                     _rentalmanager.StartRental(startrental);
-                    _vehiclemanager.UpdateVehicleStatus(reservation.VehicleId, VehicleStatus.Reserved);
+                    _vehiclemanager.UpdateVehicleStatus(reservation.VehicleId, VehicleStatus.Rented);
                     MessageBox.Show("Rental started successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
@@ -108,5 +115,10 @@
             {
 
             }
+
+        private void cnclbttn_Click(object sender, EventArgs e)
+        {
+
         }
+    }
     }

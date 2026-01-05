@@ -11,6 +11,10 @@ namespace RentalApp.UI.Sections
         public ReservationsView()
         {
             InitializeComponent();
+            
+            // Make columns stretch to fill width
+            reservationsGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            
             _reservationManager = new ReservationManager();
             
             // Fix 1: Load data on startup
@@ -59,7 +63,7 @@ namespace RentalApp.UI.Sections
         private void LoadReservations()
         {
             try{
-                var reservations = _reservationManager.GetAllReservations();
+                var reservations = _reservationManager.GetConfirmed();
                 var bindingSource = new BindingSource();
                 bindingSource.DataSource = reservations;
 
@@ -89,6 +93,7 @@ namespace RentalApp.UI.Sections
                 if (reservationsGrid.Columns["EndDate"] != null) reservationsGrid.Columns["EndDate"].HeaderText = "To";
 
                 reservationsGrid.Refresh();
+                
             }
             catch(Exception ex){
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

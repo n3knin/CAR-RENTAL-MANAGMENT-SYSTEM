@@ -12,14 +12,15 @@ namespace RentalApp.Models.Core
         public int RentalAgentId { get; set; }
         public DateTime ActualPickupDate { get; set; }
         public DateTime? ActualReturnDate { get; set; }
+        public DateTime? ExpectedReturnDate { get; set; }
         public int StartMileage { get; set; }
         public int? EndMileage { get; set; }
         public RentalStatus Status { get; set; }
-
         // Navigation properties
         public Customer Customer { get; set; }
         public Vehicles.Vehicle Vehicle { get; set; }
         public Users.User RentalAgent { get; set; }
+        
 
         // --- DISPLAY PROPERTIES (For DataGridView) ---
         public string CustomerName 
@@ -30,6 +31,10 @@ namespace RentalApp.Models.Core
         public string VehicleInfo 
         { 
             get { return Vehicle != null ? Vehicle.GetDisplayName() : "Unknown"; } 
+        }
+        public string RentalAgentName
+        {
+            get { return RentalAgent != null ? RentalAgent.GetFullName() : "Unknown"; }
         }
         // ---------------------------------------------
 

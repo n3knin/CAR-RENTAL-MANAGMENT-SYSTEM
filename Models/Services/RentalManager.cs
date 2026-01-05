@@ -72,5 +72,16 @@ namespace RentalApp.Models.Services
         {
             return _rentalRepository.GetById(id);
         }
+
+        // Update rental record
+        public void UpdateRental(RentalApp.Models.Core.Rental rental)
+        {
+            if (rental.Id <= 0)
+            {
+                throw new Exception("Error: Invalid rental ID.");
+            }
+
+            _rentalRepository.Update(rental);
+        }
     }
 }

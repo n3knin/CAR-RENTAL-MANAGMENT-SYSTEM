@@ -12,9 +12,10 @@ namespace RentalApp.Data.Repositories
         {
             string sql = @"INSERT INTO Rentals 
                           (ReservationID, CustomerID, VehicleID, RentalAgentID, 
-                           ActualPickupDate, ActualReturnDate, StartMileage, EndMileage, Status) 
+                           ActualPickupDate, ExpectedReturnDate, ActualReturnDate, 
+                           StartMileage, EndMileage, Status) 
                           VALUES 
-                          (@resId, @custId, @vehId, @agentId, @pickup, @return, @startMile, @endMile, @status);
+                          (@resId, @custId, @vehId, @agentId, @pickup, @expectedReturn, @return, @startMile, @endMile, @status);
                           SELECT LAST_INSERT_ID();";
 
             using (var conn = DatabaseHelper.GetConnection())
@@ -27,6 +28,7 @@ namespace RentalApp.Data.Repositories
                     cmd.Parameters.AddWithValue("@vehId", rental.VehicleId);
                     cmd.Parameters.AddWithValue("@agentId", rental.RentalAgentId);
                     cmd.Parameters.AddWithValue("@pickup", rental.ActualPickupDate);
+                    cmd.Parameters.AddWithValue("@expectedReturn", rental.ExpectedReturnDate);
                     cmd.Parameters.AddWithValue("@return", rental.ActualReturnDate.HasValue ? (object)rental.ActualReturnDate.Value : DBNull.Value);
                     cmd.Parameters.AddWithValue("@startMile", rental.StartMileage);
                     cmd.Parameters.AddWithValue("@endMile", rental.EndMileage.HasValue ? (object)rental.EndMileage.Value : DBNull.Value);
@@ -66,11 +68,17 @@ namespace RentalApp.Data.Repositories
             List<Rental> rentals = new List<Rental>();
             string sql = @"SELECT r.*, 
                                   c.FirstName, c.LastName, 
-                                  v.Make, v.Model, v.Year 
+                                  v.Make, v.Model, v.Year,
+                                  r.RentalAgentId,
+                                  ra.Firstname as RentalAgentFirstName,
+                                  ra.Lastname as RentalAgentLastName,
+                                  ra.Role as RentalAgentRole
                            FROM Rentals r
                            LEFT JOIN Customers c ON r.CustomerID = c.ID
                            LEFT JOIN Vehicles v ON r.VehicleID = v.ID
+                           LEFT JOIN Users ra ON r.RentalAgentId = ra.ID
                            ORDER BY r.ActualPickupDate DESC";
+
 
             using (var conn = DatabaseHelper.GetConnection())
             {
@@ -94,10 +102,15 @@ namespace RentalApp.Data.Repositories
             List<Rental> rentals = new List<Rental>();
             string sql = @"SELECT r.*, 
                                   c.FirstName, c.LastName, 
-                                  v.Make, v.Model, v.Year 
+                                  v.Make, v.Model, v.Year,
+                                  r.RentalAgentId,
+                                  ra.Firstname as RentalAgentFirstName,
+                                  ra.Lastname as RentalAgentLastName,
+                                  ra.Role as RentalAgentRole
                            FROM Rentals r
                            LEFT JOIN Customers c ON r.CustomerID = c.ID
                            LEFT JOIN Vehicles v ON r.VehicleID = v.ID
+                           LEFT JOIN Users ra ON r.RentalAgentId = ra.ID
                            WHERE r.Status = 'Active'
                            ORDER BY r.ActualPickupDate DESC";
 
@@ -167,6 +180,7 @@ namespace RentalApp.Data.Repositories
                 VehicleId = reader.GetInt32("VehicleID"),
                 RentalAgentId = reader.GetInt32("RentalAgentID"),
                 ActualPickupDate = reader.GetDateTime("ActualPickupDate"),
+                ExpectedReturnDate = reader.IsDBNull(reader.GetOrdinal("ExpectedReturnDate")) ? (DateTime?)null : reader.GetDateTime("ExpectedReturnDate"),
                 ActualReturnDate = reader.IsDBNull(reader.GetOrdinal("ActualReturnDate")) ? (DateTime?)null : reader.GetDateTime("ActualReturnDate"),
                 StartMileage = reader.GetInt32("StartMileage"),
                 EndMileage = reader.IsDBNull(reader.GetOrdinal("EndMileage")) ? (int?)null : reader.GetInt32("EndMileage"),
@@ -204,7 +218,38 @@ namespace RentalApp.Data.Repositories
             }
             catch { /* Columns not found, ignore */ }
 
+            // Populate RentalAgent if available from JOIN
+            try
+            {
+                if (!reader.IsDBNull(reader.GetOrdinal("RentalAgentFirstName")))
+                {
+                    string role = reader.GetString("RentalAgentRole");
+                    
+                    // Create appropriate user type based on role
+                    if (role == "Admin")
+                    {
+                        rental.RentalAgent = new RentalApp.Models.Users.Admin
+                        {
+                            Id = rental.RentalAgentId,
+                            Firstname = reader.GetString("RentalAgentFirstName"),
+                            Lastname = reader.GetString("RentalAgentLastName")
+                        };
+                    }
+                    else // RentalAgent
+                    {
+                        rental.RentalAgent = new RentalApp.Models.Users.RentalAgent
+                        {
+                            Id = rental.RentalAgentId,
+                            Firstname = reader.GetString("RentalAgentFirstName"),
+                            Lastname = reader.GetString("RentalAgentLastName")
+                        };
+                    }
+                }
+            }
+            catch { /* Columns not found, ignore */ }
+
             return rental;
         }
     }
 }
+    

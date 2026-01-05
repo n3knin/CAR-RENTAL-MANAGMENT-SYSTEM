@@ -12,6 +12,10 @@ namespace RentalApp.UI.Sections
         public PickupsView()
         {
             InitializeComponent();
+            
+            // Make columns stretch to fill width
+            pickupsGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            
             _rentalManager = new RentalManager();
             LoadActiveRentals();
             InitializeDragAndDrop();
@@ -95,6 +99,11 @@ namespace RentalApp.UI.Sections
                 if (pickupsGrid.Columns["Customer"] != null) pickupsGrid.Columns["Customer"].Visible = false;
                 if (pickupsGrid.Columns["Vehicle"] != null) pickupsGrid.Columns["Vehicle"].Visible = false;
                 if (pickupsGrid.Columns["RentalAgent"] != null) pickupsGrid.Columns["RentalAgent"].Visible = false;
+                if (pickupsGrid.Columns["ActualReturnDate"] != null) pickupsGrid.Columns["ActualReturnDate"].Visible = false;
+                if (pickupsGrid.Columns["RentalAgentName"] != null) pickupsGrid.Columns["RentalAgentName"].HeaderText = "Agent";
+                if (pickupsGrid.Columns["RentalAgentName"] != null) pickupsGrid.Columns["RentalAgentName"].DisplayIndex = 4;
+                if (pickupsGrid.Columns["ExpectedReturnDate"] != null) pickupsGrid.Columns["ExpectedReturnDate"].HeaderText = " Expected Return Date";
+                if (pickupsGrid.Columns["ExpectedReturnDate"] != null) pickupsGrid.Columns["ExpectedReturnDate"].DisplayIndex = 5;
 
                 // Rename headers for display properties
                 if (pickupsGrid.Columns["CustomerName"] != null) 
@@ -108,8 +117,9 @@ namespace RentalApp.UI.Sections
                     pickupsGrid.Columns["VehicleInfo"].DisplayIndex = 1;
                 }
                 if (pickupsGrid.Columns["ActualPickupDate"] != null) pickupsGrid.Columns["ActualPickupDate"].HeaderText = "Pickup Date";
-                if (pickupsGrid.Columns["ActualReturnDate"] != null) pickupsGrid.Columns["ActualReturnDate"].HeaderText = "Return Date";
+                if (pickupsGrid.Columns["ActualPickupDate"] != null) pickupsGrid.Columns["ActualPickupDate"].DisplayIndex = 6;
                 if (pickupsGrid.Columns["StartMileage"] != null) pickupsGrid.Columns["StartMileage"].HeaderText = "Start Mileage";
+                if (pickupsGrid.Columns["StartMileage"] != null) pickupsGrid.Columns["StartMileage"].DisplayIndex = 7;
 
                 pickupsGrid.Refresh();
             }
