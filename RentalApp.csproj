@@ -98,11 +98,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DATA\DatabaseHelper.cs" />
+    <Compile Include="DATA\Repositories\CategoryRespository.cs" />
     <!-- Repositories -->
     <Compile Include="DATA\Repositories\UserRepository.cs" />
     <Compile Include="DATA\Repositories\VehicleInspectionRepository.cs" />
     <Compile Include="DATA\Repositories\VehicleRepository.cs" />
-    <Compile Include="DATA\Repositories\CategoryRespository.cs" />
     <Compile Include="DATA\Repositories\FeatureRepository.cs" />
     <Compile Include="DATA\Repositories\CustomerRepository.cs" />
     <Compile Include="DATA\Repositories\ReservationRepository.cs" />
@@ -113,6 +113,7 @@
     <Compile Include="Models\Core\Session.cs" />
     <!-- Services (if you have them) -->
     <Compile Include="Models\Services\BillingManager.cs" />
+    <Compile Include="Models\Services\CategoryManager.cs" />
     <Compile Include="Models\Services\CustomerManager.cs" />
     <Compile Include="Models\Services\MaintenanceManager.cs" />
     <Compile Include="Models\Services\RateManager.cs" />
@@ -162,6 +163,12 @@
     </Compile>
     <Compile Include="UI\Popups\InspectionForm.Designer.cs">
       <DependentUpon>InspectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Popups\InvoiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Popups\InvoiceForm.Designer.cs">
+      <DependentUpon>InvoiceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Popups\PickupForm.cs">
       <SubType>Form</SubType>
@@ -283,6 +290,9 @@
     <EmbeddedResource Include="UI\Popups\InspectionForm.resx">
       <DependentUpon>InspectionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Popups\InvoiceForm.resx">
+      <DependentUpon>InvoiceForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Popups\PickupForm.resx">
       <DependentUpon>PickupForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -291,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Popups\STARTrentalform.resx">
       <DependentUpon>STARTrentalform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Sections\BillingView.resx">
+      <DependentUpon>BillingView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Sections\CustomersView.resx">
       <DependentUpon>CustomersView.cs</DependentUpon>

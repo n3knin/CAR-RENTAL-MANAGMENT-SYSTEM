@@ -1,110 +1,113 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
-using RentalApp.Models.Vehicles;
 using RentalApp.Models.Core;
-
 
 namespace RentalApp.Data.Repositories
 {
-    public class CategoryRespository
+    public class CategoryRepository
     {
-      public List<VehicleCategory> GetAll()
-      {
-        List<VehicleCategory> categories = new List<VehicleCategory>();
-        string sql = "SELECT * FROM VehicleCategory";
-
-        using (var conn = DatabaseHelper.GetConnection())
+        public List<VehicleCategory> GetAll()
         {
-            conn.Open();
-            using (var cmd = new MySqlCommand(sql, conn))
+            List<VehicleCategory> categories = new List<VehicleCategory>();
+            string sql = "SELECT * FROM vehiclecategories";
+
+            using (var conn = DatabaseHelper.GetConnection())
             {
-                using (var reader = cmd.ExecuteReader())
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
                 {
-                    while (reader.Read())
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        categories.Add(MapReaderToCategory(reader));
+                        while (reader.Read())
+                        {
+                            categories.Add(MapReaderToCategory(reader));
+                        }
                     }
+                }
+            }
+
+            return categories;
+        }
+
+        public VehicleCategory GetById(int id)
+        {
+            string sql = "SELECT * FROM vehiclecategories WHERE ID = @id";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return MapReaderToCategory(reader);
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        public void Add(VehicleCategory category)
+        {
+            string sql = @"INSERT INTO vehiclecategories (CategoryName, HourlyRate, DailyRate, WeeklyRate, MonthlyRate, Description) 
+                          VALUES (@name, @hourly, @daily, @weekly, @monthly, @desc)";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@name", category.CategoryName);
+                    cmd.Parameters.AddWithValue("@hourly", category.HourlyRate);
+                    cmd.Parameters.AddWithValue("@daily", category.DailyRate);
+                    cmd.Parameters.AddWithValue("@weekly", category.WeeklyRate);
+                    cmd.Parameters.AddWithValue("@monthly", category.MonthlyRate);
+                    cmd.Parameters.AddWithValue("@desc", category.Description ?? "");
+                    cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        return categories;
-      }
-
-      public VehicleCategory GetById(int id)
-      {
-        string sql = "SELECT * FROM VehicleCategory WHERE ID = @id";
-
-        using (var conn = DatabaseHelper.GetConnection())
+        public void UpdateRate(int categoryId, decimal dailyRate, decimal weeklyRate, decimal monthlyRate)
         {
-            conn.Open();
-            using (var cmd = new MySqlCommand(sql, conn))
-            {
-                cmd.Parameters.AddWithValue("@id", id);
+            string sql = @"UPDATE vehiclecategories 
+                          SET DailyRate = @daily, 
+                              WeeklyRate = @weekly,
+                              MonthlyRate = @monthly
+                          WHERE ID = @id";
 
-                using (var reader = cmd.ExecuteReader())
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
                 {
-                    if (reader.Read())
-                    {
-                        return MapReaderToCategory(reader);
-                    }
+                    cmd.Parameters.AddWithValue("@id", categoryId);
+                    cmd.Parameters.AddWithValue("@daily", dailyRate);
+                    cmd.Parameters.AddWithValue("@weekly", weeklyRate);
+                    cmd.Parameters.AddWithValue("@monthly", monthlyRate);
+                    cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        return null; // Category not found
-      }
-
-      public void Add(VehicleCategory category)
-      {
-        string sql = @"INSERT INTO VehicleCategory (CategoryName, DailyRate) 
-                      VALUES (@categoryName, @dailyRate);";
-
-        using (var conn = DatabaseHelper.GetConnection())
-        {
-            conn.Open();
-            using (var cmd = new MySqlCommand(sql, conn))
-            {
-                cmd.Parameters.AddWithValue("@categoryName", category.CategoryName);
-                cmd.Parameters.AddWithValue("@dailyRate", category.DailyRate);
-
-                cmd.ExecuteNonQuery();
-            }
-        }
-      }
-
-      public void UpdateRate(int categoryId, decimal dailyRate, decimal weeklyRate, decimal monthlyRate)
-      {
-        string sql = @"UPDATE VehicleCategory 
-                      SET DailyRate = @dailyRate, 
-                          WeeklyRate = @weeklyRate,
-                          MonthlyRate = @monthlyRate
-                      WHERE ID = @id;";
-
-        using (var conn = DatabaseHelper.GetConnection())
-        {
-            conn.Open();
-            using (var cmd = new MySqlCommand(sql, conn))
-            {
-                cmd.Parameters.AddWithValue("@id", categoryId);
-                cmd.Parameters.AddWithValue("@dailyRate", dailyRate);
-                cmd.Parameters.AddWithValue("@weeklyRate", weeklyRate);
-                cmd.Parameters.AddWithValue("@monthlyRate", monthlyRate);
-
-                cmd.ExecuteNonQuery();
-            }
-        }
-      }
-      private VehicleCategory MapReaderToCategory(MySqlDataReader reader)
+        private VehicleCategory MapReaderToCategory(MySqlDataReader reader)
         {
             return new VehicleCategory
             {
-                Id = reader.GetInt32("ID"), // Check your exact column name in DB
+                Id = reader.GetInt32("ID"),
                 CategoryName = reader.GetString("CategoryName"),
+                HourlyRate = reader.GetDecimal("HourlyRate"),
                 DailyRate = reader.GetDecimal("DailyRate"),
                 WeeklyRate = reader.GetDecimal("WeeklyRate"),
-                MonthlyRate = reader.GetDecimal("MonthlyRate")
+                MonthlyRate = reader.GetDecimal("MonthlyRate"),
+                Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? "" : reader.GetString("Description")
             };
         }
     }

@@ -78,13 +78,12 @@
             this.btncancel.BackColor = System.Drawing.Color.Crimson;
             this.btncancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btncancel.ForeColor = System.Drawing.Color.BlanchedAlmond;
-            this.btncancel.Location = new System.Drawing.Point(258, 485);
+            this.btncancel.Location = new System.Drawing.Point(257, 485);
             this.btncancel.Name = "btncancel";
             this.btncancel.Size = new System.Drawing.Size(152, 41);
             this.btncancel.TabIndex = 1;
             this.btncancel.Text = "CANCEL";
             this.btncancel.UseVisualStyleBackColor = false;
-            this.btncancel.Click += new System.EventHandler(this.btncancel_Click);
             // 
             // materialLabel1
             // 
@@ -373,7 +372,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(497, 564);
+            this.ClientSize = new System.Drawing.Size(497, 578);
             this.Controls.Add(this.materialLabel13);
             this.Controls.Add(this.FEATURES);
             this.Controls.Add(this.seat);

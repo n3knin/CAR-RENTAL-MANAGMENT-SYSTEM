@@ -77,6 +77,7 @@ namespace RentalApp.Data.Repositories
                            LEFT JOIN Customers c ON r.CustomerID = c.ID
                            LEFT JOIN Vehicles v ON r.VehicleID = v.ID
                            LEFT JOIN Users ra ON r.RentalAgentId = ra.ID
+                           WHERE r.Status = 'Completed'
                            ORDER BY r.ActualPickupDate DESC";
 
 

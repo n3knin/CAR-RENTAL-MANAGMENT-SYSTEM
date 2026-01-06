@@ -11,11 +11,11 @@ namespace RentalApp.Models.Services
 {
     public class RateManager
     {
-        private CategoryRespository _categoryRepository;
+        private CategoryRepository _categoryRepository;
 
         public RateManager()
         {
-            _categoryRepository = new CategoryRespository();
+            _categoryRepository = new CategoryRepository();
         }
 
         public void UpdateRate(int categoryId, decimal newDailyRate, decimal newWeeklyRate, decimal newMonthlyRate)
