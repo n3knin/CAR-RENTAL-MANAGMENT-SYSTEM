@@ -28,47 +28,53 @@ namespace RentalApp.UI.Popups
             // 
             this.lblMakeModel.AutoSize = true;
             this.lblMakeModel.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.lblMakeModel.Location = new System.Drawing.Point(20, 20);
+            this.lblMakeModel.Location = new System.Drawing.Point(27, 25);
+            this.lblMakeModel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMakeModel.Name = "lblMakeModel";
-            this.lblMakeModel.Size = new System.Drawing.Size(154, 30);
+            this.lblMakeModel.Size = new System.Drawing.Size(191, 37);
             this.lblMakeModel.TabIndex = 0;
             this.lblMakeModel.Text = "Vehicle Name";
             // 
             // lblLicense
             // 
             this.lblLicense.AutoSize = true;
-            this.lblLicense.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.lblLicense.Location = new System.Drawing.Point(22, 60);
+            this.lblLicense.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLicense.Location = new System.Drawing.Point(29, 74);
+            this.lblLicense.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLicense.Name = "lblLicense";
-            this.lblLicense.Size = new System.Drawing.Size(61, 21);
+            this.lblLicense.Size = new System.Drawing.Size(68, 25);
             this.lblLicense.TabIndex = 1;
             this.lblLicense.Text = "License";
             // 
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.ForeColor = System.Drawing.Color.DimGray;
-            this.lblStatus.Location = new System.Drawing.Point(22, 90);
+            this.lblStatus.Location = new System.Drawing.Point(29, 118);
+            this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(49, 19);
+            this.lblStatus.Size = new System.Drawing.Size(60, 25);
             this.lblStatus.TabIndex = 2;
             this.lblStatus.Text = "Status";
             // 
             // lblType
             // 
             this.lblType.AutoSize = true;
-            this.lblType.Location = new System.Drawing.Point(23, 120);
+            this.lblType.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblType.Location = new System.Drawing.Point(30, 162);
+            this.lblType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(31, 13);
+            this.lblType.Size = new System.Drawing.Size(49, 25);
             this.lblType.TabIndex = 3;
             this.lblType.Text = "Type";
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(200, 280);
+            this.btnClose.Location = new System.Drawing.Point(267, 389);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.Size = new System.Drawing.Size(100, 28);
             this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -77,27 +83,30 @@ namespace RentalApp.UI.Popups
             // lblFeatures
             // 
             this.lblFeatures.AutoSize = true;
-            this.lblFeatures.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblFeatures.Location = new System.Drawing.Point(22, 140);
+            this.lblFeatures.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFeatures.Location = new System.Drawing.Point(30, 207);
+            this.lblFeatures.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFeatures.Name = "lblFeatures";
-            this.lblFeatures.Size = new System.Drawing.Size(65, 19);
+            this.lblFeatures.Size = new System.Drawing.Size(78, 25);
             this.lblFeatures.TabIndex = 5;
             this.lblFeatures.Text = "Features";
             // 
             // lstFeatures
             // 
             this.lstFeatures.FormattingEnabled = true;
-            this.lstFeatures.Location = new System.Drawing.Point(26, 165);
+            this.lstFeatures.ItemHeight = 16;
+            this.lstFeatures.Location = new System.Drawing.Point(35, 247);
+            this.lstFeatures.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lstFeatures.Name = "lstFeatures";
-            this.lstFeatures.Size = new System.Drawing.Size(249, 95);
+            this.lstFeatures.Size = new System.Drawing.Size(331, 116);
             this.lstFeatures.TabIndex = 6;
             this.lstFeatures.SelectedIndexChanged += new System.EventHandler(this.lstFeatures_SelectedIndexChanged);
             // 
             // VehicleDetailsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 320);
+            this.ClientSize = new System.Drawing.Size(400, 449);
             this.Controls.Add(this.lstFeatures);
             this.Controls.Add(this.lblFeatures);
             this.Controls.Add(this.btnClose);
@@ -106,6 +115,7 @@ namespace RentalApp.UI.Popups
             this.Controls.Add(this.lblLicense);
             this.Controls.Add(this.lblMakeModel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "VehicleDetailsForm";

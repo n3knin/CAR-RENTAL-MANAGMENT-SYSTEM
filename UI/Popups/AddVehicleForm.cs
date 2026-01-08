@@ -171,5 +171,20 @@ namespace RentalApp.UI.Popups
         {
             this.Close();
         }
+
+        private void materialLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtlicense_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddVehicleForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
