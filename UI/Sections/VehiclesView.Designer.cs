@@ -48,6 +48,7 @@ namespace RentalApp.UI.Sections
             this.headerLabel.Size = new System.Drawing.Size(107, 20);
             this.headerLabel.TabIndex = 0;
             this.headerLabel.Text = "Vehicle Fleet   ";
+            this.headerLabel.Click += new System.EventHandler(this.headerLabel_Click);
             // 
             // searchTextBox
             // 
@@ -57,6 +58,7 @@ namespace RentalApp.UI.Sections
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(189, 23);
             this.searchTextBox.TabIndex = 2;
+            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged_1);
             // 
             // searchLabel
             // 
@@ -69,6 +71,7 @@ namespace RentalApp.UI.Sections
             this.searchLabel.Size = new System.Drawing.Size(42, 15);
             this.searchLabel.TabIndex = 1;
             this.searchLabel.Text = "Search";
+            this.searchLabel.Click += new System.EventHandler(this.searchLabel_Click);
             // 
             // vehiclesGrid
             // 
@@ -97,7 +100,7 @@ namespace RentalApp.UI.Sections
             this.addButton.ForeColor = System.Drawing.Color.White;
             this.addButton.Location = new System.Drawing.Point(15, 39);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(69, 20);
+            this.addButton.Size = new System.Drawing.Size(69, 24);
             this.addButton.TabIndex = 4;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = false;
@@ -112,10 +115,11 @@ namespace RentalApp.UI.Sections
             this.editButton.ForeColor = System.Drawing.Color.DimGray;
             this.editButton.Location = new System.Drawing.Point(89, 39);
             this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(69, 20);
+            this.editButton.Size = new System.Drawing.Size(69, 24);
             this.editButton.TabIndex = 5;
             this.editButton.Text = "Edit";
             this.editButton.UseVisualStyleBackColor = false;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // deleteButton
             // 
@@ -126,10 +130,11 @@ namespace RentalApp.UI.Sections
             this.deleteButton.ForeColor = System.Drawing.Color.DimGray;
             this.deleteButton.Location = new System.Drawing.Point(163, 39);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(69, 20);
+            this.deleteButton.Size = new System.Drawing.Size(69, 24);
             this.deleteButton.TabIndex = 6;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // VehiclesView
             // 

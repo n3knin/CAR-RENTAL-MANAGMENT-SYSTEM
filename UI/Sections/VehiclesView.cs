@@ -148,5 +148,44 @@ namespace RentalApp.UI.Sections
                 addForm.ShowDialog();
             }
         }
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            if(vehiclesGrid.CurrentRow != null && vehiclesGrid.CurrentRow.Index >= 0)
+            {
+                var selectedVehicle = (Vehicle)vehiclesGrid.CurrentRow.DataBoundItem;
+                using (var editForm = new Popups.EditVehicle(selectedVehicle))
+                {
+                   if(editForm.ShowDialog() == DialogResult.OK)
+                   {
+                       LoadVehicles();
+                   }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a vehicle to edit.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void headerLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchTextBox_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

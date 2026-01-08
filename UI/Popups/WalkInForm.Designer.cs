@@ -194,7 +194,7 @@
             // 
             this.cmbVT.Enabled = false;
             this.cmbVT.FormattingEnabled = true;
-            this.cmbVT.Location = new System.Drawing.Point(214, 181);
+            this.cmbVT.Location = new System.Drawing.Point(214, 180);
             this.cmbVT.Name = "cmbVT";
             this.cmbVT.Size = new System.Drawing.Size(96, 21);
             this.cmbVT.TabIndex = 14;

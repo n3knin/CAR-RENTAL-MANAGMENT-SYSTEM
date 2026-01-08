@@ -88,7 +88,7 @@ namespace RentalApp.Models.Services
             {
                 throw new ArgumentException("Make and Model are required.");
             }
-            // You can add more specific validation here if needed
+           
 
             _vehicleRepository.Update(vehicle);
         }
