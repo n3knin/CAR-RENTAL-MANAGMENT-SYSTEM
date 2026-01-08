@@ -51,6 +51,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.cmbcustomertype = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.addbt = new System.Windows.Forms.Button();
+            this.cancelbt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // dafas
@@ -287,11 +289,33 @@
             this.label10.TabIndex = 23;
             this.label10.Text = "Add New Customer";
             // 
+            // addbt
+            // 
+            this.addbt.Location = new System.Drawing.Point(280, 500);
+            this.addbt.Name = "addbt";
+            this.addbt.Size = new System.Drawing.Size(100, 35);
+            this.addbt.TabIndex = 24;
+            this.addbt.Text = "ADD";
+            this.addbt.UseVisualStyleBackColor = true;
+            this.addbt.Click += new System.EventHandler(this.addbt_Click);
+            // 
+            // cancelbt
+            // 
+            this.cancelbt.Location = new System.Drawing.Point(390, 500);
+            this.cancelbt.Name = "cancelbt";
+            this.cancelbt.Size = new System.Drawing.Size(100, 35);
+            this.cancelbt.TabIndex = 25;
+            this.cancelbt.Text = "CANCEL";
+            this.cancelbt.UseVisualStyleBackColor = true;
+            this.cancelbt.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // AddnewCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(533, 556);
+            this.Controls.Add(this.cancelbt);
+            this.Controls.Add(this.addbt);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.cmbcustomertype);
             this.Controls.Add(this.label9);
@@ -349,5 +373,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbcustomertype;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button addbt;
+        private System.Windows.Forms.Button cancelbt;
     }
 }

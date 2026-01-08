@@ -230,6 +230,7 @@ namespace RentalApp.UI
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "LoginForm";
+            this.AcceptButton = this.loginButton;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vehicle Rental Management - Login";
             this.rightPanel.ResumeLayout(false);

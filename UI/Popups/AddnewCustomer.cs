@@ -23,64 +23,6 @@ namespace RentalApp.UI.Popups
             cmbcustomertype.SelectedIndex = 0; // Default to Individual
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            // 1. Validation
-            if (string.IsNullOrWhiteSpace(txtfirstname.Text) || string.IsNullOrWhiteSpace(textxtlastname.Text))
-            {
-                MessageBox.Show("First and Last Name are required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtdlnumber.Text))
-            {
-                 MessageBox.Show("Driver's License Number is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                 return;
-            }
-
-            if (dtdateexpire.Value <= DateTime.Now)
-            {
-                MessageBox.Show("License has expired! Cannot register customer.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // 2. Create Object with ALL properties mapped + User's Variable Names
-            var newCustomer = new Customer
-            {
-                FirstName = txtfirstname.Text.Trim(),
-                LastName = textxtlastname.Text.Trim(),
-                Address = txtaddress.Text.Trim(),
-                Email = textBox1.Text.Trim(), // textBox1 is Email
-                Phone = phone.Text.Trim(),
-                Type = (CustomerType)cmbcustomertype.SelectedItem,
-                EmergencyContact = textBox2.Text.Trim(), // textBox2 is Emergency Contact
-                
-                DriverLicenseNumber = txtdlnumber.Text.Trim(),
-                LicenseIssueDate = dtdateissue.Value,
-                LicenseExpiryDate = dtdateexpire.Value,
-                LicenseState = txtlicensestate.Text.Trim(),
-
-                CreatedAt = DateTime.Now,
-                IsBlacklisted = false,
-               
-                DateOfBirth = DateTime.Now.AddYears(-21) 
-            };
-
-            try
-            {
-                // 3. Save to DB
-                _customerManager.AddCustomer(newCustomer);
-                
-                MessageBox.Show("Customer Added Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.DialogResult = DialogResult.OK; // Signal success to parent form
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error saving customer: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
