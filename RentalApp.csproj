@@ -332,6 +332,9 @@
     <EmbeddedResource Include="UI\Sections\PickupsView.resx">
       <DependentUpon>PickupsView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Sections\ReportsView.resx">
+      <DependentUpon>ReportsView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Sections\ReservationsView.resx">
       <DependentUpon>ReservationsView.cs</DependentUpon>
     </EmbeddedResource>

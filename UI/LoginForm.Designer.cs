@@ -199,7 +199,7 @@ namespace RentalApp.UI
             this.taglineLabel.AutoSize = true;
             this.taglineLabel.BackColor = System.Drawing.Color.Transparent;
             this.taglineLabel.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.taglineLabel.ForeColor = System.Drawing.Color.LightGray;
+            this.taglineLabel.ForeColor = System.Drawing.Color.White;
             this.taglineLabel.Location = new System.Drawing.Point(30, 216);
             this.taglineLabel.Name = "taglineLabel";
             this.taglineLabel.Size = new System.Drawing.Size(209, 42);
@@ -220,6 +220,7 @@ namespace RentalApp.UI
             // 
             // LoginForm
             // 
+            this.AcceptButton = this.loginButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
@@ -230,7 +231,6 @@ namespace RentalApp.UI
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "LoginForm";
-            this.AcceptButton = this.loginButton;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vehicle Rental Management - Login";
             this.rightPanel.ResumeLayout(false);

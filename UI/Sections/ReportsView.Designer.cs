@@ -32,9 +32,9 @@ namespace RentalApp.UI.Sections
             this.headerLabel.AutoSize = true;
             this.headerLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.headerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
-            this.headerLabel.Location = new System.Drawing.Point(15, 15);
+            this.headerLabel.Location = new System.Drawing.Point(17, 16);
             this.headerLabel.Name = "headerLabel";
-            this.headerLabel.Size = new System.Drawing.Size(137, 20);
+            this.headerLabel.Size = new System.Drawing.Size(166, 25);
             this.headerLabel.TabIndex = 0;
             this.headerLabel.Text = "Reports & Analytics";
             // 
@@ -42,18 +42,18 @@ namespace RentalApp.UI.Sections
             // 
             this.rangeFromPicker.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.rangeFromPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.rangeFromPicker.Location = new System.Drawing.Point(80, 45);
+            this.rangeFromPicker.Location = new System.Drawing.Point(91, 48);
             this.rangeFromPicker.Name = "rangeFromPicker";
-            this.rangeFromPicker.Size = new System.Drawing.Size(110, 23);
+            this.rangeFromPicker.Size = new System.Drawing.Size(125, 27);
             this.rangeFromPicker.TabIndex = 2;
             // 
             // rangeToPicker
             // 
             this.rangeToPicker.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.rangeToPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.rangeToPicker.Location = new System.Drawing.Point(220, 45);
+            this.rangeToPicker.Location = new System.Drawing.Point(251, 48);
             this.rangeToPicker.Name = "rangeToPicker";
-            this.rangeToPicker.Size = new System.Drawing.Size(110, 23);
+            this.rangeToPicker.Size = new System.Drawing.Size(125, 27);
             this.rangeToPicker.TabIndex = 3;
             // 
             // toLabel
@@ -61,9 +61,9 @@ namespace RentalApp.UI.Sections
             this.toLabel.AutoSize = true;
             this.toLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.toLabel.Location = new System.Drawing.Point(196, 49);
+            this.toLabel.Location = new System.Drawing.Point(224, 52);
             this.toLabel.Name = "toLabel";
-            this.toLabel.Size = new System.Drawing.Size(18, 15);
+            this.toLabel.Size = new System.Drawing.Size(23, 20);
             this.toLabel.TabIndex = 0;
             this.toLabel.Text = "to";
             // 
@@ -79,9 +79,9 @@ namespace RentalApp.UI.Sections
             "Average rental duration",
             "Damage incident rate",
             "Customer retention rate"});
-            this.metricComboBox.Location = new System.Drawing.Point(476, 45);
+            this.metricComboBox.Location = new System.Drawing.Point(544, 48);
             this.metricComboBox.Name = "metricComboBox";
-            this.metricComboBox.Size = new System.Drawing.Size(190, 23);
+            this.metricComboBox.Size = new System.Drawing.Size(217, 28);
             this.metricComboBox.TabIndex = 5;
             // 
             // metricLabel
@@ -90,9 +90,9 @@ namespace RentalApp.UI.Sections
             this.metricLabel.AutoSize = true;
             this.metricLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.metricLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.metricLabel.Location = new System.Drawing.Point(430, 48);
+            this.metricLabel.Location = new System.Drawing.Point(491, 51);
             this.metricLabel.Name = "metricLabel";
-            this.metricLabel.Size = new System.Drawing.Size(40, 15);
+            this.metricLabel.Size = new System.Drawing.Size(51, 20);
             this.metricLabel.TabIndex = 4;
             this.metricLabel.Text = "Metric";
             // 
@@ -104,9 +104,9 @@ namespace RentalApp.UI.Sections
             this.chartPlaceholderPanel.BackColor = System.Drawing.Color.White;
             this.chartPlaceholderPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.chartPlaceholderPanel.Controls.Add(this.chartPlaceholderLabel);
-            this.chartPlaceholderPanel.Location = new System.Drawing.Point(18, 80);
+            this.chartPlaceholderPanel.Location = new System.Drawing.Point(21, 85);
             this.chartPlaceholderPanel.Name = "chartPlaceholderPanel";
-            this.chartPlaceholderPanel.Size = new System.Drawing.Size(732, 270);
+            this.chartPlaceholderPanel.Size = new System.Drawing.Size(836, 288);
             this.chartPlaceholderPanel.TabIndex = 6;
             // 
             // chartPlaceholderLabel
@@ -116,10 +116,10 @@ namespace RentalApp.UI.Sections
             this.chartPlaceholderLabel.ForeColor = System.Drawing.Color.DimGray;
             this.chartPlaceholderLabel.Location = new System.Drawing.Point(0, 0);
             this.chartPlaceholderLabel.Name = "chartPlaceholderLabel";
-            this.chartPlaceholderLabel.Size = new System.Drawing.Size(730, 268);
+            this.chartPlaceholderLabel.Size = new System.Drawing.Size(834, 286);
             this.chartPlaceholderLabel.TabIndex = 0;
-            this.chartPlaceholderLabel.Text = "Chart / report preview placeholder.\r\n\r\nLater you can add charts, tables, and exp" +
-    "ort buttons here.";
+            this.chartPlaceholderLabel.Text = "Chart / report preview placeholder.\r\n\r\nLater you can add charts, tables, and expo" +
+    "rt buttons here.";
             this.chartPlaceholderLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // generateButton
@@ -130,16 +130,16 @@ namespace RentalApp.UI.Sections
             this.generateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.generateButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.generateButton.ForeColor = System.Drawing.Color.White;
-            this.generateButton.Location = new System.Drawing.Point(672, 45);
+            this.generateButton.Location = new System.Drawing.Point(768, 48);
             this.generateButton.Name = "generateButton";
-            this.generateButton.Size = new System.Drawing.Size(78, 23);
+            this.generateButton.Size = new System.Drawing.Size(89, 25);
             this.generateButton.TabIndex = 7;
             this.generateButton.Text = "Generate";
             this.generateButton.UseVisualStyleBackColor = false;
             // 
             // ReportsView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.generateButton);
@@ -151,7 +151,7 @@ namespace RentalApp.UI.Sections
             this.Controls.Add(this.rangeFromPicker);
             this.Controls.Add(this.headerLabel);
             this.Name = "ReportsView";
-            this.Size = new System.Drawing.Size(770, 380);
+            this.Size = new System.Drawing.Size(880, 405);
             this.chartPlaceholderPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
