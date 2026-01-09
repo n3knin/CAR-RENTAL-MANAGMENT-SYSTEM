@@ -22,8 +22,10 @@ namespace RentalApp.UI
             cardsTableLayout.Visible = false;
             placeholderLabel.Visible = false;
             userRoleLabel.Text = $"Signed in as: {user.GetRoleName()}";
+            
+            contentPanel.AutoScroll = true; // Enable scrolling for large content
             contentPanel.Location = new Point(23, 20);
-            contentPanel.Size = new Size(1497, 806);
+            contentPanel.Size = new Size(mainPanel.Width - 46, mainPanel.Height - 40);
 
             ShowSection(new DashboardView());
             InitializeDragAndDrop();
@@ -83,6 +85,7 @@ namespace RentalApp.UI
             if (button == null) return;
 
             // Dashboard View Logic
+            // Dashboard View Logic
             if (button.Name == "dashboardButton") // Use name as I can't access private field easily without recompiling designer or checking field name match
             {
                 sectionTitleLabel.Visible = false;
@@ -91,7 +94,7 @@ namespace RentalApp.UI
                 
                 // Move content panel up
                 contentPanel.Location = new Point(23, 20);
-                contentPanel.Size = new Size(1497, 806);
+                contentPanel.Size = new Size(mainPanel.Width - 46, mainPanel.Height - 40);
 
                 ShowSection(new DashboardView());
                 return;
@@ -105,7 +108,7 @@ namespace RentalApp.UI
                 
                 // Restore content panel position
                 contentPanel.Location = new Point(23, 190);
-                contentPanel.Size = new Size(1497, 636);
+                contentPanel.Size = new Size(mainPanel.Width - 46, mainPanel.Height - 210);
             }
 
             sectionTitleLabel.Text = button.Text;

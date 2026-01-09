@@ -152,6 +152,11 @@ namespace RentalApp.UI.Sections
                 detailsForm.ShowDialog();
             }
         }
+
+        private void CustomersView_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

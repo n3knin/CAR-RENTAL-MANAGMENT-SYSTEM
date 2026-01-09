@@ -27,9 +27,10 @@ namespace RentalApp.UI.Sections
             this.headerLabel.AutoSize = true;
             this.headerLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.headerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
-            this.headerLabel.Location = new System.Drawing.Point(13, 13);
+            this.headerLabel.Location = new System.Drawing.Point(17, 16);
+            this.headerLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.headerLabel.Name = "headerLabel";
-            this.headerLabel.Size = new System.Drawing.Size(129, 20);
+            this.headerLabel.Size = new System.Drawing.Size(164, 25);
             this.headerLabel.TabIndex = 0;
             this.headerLabel.Text = "Customer Profiles";
             // 
@@ -43,9 +44,10 @@ namespace RentalApp.UI.Sections
             "Frequent renters",
             "Corporate clients",
             "Blacklisted"});
-            this.filterComboBox.Location = new System.Drawing.Point(70, 40);
+            this.filterComboBox.Location = new System.Drawing.Point(93, 49);
+            this.filterComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.filterComboBox.Name = "filterComboBox";
-            this.filterComboBox.Size = new System.Drawing.Size(172, 23);
+            this.filterComboBox.Size = new System.Drawing.Size(228, 28);
             this.filterComboBox.TabIndex = 2;
             this.filterComboBox.SelectedIndexChanged += new System.EventHandler(this.filterComboBox_SelectedIndexChanged);
             // 
@@ -54,9 +56,10 @@ namespace RentalApp.UI.Sections
             this.filterLabel.AutoSize = true;
             this.filterLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.filterLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.filterLabel.Location = new System.Drawing.Point(15, 42);
+            this.filterLabel.Location = new System.Drawing.Point(20, 52);
+            this.filterLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.filterLabel.Name = "filterLabel";
-            this.filterLabel.Size = new System.Drawing.Size(49, 15);
+            this.filterLabel.Size = new System.Drawing.Size(62, 20);
             this.filterLabel.TabIndex = 1;
             this.filterLabel.Text = "Filter by";
             // 
@@ -69,26 +72,30 @@ namespace RentalApp.UI.Sections
             | System.Windows.Forms.AnchorStyles.Right)));
             this.customersGrid.BackgroundColor = System.Drawing.Color.White;
             this.customersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.customersGrid.Location = new System.Drawing.Point(15, 69);
+            this.customersGrid.Location = new System.Drawing.Point(20, 85);
+            this.customersGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.customersGrid.Name = "customersGrid";
             this.customersGrid.ReadOnly = true;
             this.customersGrid.RowHeadersVisible = false;
-            this.customersGrid.Size = new System.Drawing.Size(627, 243);
+            this.customersGrid.RowHeadersWidth = 51;
+            this.customersGrid.Size = new System.Drawing.Size(836, 299);
             this.customersGrid.TabIndex = 3;
             this.customersGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.customersGrid_CellContentClick);
             this.customersGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.customersGrid_CellContentDoubleClick);
             // 
             // CustomersView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.customersGrid);
             this.Controls.Add(this.filterComboBox);
             this.Controls.Add(this.filterLabel);
             this.Controls.Add(this.headerLabel);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CustomersView";
-            this.Size = new System.Drawing.Size(660, 329);
+            this.Size = new System.Drawing.Size(880, 405);
+            this.Load += new System.EventHandler(this.CustomersView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.customersGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
