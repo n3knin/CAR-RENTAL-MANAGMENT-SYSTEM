@@ -186,5 +186,10 @@ namespace RentalApp.UI.Popups
         {
 
         }
+
+        private void btncancel_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

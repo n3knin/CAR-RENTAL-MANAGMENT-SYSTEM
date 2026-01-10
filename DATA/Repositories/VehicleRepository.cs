@@ -16,7 +16,7 @@ namespace RentalApp.Data.Repositories
                           VALUES 
                           (@make, @model, @year, @color, @plate, @vin, @catId, 
                            @status, @mileage, @fuel, @trans, @seats, @img);
-                           WHERE NOT Status = 'Retired';
+                          
                           SELECT LAST_INSERT_ID();";
 
             using (var conn = DatabaseHelper.GetConnection())
@@ -47,7 +47,7 @@ namespace RentalApp.Data.Repositories
         public List<Vehicle> GetAll()
         {
             List<Vehicle> vehicles = new List<Vehicle>();
-            string sql = "SELECT * FROM Vehicles ORDER BY ID DESC";
+            string sql = "SELECT * FROM Vehicles  WHERE NOT Status = 'Retired' AND NOT Status = 'Out of Service' ORDER BY ID DESC";
 
             using (var conn = DatabaseHelper.GetConnection())
             {
@@ -115,7 +115,20 @@ namespace RentalApp.Data.Repositories
 
             return vehicles;
         }
+        public void RetireVehicle(int id)
+        {
+            string sql = "UPDATE Vehicles SET Status = 'Retired' WHERE ID = @id";
 
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
         // READ - Get vehicles by category
         public List<Vehicle> GetByCategory(int categoryId)
         {

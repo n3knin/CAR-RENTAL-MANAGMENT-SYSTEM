@@ -185,7 +185,19 @@ namespace RentalApp.UI.Sections
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-
+            if(vehiclesGrid.CurrentRow != null && vehiclesGrid.CurrentRow.Index >= 0)
+            {
+                var selectedVehicle = (Vehicle)vehiclesGrid.CurrentRow.DataBoundItem;
+                if (MessageBox.Show("Are you sure you want to remove this vehicle from the active fleet?", "Retire Vehicle", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+                    _vehicleManager.RetireVehicle(selectedVehicle.VehicleId);
+                    LoadVehicles();
+                }   
+            }
+            else
+            {
+                MessageBox.Show("Please select a vehicle to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

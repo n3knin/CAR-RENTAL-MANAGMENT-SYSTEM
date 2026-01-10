@@ -40,8 +40,6 @@ namespace RentalApp.UI.Sections
             int pendingReservations = _reservationManager.CountPending();
             decimal revenueToday = _billingManager.SumInvoicedToday();
 
-            // Cards
-            AddCard("Today's Pickups", todayPickups.ToString(), Color.FromArgb(21, 32, 43));
             AddCard("Today's Returns", todayReturns.ToString(), Color.FromArgb(21, 32, 43));
             AddCard("Fleet Available", fleetAvailable.ToString(), Color.FromArgb(21, 32, 43));
             AddCard("Active Rentals", activeRentals.ToString(), Color.FromArgb(21, 32, 43));

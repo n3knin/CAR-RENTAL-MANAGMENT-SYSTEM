@@ -7,80 +7,92 @@ namespace RentalApp.UI.Sections
 {
     public partial class ReportsView : UserControl
     {
+        private Models.Services.BillingManager _billingManager;
+
         public ReportsView()
         {
             InitializeComponent();
+            _billingManager = new Models.Services.BillingManager();
             InitializeDragAndDrop();
             InitializeCharts();
             InitializeGrid();
+            RefreshReportData(); // Load data immediately on startup
         }
 
         private void InitializeGrid()
         {
-            reportsGrid.Columns.Add("Date", "Date");
-            reportsGrid.Columns.Add("Category", "Category");
-            reportsGrid.Columns.Add("Description", "Description");
-            reportsGrid.Columns.Add("Amount", "Amount (₱)");
-            reportsGrid.Columns.Add("Status", "Status");
+            reportsGrid.Columns.Clear();
+            reportsGrid.AutoGenerateColumns = false;
 
-            // Dummy Data
-            reportsGrid.Rows.Add("01/01/2026", "Rental", "Toyota Vios Rental - 3 Days", "4,500.00", "Completed");
-            reportsGrid.Rows.Add("01/02/2026", "Rental", "Honda City Rental - 2 Days", "3,200.00", "Completed");
-            reportsGrid.Rows.Add("01/03/2026", "Maintenance", "Oil Change - Ford Everest", "-1,500.00", "Paid");
-            reportsGrid.Rows.Add("01/05/2026", "Rental", "Isuzu D-Max Rental - 5 Days", "12,500.00", "Active");
-            reportsGrid.Rows.Add("01/08/2026", "Fine", "Late Return Penalty", "500.00", "Collected");
-            reportsGrid.Rows.Add("01/10/2026", "Rental", "Mitsubishi Montero - 7 Days", "21,000.00", "Reserved");
-            reportsGrid.Rows.Add("01/11/2026", "Insurance", "Monthly Fleet Insurance", "-5,000.00", "Pending");
-            reportsGrid.Rows.Add("01/12/2026", "Rental", "Nissan NV350 - 1 Day", "3,500.00", "Active");
-            reportsGrid.Rows.Add("01/15/2026", "Service", "Tire Replacement - Plate ABC 123", "-8,000.00", "Scheduled");
+            reportsGrid.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "IssueDate", HeaderText = "Date", DefaultCellStyle = new DataGridViewCellStyle { Format = "MM/dd/yyyy" } });
+            reportsGrid.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "CustomerName", HeaderText = "Customer" });
+            reportsGrid.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "VehicleInfo", HeaderText = "Vehicle" });
+            reportsGrid.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "DurationDays", HeaderText = "Days" });
+            reportsGrid.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "TotalAmount", HeaderText = "Amount (₱)", DefaultCellStyle = new DataGridViewCellStyle { Format = "N2" } });
         }
 
         private void InitializeCharts()
         {
-            // Revenue Chart config
+            LoadWeeklySalesChart();
+            LoadCategoryUsageChart();
+        }
+
+        private void LoadWeeklySalesChart()
+        {
             revenueChart.Series.Clear();
             revenueChart.Titles.Clear();
-            revenueChart.Titles.Add("Monthly Revenue");
+            revenueChart.Titles.Add("Weekly Sales Trend (Sun-Sat)");
             revenueChart.Palette = ChartColorPalette.SeaGreen;
 
-            Series revenueSeries = new Series("Revenue")
+            Series series = new Series("Revenue")
             {
                 ChartType = SeriesChartType.Column,
                 XValueType = ChartValueType.String
             };
 
-            // Dummy data for Revenue
-            revenueSeries.Points.AddXY("Jan", 12000);
-            revenueSeries.Points.AddXY("Feb", 14500);
-            revenueSeries.Points.AddXY("Mar", 13200);
-            revenueSeries.Points.AddXY("Apr", 16000);
-            revenueSeries.Points.AddXY("May", 21000);
-            revenueSeries.Points.AddXY("Jun", 24000);
+            var data = _billingManager.GetWeeklySalesTrend();
+            string[] days = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
 
-            revenueChart.Series.Add(revenueSeries);
+            for (int i = 0; i < 7; i++)
+            {
+                series.Points.AddXY(days[i], data[i]);
+            }
+
+            revenueChart.Series.Add(series);
             revenueChart.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
             revenueChart.ChartAreas[0].AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
+        }
 
-
-            // Status Chart config
+        private void LoadCategoryUsageChart()
+        {
             statusChart.Series.Clear();
             statusChart.Titles.Clear();
-            statusChart.Titles.Add("Fleet Status");
+            statusChart.Titles.Add("Vehicle Usage (This Month)");
             statusChart.Palette = ChartColorPalette.BrightPastel;
 
-            Series statusSeries = new Series("Status")
+            Series series = new Series("Usage")
             {
                 ChartType = SeriesChartType.Doughnut,
                 IsValueShownAsLabel = true
             };
 
-            // Dummy data for Status
-            statusSeries.Points.AddXY("Available", 45);
-            statusSeries.Points.AddXY("Rented", 30);
-            statusSeries.Points.AddXY("Maintenance", 5);
-            statusSeries.Points.AddXY("Reserved", 10);
+            var data = _billingManager.GetCategoryUsageCurrentMonth();
+            foreach (var item in data)
+            {
+                series.Points.AddXY(item.Key, item.Value);
+            }
 
-            statusChart.Series.Add(statusSeries);
+            statusChart.Series.Add(series);
+        }
+
+        private void RefreshReportData()
+        {
+            DateTime start = rangeFromPicker.Value;
+            DateTime end = rangeToPicker.Value;
+
+            var data = _billingManager.GetReportData(start, end);
+            reportsGrid.DataSource = null;
+            reportsGrid.DataSource = data;
         }
 
         private void InitializeDragAndDrop()
@@ -120,7 +132,26 @@ namespace RentalApp.UI.Sections
                 MessageBoxIcon.Information);
         }
 
-        private void statusChart_Click(object sender, EventArgs e)
+        private void statusChart_Click(object sender, EventArgs e) { }
+        private void revenueChart_Click(object sender, EventArgs e) { }
+        private void metricComboBox_SelectedIndexChanged(object sender, EventArgs e) { }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rangeToPicker_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshReportData();
+        }
+
+        private void rangeFromPicker_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshReportData();
+        }
+
+        private void reportsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

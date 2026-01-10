@@ -37,7 +37,7 @@ namespace RentalApp.UI.Sections
             this.headerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
             this.headerLabel.Location = new System.Drawing.Point(0, 10);
             this.headerLabel.Name = "headerLabel";
-            this.headerLabel.Size = new System.Drawing.Size(404, 41);
+            this.headerLabel.Size = new System.Drawing.Size(321, 32);
             this.headerLabel.TabIndex = 0;
             this.headerLabel.Text = "Dashboard - Welcome, Nino";
             // 
@@ -50,6 +50,18 @@ namespace RentalApp.UI.Sections
             this.cardsPanel.Size = new System.Drawing.Size(1426, 200);
             this.cardsPanel.TabIndex = 1;
             this.cardsPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.cardsPanel_Paint);
+            // 
+            // recentActivityPanel
+            // 
+            this.recentActivityPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.recentActivityPanel.AutoScroll = true;
+            this.recentActivityPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.recentActivityPanel.Location = new System.Drawing.Point(0, 316);
+            this.recentActivityPanel.Name = "recentActivityPanel";
+            this.recentActivityPanel.Size = new System.Drawing.Size(920, 474);
+            this.recentActivityPanel.TabIndex = 3;
+            this.recentActivityPanel.WrapContents = false;
             // 
             // sectionHeaderTable
             // 
@@ -74,7 +86,7 @@ namespace RentalApp.UI.Sections
             this.lblRecent.ForeColor = System.Drawing.Color.DimGray;
             this.lblRecent.Location = new System.Drawing.Point(3, 0);
             this.lblRecent.Name = "lblRecent";
-            this.lblRecent.Size = new System.Drawing.Size(149, 28);
+            this.lblRecent.Size = new System.Drawing.Size(120, 21);
             this.lblRecent.TabIndex = 0;
             this.lblRecent.Text = "Recent Activity";
             // 
@@ -85,21 +97,9 @@ namespace RentalApp.UI.Sections
             this.lblQuick.ForeColor = System.Drawing.Color.DimGray;
             this.lblQuick.Location = new System.Drawing.Point(929, 0);
             this.lblQuick.Name = "lblQuick";
-            this.lblQuick.Size = new System.Drawing.Size(137, 28);
+            this.lblQuick.Size = new System.Drawing.Size(110, 21);
             this.lblQuick.TabIndex = 1;
             this.lblQuick.Text = "Quick Actions";
-            // 
-            // recentActivityPanel
-            // 
-            this.recentActivityPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.recentActivityPanel.AutoScroll = true;
-            this.recentActivityPanel.Location = new System.Drawing.Point(0, 316);
-            this.recentActivityPanel.Name = "recentActivityPanel";
-            this.recentActivityPanel.Size = new System.Drawing.Size(920, 480);
-            this.recentActivityPanel.TabIndex = 3;
-            this.recentActivityPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.recentActivityPanel.WrapContents = false;
             // 
             // quickActionsPanel
             // 
@@ -108,7 +108,7 @@ namespace RentalApp.UI.Sections
             | System.Windows.Forms.AnchorStyles.Right)));
             this.quickActionsPanel.Location = new System.Drawing.Point(926, 316);
             this.quickActionsPanel.Name = "quickActionsPanel";
-            this.quickActionsPanel.Size = new System.Drawing.Size(500, 480);
+            this.quickActionsPanel.Size = new System.Drawing.Size(500, 474);
             this.quickActionsPanel.TabIndex = 4;
             // 
             // DashboardView
@@ -120,7 +120,7 @@ namespace RentalApp.UI.Sections
             this.Controls.Add(this.headerLabel);
             this.Controls.Add(this.cardsPanel);
             this.Name = "DashboardView";
-            this.Size = new System.Drawing.Size(1446, 800);
+            this.Size = new System.Drawing.Size(1446, 794);
             this.sectionHeaderTable.ResumeLayout(false);
             this.sectionHeaderTable.PerformLayout();
             this.ResumeLayout(false);

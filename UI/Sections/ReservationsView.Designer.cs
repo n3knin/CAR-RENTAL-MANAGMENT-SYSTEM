@@ -91,7 +91,7 @@ namespace RentalApp.UI.Sections
             this.newReservationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.newReservationButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.newReservationButton.ForeColor = System.Drawing.Color.White;
-            this.newReservationButton.Location = new System.Drawing.Point(432, 39);
+            this.newReservationButton.Location = new System.Drawing.Point(416, 39);
             this.newReservationButton.Name = "newReservationButton";
             this.newReservationButton.Size = new System.Drawing.Size(94, 24);
             this.newReservationButton.TabIndex = 6;
@@ -107,12 +107,13 @@ namespace RentalApp.UI.Sections
             this.cancelbt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelbt.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cancelbt.ForeColor = System.Drawing.Color.DimGray;
-            this.cancelbt.Location = new System.Drawing.Point(532, 39);
+            this.cancelbt.Location = new System.Drawing.Point(516, 39);
             this.cancelbt.Name = "cancelbt";
-            this.cancelbt.Size = new System.Drawing.Size(111, 24);
+            this.cancelbt.Size = new System.Drawing.Size(127, 24);
             this.cancelbt.TabIndex = 7;
             this.cancelbt.Text = "Cancel Reservation";
             this.cancelbt.UseVisualStyleBackColor = false;
+            this.cancelbt.Click += new System.EventHandler(this.cancelbt_Click);
             // 
             // dateRangeLabel
             // 

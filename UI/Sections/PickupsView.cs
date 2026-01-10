@@ -19,7 +19,12 @@ namespace RentalApp.UI.Sections
             pickupsGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             
             _rentalManager = new RentalManager();
-            LoadActiveRentals();
+            
+            // Hook up date range filters
+            dtpFROM.ValueChanged += (s, e) => LoadRentalData();
+            dtpTO.ValueChanged += (s, e) => LoadRentalData();
+
+            LoadRentalData();
             InitializeDragAndDrop();
         }
 
@@ -66,7 +71,7 @@ namespace RentalApp.UI.Sections
             {
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    LoadActiveRentals(); 
+                    LoadRentalData(); 
                 }
             }
         }
@@ -76,13 +81,20 @@ namespace RentalApp.UI.Sections
 
         }
 
-        private void LoadActiveRentals()
+        private void LoadRentalData()   
         {
             try
             {
                 DateTime start = dtpFROM.Value;
                 DateTime end = dtpTO.Value;
-                // Fetch active rentals from DB
+
+                if (start.Date > end.Date)
+                {
+                    MessageBox.Show("Start date cannot be after end date.", "Invalid Date Range", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Fetch rentals from DB for the range
                 var rentalList = _rentalManager.GetByDateRange(start, end);
 
                 // Bind to Grid using BindingSource
@@ -90,6 +102,7 @@ namespace RentalApp.UI.Sections
                 bindingSource.DataSource = rentalList;
 
                 pickupsGrid.AutoGenerateColumns = true;
+                pickupsGrid.DataSource = null;
                 pickupsGrid.DataSource = bindingSource;
                 pickupsGrid.ReadOnly = true;
 
@@ -139,7 +152,7 @@ namespace RentalApp.UI.Sections
             {
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    LoadActiveRentals(); 
+                    LoadRentalData(); 
                 }
             }
         }

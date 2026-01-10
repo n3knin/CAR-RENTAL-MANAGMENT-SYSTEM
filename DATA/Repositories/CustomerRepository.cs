@@ -135,9 +135,17 @@ namespace RentalApp.Data.Repositories
 
             string sql = @"
                 SELECT * FROM Customers c
-                WHERE c.IsBlacklisted = 0
-                AND c.ID NOT IN (SELECT CustomerID FROM Rentals WHERE Status = 'Active')
-                AND c.ID NOT IN (SELECT CustomerID FROM Reservations WHERE Status IN ('Pending', 'Confirmed'))
+                WHERE (c.IsBlacklisted = 0 OR c.IsBlacklisted IS NULL)
+                AND NOT EXISTS (
+                    SELECT 1 FROM Rentals r 
+                    WHERE r.CustomerID = c.ID 
+                    AND r.Status IN ('Active', 'Overdue')
+                )
+                AND NOT EXISTS (
+                    SELECT 1 FROM Reservations res 
+                    WHERE res.CustomerID = c.ID 
+                    AND res.Status IN ('Pending', 'Confirmed')
+                )
                 ORDER BY FirstName, LastName";
 
             using (var conn = DatabaseHelper.GetConnection())

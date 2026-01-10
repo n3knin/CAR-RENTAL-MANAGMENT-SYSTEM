@@ -159,6 +159,12 @@
     <Compile Include="UI\Popups\AddVehicleForm.Designer.cs">
       <DependentUpon>AddVehicleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Popups\CancelResevation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Popups\CancelResevation.Designer.cs">
+      <DependentUpon>CancelResevation.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Popups\EditVehicle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -299,6 +305,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Popups\AddVehicleForm.resx">
       <DependentUpon>AddVehicleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Popups\CancelResevation.resx">
+      <DependentUpon>CancelResevation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Popups\EditVehicle.resx">
       <DependentUpon>EditVehicle.cs</DependentUpon>

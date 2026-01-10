@@ -110,5 +110,9 @@ namespace RentalApp.Models.Services
         {
             return _vehicleRepository.CountRented();
         }
+        public void RetireVehicle(int id)
+        {
+            _vehicleRepository.RetireVehicle(id);
+        }
     }
 }

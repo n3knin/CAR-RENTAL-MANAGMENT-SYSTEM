@@ -126,7 +126,7 @@
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(15, 191);
+            this.materialLabel4.Location = new System.Drawing.Point(10, 191);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(78, 19);
@@ -139,7 +139,7 @@
             this.materialLabel5.Depth = 0;
             this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(12, 152);
+            this.materialLabel5.Location = new System.Drawing.Point(12, 153);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Size = new System.Drawing.Size(151, 19);
@@ -148,7 +148,7 @@
             // 
             // pickupdt
             // 
-            this.pickupdt.Location = new System.Drawing.Point(132, 230);
+            this.pickupdt.Location = new System.Drawing.Point(128, 230);
             this.pickupdt.Name = "pickupdt";
             this.pickupdt.Size = new System.Drawing.Size(96, 20);
             this.pickupdt.TabIndex = 8;
@@ -160,7 +160,7 @@
             this.materialLabel6.Depth = 0;
             this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel6.Location = new System.Drawing.Point(16, 230);
+            this.materialLabel6.Location = new System.Drawing.Point(12, 230);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
             this.materialLabel6.Size = new System.Drawing.Size(110, 19);
@@ -195,7 +195,7 @@
             this.vehicletxt.Depth = 0;
             this.vehicletxt.Font = new System.Drawing.Font("Roboto", 11F);
             this.vehicletxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.vehicletxt.Location = new System.Drawing.Point(88, 191);
+            this.vehicletxt.Location = new System.Drawing.Point(92, 191);
             this.vehicletxt.MouseState = MaterialSkin.MouseState.HOVER;
             this.vehicletxt.Name = "vehicletxt";
             this.vehicletxt.Size = new System.Drawing.Size(152, 19);
@@ -239,13 +239,14 @@
             this.materialLabel8.Location = new System.Drawing.Point(12, 259);
             this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel8.Name = "materialLabel8";
-            this.materialLabel8.Size = new System.Drawing.Size(130, 19);
+            this.materialLabel8.Size = new System.Drawing.Size(129, 19);
             this.materialLabel8.TabIndex = 16;
             this.materialLabel8.Text = "EXPECT RETURN:";
             // 
             // expectreturndt
             // 
-            this.expectreturndt.Location = new System.Drawing.Point(148, 259);
+            this.expectreturndt.Enabled = false;
+            this.expectreturndt.Location = new System.Drawing.Point(147, 259);
             this.expectreturndt.Name = "expectreturndt";
             this.expectreturndt.Size = new System.Drawing.Size(96, 20);
             this.expectreturndt.TabIndex = 17;

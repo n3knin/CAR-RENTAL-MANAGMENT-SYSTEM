@@ -21,7 +21,7 @@ namespace RentalApp.Models.Core
         public string CustomerName { get; set; }
         public string VehicleInfo { get; set; }
         public string RentalAgentName { get; set; }
-
+    
         // Navigation property
         public Rental Rental { get; set; }
 

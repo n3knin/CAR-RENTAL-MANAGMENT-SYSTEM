@@ -108,6 +108,9 @@ namespace RentalApp.Models.Services
         {
             return _reservationRepository.GetActiveReservationCount(customerId) > 0;
         }
-
+        public void DeleteReservation(int id)
+        {
+            _reservationRepository.Delete(id);
+        }
     }
 }

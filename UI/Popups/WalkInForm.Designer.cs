@@ -218,6 +218,7 @@
             this.cancelbt.TabIndex = 16;
             this.cancelbt.Text = "CANCEL";
             this.cancelbt.UseVisualStyleBackColor = true;
+            this.cancelbt.Click += new System.EventHandler(this.cancelbt_Click_1);
             // 
             // WalkInForm
             // 

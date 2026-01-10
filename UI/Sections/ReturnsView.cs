@@ -31,6 +31,7 @@ namespace RentalApp.UI.Sections
                 var bindingSource = new BindingSource();
                 bindingSource.DataSource = rentals;
 
+                returnsGrid.DataSource = null;
                 returnsGrid.DataSource = bindingSource;
                 returnsGrid.ReadOnly = true;
 

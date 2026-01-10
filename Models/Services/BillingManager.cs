@@ -68,6 +68,25 @@ namespace RentalApp.Models.Services
         {
             return _invoiceRepository.GetAllPaid();
         }
-        
+
+        public Dictionary<int, decimal> GetWeeklySalesTrend()
+        {
+            return _invoiceRepository.GetWeeklyRevenue();
+        }
+
+        public List<ReportRow> GetReportData(DateTime start, DateTime end)
+        {
+            return _invoiceRepository.GetReportData(start, end);
+        }
+
+        public Dictionary<string, decimal> GetMonthlyRevenue(int count = 6)
+        {
+            return _invoiceRepository.GetMonthlyRevenue(count);
+        }
+
+        public Dictionary<string, int> GetCategoryUsageCurrentMonth()
+        {
+            return _invoiceRepository.GetCategoryUsageCurrentMonth();
+        }
     }
 }

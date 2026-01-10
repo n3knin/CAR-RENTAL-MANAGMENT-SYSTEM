@@ -211,6 +211,137 @@ namespace RentalApp.Data.Repositories
                 }
             }
         }
+        public Dictionary<int, decimal> GetWeeklyRevenue()
+        {   
+            DateTime today = DateTime.Today;
+            int diff = (int)today.DayOfWeek; 
+            DateTime startOfWeek = today.AddDays(-diff).Date; 
+            DateTime endOfWeek = startOfWeek.AddDays(6).AddHours(23).AddMinutes(59); 
+            var results = new Dictionary<int, decimal>();
+            for (int i = 0; i < 7; i++) results[i] = 0;
+            string sql = @"SELECT DAYOFWEEK(IssueDate) - 1 AS DayIndex, SUM(TotalAmount) AS Total 
+                        FROM Invoices 
+                        WHERE IssueDate >= @start AND IssueDate <= @end AND IsPaid = TRUE
+                        GROUP BY DayIndex";
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@start", startOfWeek);
+                    cmd.Parameters.AddWithValue("@end", endOfWeek);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int day = reader.GetInt32("DayIndex");
+                            decimal total = reader.GetDecimal("Total");
+                            results[day] = total;
+                        }
+                    }
+                }
+            }
+            return results;
+        }
+
+        public List<ReportRow> GetReportData(DateTime start, DateTime end)
+        {
+            List<ReportRow> reports = new List<ReportRow>();
+            string sql = @"SELECT i.IssueDate, 
+                                  CONCAT(v.Make, ' ', v.Model) as VehicleInfo, 
+                                  CONCAT(c.FirstName, ' ', c.LastName) as CustomerName,
+                                  DATEDIFF(IFNULL(r.ActualReturnDate, r.ExpectedReturnDate), r.ActualPickupDate) as Duration,
+                                  i.TotalAmount
+                           FROM Invoices i
+                           JOIN Rentals r ON i.RentalID = r.ID
+                           JOIN Vehicles v ON r.VehicleID = v.ID
+                           JOIN Customers c ON r.CustomerID = c.ID
+                           WHERE i.IssueDate >= @start AND i.IssueDate <= @end
+                           ORDER BY i.IssueDate DESC";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@start", start.Date);
+                    cmd.Parameters.AddWithValue("@end", end.Date.AddDays(1).AddSeconds(-1));
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            reports.Add(new ReportRow
+                            {
+                                IssueDate = reader.GetDateTime("IssueDate"),
+                                VehicleInfo = reader.GetString("VehicleInfo"),
+                                CustomerName = reader.GetString("CustomerName"),
+                                DurationDays = reader.GetInt32("Duration"),
+                                TotalAmount = reader.GetDecimal("TotalAmount")
+                            });
+                        }
+                    }
+                }
+            }
+            return reports;
+        }
+
+        public Dictionary<string, decimal> GetMonthlyRevenue(int count = 6)
+        {
+            var results = new Dictionary<string, decimal>();
+            string sql = @"SELECT DATE_FORMAT(IssueDate, '%b %Y') as Month, SUM(TotalAmount) as Total 
+                           FROM Invoices 
+                           WHERE IsPaid = TRUE 
+                           GROUP BY DATE_FORMAT(IssueDate, '%Y-%m')
+                           ORDER BY MAX(IssueDate) DESC
+                           LIMIT @limit";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@limit", count);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            results.Add(reader.GetString("Month"), reader.GetDecimal("Total"));
+                        }
+                    }
+                }
+            }
+            return results;
+        }
+
+        public Dictionary<string, int> GetCategoryUsageCurrentMonth()
+        {
+            var results = new Dictionary<string, int>();
+            string sql = @"SELECT vc.CategoryName, COUNT(*) as UsageCount
+                           FROM Invoices i
+                           JOIN Rentals r ON i.RentalID = r.ID
+                           JOIN Vehicles v ON r.VehicleID = v.ID
+                           JOIN VehicleCategories vc ON v.CategoryID = vc.ID
+                           WHERE MONTH(i.IssueDate) = MONTH(CURRENT_DATE())
+                             AND YEAR(i.IssueDate) = YEAR(CURRENT_DATE())
+                           GROUP BY vc.CategoryName";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            results.Add(reader.GetString("CategoryName"), reader.GetInt32("UsageCount"));
+                        }
+                    }
+                }
+            }
+            return results;
+        }
 
         // HELPER
         private Invoice MapReaderToInvoice(MySqlDataReader reader)
@@ -247,5 +378,14 @@ namespace RentalApp.Data.Repositories
             return invoice;
         }
         
+    }
+
+    public class ReportRow
+    {
+        public DateTime IssueDate { get; set; }
+        public string VehicleInfo { get; set; }
+        public string CustomerName { get; set; }
+        public int DurationDays { get; set; }
+        public decimal TotalAmount { get; set; }
     }
 }

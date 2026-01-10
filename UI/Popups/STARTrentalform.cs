@@ -30,7 +30,18 @@
                 _reservationmanager = new ReservationManager();
                 loadcustemerdata(); 
                 ConfigureDatePickers();
+
             }
+            private void ConfigureDatePickers()
+        {
+            pickupdt.Format = DateTimePickerFormat.Custom;
+            pickupdt.CustomFormat = "MM/dd/yyyy hh:mm tt";
+            pickupdt.Value = DateTime.Now;
+
+            expectreturndt.Format = DateTimePickerFormat.Custom;
+            expectreturndt.CustomFormat = "MM/dd/yyyy hh:mm tt";
+            expectreturndt.Value = DateTime.Now.AddDays(1);
+        }
 
             private void strtbtn_Click(object sender, EventArgs e)
             {
@@ -115,17 +126,7 @@
                 }
             }
 
-            private void ConfigureDatePickers()
-            {
-                
-                expectreturndt.Enabled = false;
-                expectreturndt.Format = DateTimePickerFormat.Custom;
-                expectreturndt.CustomFormat = "MM/dd/yyyy hh:mm tt";
-
-                
-                pickupdt.Format = DateTimePickerFormat.Custom;
-                pickupdt.CustomFormat = "MM/dd/yyyy hh:mm tt";
-            }
+           
 
             private void pickupdt_ValueChanged(object sender, EventArgs e)
             {

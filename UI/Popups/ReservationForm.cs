@@ -78,7 +78,6 @@ namespace RentalApp.UI.Popups
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // 1. Validate Selection
             if (cmbCustomers.SelectedItem == null || cmbVehicles.SelectedItem == null)
             {
                 MessageBox.Show("Please select both a Customer and a Vehicle.");
@@ -91,12 +90,9 @@ namespace RentalApp.UI.Popups
                 return;
             }
 
-            // 2. Extract Data
-            // 2. Create Reservation Object
             var selectedCustomer = (Customer)cmbCustomers.SelectedItem;
             var selectedVehicle = (Vehicle)cmbVehicles.SelectedItem;
 
-            // 1.5. Check if Customer already has an active status
             if (_rentalManager.HasActiveRental(selectedCustomer.Id))
             {
                 MessageBox.Show("This customer already has an active rental. They must return the current vehicle before renting another one.", 
@@ -111,7 +107,6 @@ namespace RentalApp.UI.Popups
                 return;
             }
             
-            // Check if vehicle is available
             if (selectedVehicle.Status != VehicleStatus.Available)
             {
                 MessageBox.Show($"This vehicle is currently {selectedVehicle.Status}. Please select an available vehicle.", 

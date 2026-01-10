@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using RentalApp.Models.Services;
 using RentalApp.Models.Core;
+using RentalApp.UI.Popups;
 namespace RentalApp.UI.Sections
 {
     public partial class ReservationsView : UserControl
@@ -70,7 +71,7 @@ namespace RentalApp.UI.Sections
                 DateTime fromDate = dtpFROM.Value;
                 DateTime toDate = dtpTO.Value;
 
-                if (fromDate > toDate)
+                if (fromDate.Date > toDate.Date)
                 {
                     MessageBox.Show("Error: From Date cannot be greater than To Date.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return; 
@@ -82,6 +83,7 @@ namespace RentalApp.UI.Sections
                 bindingSource.DataSource = reservations;
 
                 reservationsGrid.AutoGenerateColumns = true;
+                reservationsGrid.DataSource = null;
                 reservationsGrid.DataSource = bindingSource;
 
                 if (reservationsGrid.Columns["Id"] != null) reservationsGrid.Columns["Id"].Visible = false;
@@ -127,6 +129,29 @@ namespace RentalApp.UI.Sections
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     LoadReservations(); // Refresh grid after adding
+                }
+            }
+        }
+
+        private void cancelbt_Click(object sender, EventArgs e)
+        {
+            if(reservationsGrid.CurrentCell != null && reservationsGrid.CurrentCell.RowIndex >= 0)
+            {
+                var reservation = (Reservation)reservationsGrid.CurrentRow.DataBoundItem;
+
+                if (reservation.Status != ReservationStatus.Pending)
+                {
+                    MessageBox.Show($"This reservation is {reservation.Status} and cannot be cancelled.",
+                        "Action Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                using (var form = new Popups.CancelResevation(reservation))
+                {
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        LoadReservations();
+                    }
                 }
             }
         }
