@@ -7,10 +7,11 @@ namespace RentalApp.Models.Core
         // Properties matching MaintenanceRecords table
         public int Id { get; set; }
         public int VehicleId { get; set; }
-        public string Description { get; set; }
+        public MaintenanceType Type { get; set; }
         public decimal Cost { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
+        public bool IsCompleted { get; set; }
 
         // Navigation property
         public Vehicles.Vehicle Vehicle { get; set; }
@@ -18,23 +19,31 @@ namespace RentalApp.Models.Core
         // Constructor
         public MaintenanceRecord() { }
 
-        public MaintenanceRecord(int vehicleId, string description, decimal cost)
+        public MaintenanceRecord(int vehicleId, MaintenanceType type, decimal cost)
         {
             VehicleId = vehicleId;
-            Description = description;
+            Type = type;
             Cost = cost;
             StartDate = DateTime.Now;
         }
 
         // Methods
-        public bool IsCompleted()
-        {
-            return EndDate.HasValue;
-        }
-
         public void Complete()
         {
             EndDate = DateTime.Now;
+            IsCompleted = true;
+        }
+        public enum MaintenanceType { 
+            OilChange,
+            TireRotation,
+            BrakeService,
+            AirFilterReplacement,
+            SparkPlugsReplacement,
+            EngineService,
+            ElectricalService,
+            CoolingSystemService,
+            ExhaustService,
+            FuelSystemService
         }
 
         public TimeSpan? GetDuration()

@@ -35,7 +35,8 @@ namespace RentalApp.Models.Services
                  throw new ArgumentException("End date must be after start date.");
              }
 
-             _reservationRepository.Add(reservation);
+             int newId = _reservationRepository.Add(reservation);
+             reservation.Id = newId;
         }
 
         public void CancelReservation(int id)

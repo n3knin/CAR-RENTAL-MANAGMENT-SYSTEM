@@ -378,6 +378,24 @@ namespace RentalApp.Data.Repositories
             return invoice;
         }
         
+        public decimal GetRevenuePerVehicle(DateTime start, DateTime end)
+        {
+            string sql = @"SELECT IFNULL(SUM(TotalAmount), 0) / NULLIF((SELECT COUNT(*) FROM Vehicles WHERE Status != 'Retired'), 0) 
+                           FROM Invoices 
+                           WHERE IsPaid = TRUE AND IssueDate >= @start AND IssueDate <= @end";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@start", start);
+                    cmd.Parameters.AddWithValue("@end", end);
+                    var result = cmd.ExecuteScalar();
+                    return result != null && result != DBNull.Value ? Convert.ToDecimal(result) : 0;
+                }
+            }
+        }
     }
 
     public class ReportRow

@@ -12,9 +12,9 @@ namespace RentalApp.Data.Repositories
         {
             // Simple SQL to insert data
             string sql = @"INSERT INTO MaintenanceRecords 
-                           (VehicleID, Description, Cost, StartDate, EndDate) 
+                           (VehicleID, MaintenanceType, Cost, StartDate, EndDate, IsCompleted) 
                            VALUES 
-                           (@vehId, @desc, @cost, @start, @end)";
+                           (@vehId, @type, @cost, @start, @end, @completed)";
 
             using (var conn = DatabaseHelper.GetConnection())
             {
@@ -22,11 +22,12 @@ namespace RentalApp.Data.Repositories
                 using (var cmd = new MySqlCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@vehId", record.VehicleId);
-                    cmd.Parameters.AddWithValue("@desc", record.Description);
+                    cmd.Parameters.AddWithValue("@type", record.Type.ToString());
                     cmd.Parameters.AddWithValue("@cost", record.Cost);
                     cmd.Parameters.AddWithValue("@start", record.StartDate);
                     // If EndDate is null (ongoing), save as DBNull
                     cmd.Parameters.AddWithValue("@end", record.EndDate.HasValue ? (object)record.EndDate.Value : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@completed", record.IsCompleted);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -54,10 +55,11 @@ namespace RentalApp.Data.Repositories
                             {
                                 Id = reader.GetInt32("ID"),
                                 VehicleId = reader.GetInt32("VehicleID"),
-                                Description = reader.GetString("Description"),
+                                Type = (MaintenanceRecord.MaintenanceType)Enum.Parse(typeof(MaintenanceRecord.MaintenanceType), reader.GetString("MaintenanceType")),
                                 Cost = reader.GetDecimal("Cost"),
                                 StartDate = reader.GetDateTime("StartDate"),
-                                EndDate = reader.IsDBNull(reader.GetOrdinal("EndDate")) ? (DateTime?)null : reader.GetDateTime("EndDate")
+                                EndDate = reader.IsDBNull(reader.GetOrdinal("EndDate")) ? (DateTime?)null : reader.GetDateTime("EndDate"),
+                                IsCompleted = reader.GetBoolean("IsCompleted")
                             };
                             list.Add(record);
                         }
@@ -70,7 +72,7 @@ namespace RentalApp.Data.Repositories
         // 3. Mark a maintenance job as finished
         public void CompleteMaintenance(int id, DateTime endDate)
         {
-            string sql = "UPDATE MaintenanceRecords SET EndDate = @end WHERE ID = @id";
+            string sql = "UPDATE MaintenanceRecords SET EndDate = @end, IsCompleted = 1 WHERE ID = @id";
 
             using (var conn = DatabaseHelper.GetConnection())
             {
@@ -80,6 +82,20 @@ namespace RentalApp.Data.Repositories
                     cmd.Parameters.AddWithValue("@id", id);
                     cmd.Parameters.AddWithValue("@end", endDate);
                     cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        public int CountMaintenanceRecords(int vehicleId)
+        {
+            string sql = "SELECT COUNT(*) FROM MaintenanceRecords WHERE VehicleID = @vehId";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@vehId", vehicleId);
+                    return Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
         }

@@ -21,6 +21,7 @@
             private ReservationManager _reservationmanager;
             private RentalManager _rentalmanager;
             private VehicleManager _vehiclemanager;
+            private DepositManager _depositManager; 
             public STARTrentalform(Reservation selectedReservation)
             {
                 InitializeComponent();
@@ -28,6 +29,7 @@
                 _rentalmanager = new RentalManager();
                 _vehiclemanager = new VehicleManager();
                 _reservationmanager = new ReservationManager();
+                _depositManager = new DepositManager();
                 loadcustemerdata(); 
                 ConfigureDatePickers();
 
@@ -74,6 +76,7 @@
                     _reservationmanager.UpdateReservationStatus(reservation.Id, ReservationStatus.Confirmed);
                     _rentalmanager.StartRental(startrental);
                     _vehiclemanager.UpdateVehicleStatus(reservation.VehicleId, VehicleStatus.Rented);
+                    _depositManager.ProcessDeposit(startrental.Id, decimal.Parse(txtdeposit.Text));
                     MessageBox.Show("Rental started successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
@@ -144,6 +147,11 @@
         }
 
         private void expectreturndt_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grpReservationInfo_Enter(object sender, EventArgs e)
         {
 
         }

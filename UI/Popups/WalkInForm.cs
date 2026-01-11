@@ -18,6 +18,7 @@ namespace RentalApp.UI.Popups
         RentalManager _rentalManager;
         VehicleManager _vehicleManager;
         ReservationManager _reservationManager;
+        DepositManager _depositManager;
         public WalkInForm()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace RentalApp.UI.Popups
             _rentalManager = new RentalManager();
             _vehicleManager = new VehicleManager();
             _reservationManager = new ReservationManager();
-
+            _depositManager = new DepositManager();
             ConfigureDatePickers();
             loadcustomerdata();
         }
@@ -102,7 +103,9 @@ namespace RentalApp.UI.Popups
             {
                 _rentalManager.StartRental(startrental);
                 _vehicleManager.UpdateVehicleStatus((int)cmbvhcl.SelectedValue, VehicleStatus.Rented);
+                _depositManager.ProcessDeposit(startrental.Id, decimal.Parse(txtdeposit.Text));
                 MessageBox.Show("Rental started successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

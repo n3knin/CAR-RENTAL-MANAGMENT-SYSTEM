@@ -111,11 +111,14 @@
     <Compile Include="DATA\Repositories\MaintenanceRepository.cs" />
     <Compile Include="DATA\Repositories\InvoiceRepository.cs" />
     <Compile Include="DATA\Repositories\PaymentRepository.cs" />
+    <Compile Include="DATA\Repositories\DamageReportRepository.cs" />
+    <Compile Include="DATA\Repositories\DepositRepository.cs" />
     <Compile Include="Models\Core\Session.cs" />
     <!-- Services (if you have them) -->
     <Compile Include="Models\Services\BillingManager.cs" />
     <Compile Include="Models\Services\CategoryManager.cs" />
     <Compile Include="Models\Services\CustomerManager.cs" />
+    <Compile Include="Models\Services\DepositManager.cs" />
     <Compile Include="Models\Services\MaintenanceManager.cs" />
     <Compile Include="Models\Services\RateManager.cs" />
     <Compile Include="Models\Services\RentalManager.cs" />
@@ -123,8 +126,10 @@
     <Compile Include="Models\Services\ReservationManager.cs" />
     <Compile Include="Models\Services\VehicleInspectionManager.cs" />
     <Compile Include="Models\Services\VehicleManager.cs" />
+    <Compile Include="Models\Services\DamageReportManager.cs" />
     <!-- User Models -->
     <Compile Include="Models\Users\Admin.cs" />
+    <Compile Include="Models\Users\Manager.cs" />
     <Compile Include="Models\Users\RentalAgent.cs" />
     <Compile Include="Models\Users\User.cs" />
     <!-- Vehicle Models -->
@@ -146,6 +151,12 @@
     </Compile>
     <Compile Include="UI\MainDashboardForm.Designer.cs">
       <DependentUpon>MainDashboardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Popups\AddMaitenance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Popups\AddMaitenance.Designer.cs">
+      <DependentUpon>AddMaitenance.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Popups\AddnewCustomer.cs">
       <SubType>Form</SubType>
@@ -182,6 +193,12 @@
     </Compile>
     <Compile Include="UI\Popups\InvoiceForm.Designer.cs">
       <DependentUpon>InvoiceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Popups\MaintenaceHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Popups\MaintenaceHistory.Designer.cs">
+      <DependentUpon>MaintenaceHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Popups\PickupForm.cs">
       <SubType>Form</SubType>
@@ -300,6 +317,9 @@
     <EmbeddedResource Include="UI\MainDashboardForm.resx">
       <DependentUpon>MainDashboardForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Popups\AddMaitenance.resx">
+      <DependentUpon>AddMaitenance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Popups\AddnewCustomer.resx">
       <DependentUpon>AddnewCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -317,6 +337,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Popups\InvoiceForm.resx">
       <DependentUpon>InvoiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Popups\MaintenaceHistory.resx">
+      <DependentUpon>MaintenaceHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Popups\PickupForm.resx">
       <DependentUpon>PickupForm.cs</DependentUpon>

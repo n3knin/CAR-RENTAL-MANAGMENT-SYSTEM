@@ -213,6 +213,10 @@ namespace RentalApp.Data.Repositories
             {
                 user = new RentalAgent(id, firstname, lastname, username);
             }
+            else if (role == "Manager")
+            {
+                user = new Manager(id, firstname, lastname, username);
+            }
             else
             {
                 throw new Exception($"Unknown role: {role}");

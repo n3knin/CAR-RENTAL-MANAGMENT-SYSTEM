@@ -8,11 +8,18 @@ namespace RentalApp.UI.Sections
     public partial class ReportsView : UserControl
     {
         private Models.Services.BillingManager _billingManager;
+        private Models.Services.RentalManager _rentalManager;
+        private Models.Services.VehicleManager _vehicleManager;
+        private Models.Services.CustomerManager _customerManager;
 
         public ReportsView()
         {
             InitializeComponent();
             _billingManager = new Models.Services.BillingManager();
+            _rentalManager = new Models.Services.RentalManager();
+            _vehicleManager = new Models.Services.VehicleManager();
+            _customerManager = new Models.Services.CustomerManager();
+
             InitializeDragAndDrop();
             InitializeCharts();
             InitializeGrid();
@@ -90,9 +97,11 @@ namespace RentalApp.UI.Sections
             DateTime start = rangeFromPicker.Value;
             DateTime end = rangeToPicker.Value;
 
+            // 1. Update Grid
             var data = _billingManager.GetReportData(start, end);
             reportsGrid.DataSource = null;
             reportsGrid.DataSource = data;
+
         }
 
         private void InitializeDragAndDrop()

@@ -65,6 +65,28 @@ namespace RentalApp.DATA.Repositories
             return null;
         }
 
+        public VehicleInspection GetLatestByRentalId(int rentalId)
+        {
+            string sql = "SELECT * FROM vehicleinspections WHERE RentalID = @RentalId ORDER BY InspectionDate DESC LIMIT 1";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@RentalId", rentalId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return MapReaderToInspection(reader);
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
         // READ - Get inspections by rental ID
         public List<VehicleInspection> GetByRentalId(int rentalId)
         {

@@ -43,7 +43,8 @@ namespace RentalApp.Models.Services
                  throw new ArgumentException("Driver License Number is required.");
             }
 
-            _customerRepository.Add(customer);
+            int newId = _customerRepository.Add(customer);
+            customer.Id = newId;
         }
 
         public List<Customer> GetAllCustomers()
@@ -72,6 +73,10 @@ namespace RentalApp.Models.Services
         public int CountNewCustomers()
         {
             return _customerRepository.CountNewCustomers();
+        }
+        public double GetRetentionRate()
+        {
+            return _customerRepository.GetRetentionRate();
         }
     }
 }

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms.DataVisualization.Charting;
 using RentalApp.Models.Core;
-
 using RentalApp.Models.Services;
 
 namespace RentalApp.UI.Sections
@@ -33,6 +32,7 @@ namespace RentalApp.UI.Sections
 
         private void InitializeCards()
         {
+            cardsPanel.Controls.Clear();
             // Fetch real data
             int todayPickups = _rentalManager.CountTodayPickups();
             int todayReturns = _rentalManager.CountPendingReturns();
@@ -174,19 +174,71 @@ namespace RentalApp.UI.Sections
             flow.FlowDirection = FlowDirection.TopDown;
             flow.Padding = new Padding(10);
             
-            flow.Controls.Add(CreateQuickActionButton("New Rental Reservation", Color.LimeGreen));
-            flow.Controls.Add(CreateQuickActionButton("Register New Customer", Color.FromArgb(29, 161, 242)));
-            flow.Controls.Add(CreateQuickActionButton("Add Vehicle to Fleet", Color.FromArgb(21, 32, 43)));
-            flow.Controls.Add(CreateQuickActionButton("Process Return", Color.Orange));
+            var btnRes = CreateQuickActionButton("New Rental Reservation", Color.LimeGreen);
+            btnRes.Click += QuickAction_Click;
+            flow.Controls.Add(btnRes);
+
+            var btnCust = CreateQuickActionButton("Register New Customer", Color.FromArgb(29, 161, 242));
+            btnCust.Click += QuickAction_Click;
+            flow.Controls.Add(btnCust);
+
+            var btnVeh = CreateQuickActionButton("Add Vehicle to Fleet", Color.FromArgb(21, 32, 43));
+            btnVeh.Click += QuickAction_Click;
+            flow.Controls.Add(btnVeh);
+
+            var btnRet = CreateQuickActionButton("Process Return", Color.Orange);
+            btnRet.Click += QuickAction_Click;
+            flow.Controls.Add(btnRet);
 
             quickActionsPanel.Controls.Add(flow);
         }
+
+        private void QuickAction_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn == null) return;
+
+            switch (btn.Text)
+            {
+                case "New Rental Reservation":
+                    using (var form = new Popups.ReservationForm())
+                    {
+                        form.ShowDialog();
+                    }
+                    break;
+                case "Register New Customer":
+                    using (var form = new Popups.AddnewCustomer())
+                    {
+                        form.ShowDialog();
+                    }
+                    break;
+                case "Add Vehicle to Fleet":
+                    if(Session.CurrentUserRole == "Admin")
+                    {
+                        using (var form = new Popups.AddVehicleForm())
+                        {
+                            form.ShowDialog();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("You do not have permission to add vehicles to the fleet.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    break;
+                case "Process Return":
+                    MessageBox.Show("Please navigate to the 'Returns' section to select an active rental for processing.", 
+                                    "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+            }
+            
+            InitializeCards();
+        }      
 
         private Button CreateQuickActionButton(string text, Color color)
         {
             Button btn = new Button();
             btn.Text = text;
-            btn.Size = new Size(300, 45);
+            btn.Size = new Size(240, 45);
             btn.BackColor = color;
             btn.ForeColor = Color.White;
             btn.FlatStyle = FlatStyle.Flat;
@@ -200,43 +252,93 @@ namespace RentalApp.UI.Sections
         private void InitializeAnalytics()
         {
             analyticsPanel.Controls.Clear();
-            
-            Chart chart = new Chart();
-            chart.Dock = DockStyle.Fill;
-            chart.BackColor = Color.White;
-            
-            ChartArea area = new ChartArea();
-            area.AxisX.MajorGrid.LineColor = Color.LightGray;
-            area.AxisY.MajorGrid.LineColor = Color.LightGray;
-            area.AxisX.LabelStyle.Font = new Font("Segoe UI", 8F);
-            area.AxisY.LabelStyle.Font = new Font("Segoe UI", 8F);
-            chart.ChartAreas.Add(area);
 
-            Series series = new Series("Revenue")
+            TableLayoutPanel mainLayout = new TableLayoutPanel();
+            mainLayout.Dock = DockStyle.Fill;
+            mainLayout.ColumnCount = 2;
+            mainLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
+            mainLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
+            mainLayout.RowCount = 1;
+            mainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+
+            Chart revenueChart = new Chart();
+            revenueChart.Dock = DockStyle.Fill;
+            revenueChart.BackColor = Color.White;
+            
+            ChartArea revArea = new ChartArea("RevenueArea");
+            revArea.AxisX.MajorGrid.LineColor = Color.FromArgb(240, 240, 240);
+            revArea.AxisY.MajorGrid.LineColor = Color.FromArgb(240, 240, 240);
+            revArea.AxisX.LabelStyle.Font = new Font("Segoe UI", 8F);
+            revArea.AxisY.LabelStyle.Font = new Font("Segoe UI", 8F);
+            revenueChart.ChartAreas.Add(revArea);
+
+            Series revSeries = new Series("Revenue")
             {
                 ChartType = SeriesChartType.Column,
                 XValueType = ChartValueType.String,
                 Palette = ChartColorPalette.SeaGreen
             };
 
-            var data = _billingManager.GetWeeklySalesTrend();
-            string[] days = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
-            
-            for (int i = 0; i < 7; i++)
+            var revData = _billingManager.GetMonthlyRevenue(6);
+            foreach (var entry in revData)
             {
-                series.Points.AddXY(days[i], data.ContainsKey(i) ? data[i] : 0);
+                revSeries.Points.AddXY(entry.Key, entry.Value);
             }
 
-            chart.Series.Add(series);
-            
-            Title title = new Title("Weekly Revenue Trend");
-            title.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            chart.Titles.Add(title);
+            revenueChart.Series.Add(revSeries);
+            revenueChart.Titles.Add(new Title("Monthly Revenue Trend", Docking.Top, new Font("Segoe UI", 10F, FontStyle.Bold), Color.Black));
+            mainLayout.Controls.Add(revenueChart, 0, 0);
 
-            analyticsPanel.Controls.Add(chart);
+            Chart fleetChart = new Chart();
+            fleetChart.Dock = DockStyle.Fill;
+            fleetChart.BackColor = Color.White;
+
+            ChartArea fleetArea = new ChartArea("FleetArea");
+            fleetChart.ChartAreas.Add(fleetArea);
+
+            Series fleetSeries = new Series("Fleet")
+            {
+                ChartType = SeriesChartType.Doughnut,
+                XValueType = ChartValueType.String,
+            };
+            
+            // Set custom colors for a premium look
+            fleetSeries.Palette = ChartColorPalette.Pastel;
+            fleetSeries["PieLabelStyle"] = "Outside";
+            fleetSeries["DoughnutRadius"] = "50";
+
+            var fleetData = _vehicleManager.GetFleetDistribution();
+            foreach (var entry in fleetData)
+            {
+                 // Only add if there are vehicles in that category to keep it clean
+                 if(entry.Value > 0)
+                    fleetSeries.Points.AddXY(entry.Key, entry.Value);
+            }
+
+            fleetChart.Series.Add(fleetSeries);
+            fleetChart.Titles.Add(new Title("Available Fleet Distribution", Docking.Top, new Font("Segoe UI", 10F, FontStyle.Bold), Color.Black));
+            
+            Legend legend = new Legend("FleetLegend");
+            legend.Docking = Docking.Bottom;
+            legend.Font = new Font("Segoe UI", 7F);
+            fleetChart.Legends.Add(legend);
+
+            mainLayout.Controls.Add(fleetChart, 1, 0);
+
+            analyticsPanel.Controls.Add(mainLayout);
         }
 
         private void cardsPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void analyticsPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void quickActionsPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }

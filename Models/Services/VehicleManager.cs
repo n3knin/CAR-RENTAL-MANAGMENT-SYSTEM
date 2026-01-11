@@ -114,5 +114,18 @@ namespace RentalApp.Models.Services
         {
             _vehicleRepository.RetireVehicle(id);
         }
+        public int CountAll()
+        {
+            return _vehicleRepository.CountAll();
+        }
+        public string GetVehicleStatus(int id)
+        {
+            return _vehicleRepository.GetVehicleStatus(id);
+        }
+
+        public Dictionary<string, int> GetFleetDistribution()
+        {
+            return _vehicleRepository.GetFleetDistribution();
+        }
     }
 }

@@ -5,6 +5,8 @@ using System.IO;
 using RentalApp.Models.Services; // Needed for VehicleManager
 using RentalApp.Models.Vehicles; // Needed for Vehicle list
 using System.Collections.Generic;
+using RentalApp.UI.Popups;
+using RentalApp.Models.Core;
 
 namespace RentalApp.UI.Sections
 {
@@ -143,6 +145,11 @@ namespace RentalApp.UI.Sections
 
         private void addButton_Click(object sender, EventArgs e)
         {
+            if(Session.CurrentUserRole != "Admin")
+            {
+                MessageBox.Show("You do not have permission to add a vehicle.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             using (var addForm = new Popups.AddVehicleForm())
             {
                 addForm.ShowDialog();
@@ -151,6 +158,11 @@ namespace RentalApp.UI.Sections
 
         private void editButton_Click(object sender, EventArgs e)
         {
+            if(Session.CurrentUserRole != "Admin")
+            {
+                MessageBox.Show("You do not have permission to edit a vehicle.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if(vehiclesGrid.CurrentRow != null && vehiclesGrid.CurrentRow.Index >= 0)
             {
                 var selectedVehicle = (Vehicle)vehiclesGrid.CurrentRow.DataBoundItem;
@@ -185,6 +197,11 @@ namespace RentalApp.UI.Sections
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
+            if(Session.CurrentUserRole != "Admin")
+            {
+                MessageBox.Show("You do not have permission to delete a vehicle.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if(vehiclesGrid.CurrentRow != null && vehiclesGrid.CurrentRow.Index >= 0)
             {
                 var selectedVehicle = (Vehicle)vehiclesGrid.CurrentRow.DataBoundItem;
@@ -197,6 +214,23 @@ namespace RentalApp.UI.Sections
             else
             {
                 MessageBox.Show("Please select a vehicle to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {   
+            if(Session.CurrentUserRole != "Admin")
+            {
+                MessageBox.Show("You do not have permission to add a vehicle.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (vehiclesGrid.CurrentRow != null && vehiclesGrid.CurrentRow.Index >= 0)
+            {
+                var selectedVehicle = (Vehicle)vehiclesGrid.CurrentRow.DataBoundItem;
+                using (var addMaintenanceForm = new Popups.MaintenaceHistory(selectedVehicle))
+                {
+                    addMaintenanceForm.ShowDialog();
+                }
             }
         }
     }

@@ -17,6 +17,8 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.grpRentalDetails = new System.Windows.Forms.GroupBox();
+            this.txtdeposit = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.expectreturndt = new System.Windows.Forms.DateTimePicker();
             this.materialLabel8 = new System.Windows.Forms.Label();
             this.pickupdt = new System.Windows.Forms.DateTimePicker();
@@ -48,12 +50,15 @@
             this.panel1.Controls.Add(this.strtbtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(500, 600);
+            this.panel1.Size = new System.Drawing.Size(375, 547);
             this.panel1.TabIndex = 0;
             // 
             // grpRentalDetails
             // 
+            this.grpRentalDetails.Controls.Add(this.txtdeposit);
+            this.grpRentalDetails.Controls.Add(this.label1);
             this.grpRentalDetails.Controls.Add(this.expectreturndt);
             this.grpRentalDetails.Controls.Add(this.materialLabel8);
             this.grpRentalDetails.Controls.Add(this.pickupdt);
@@ -61,20 +66,44 @@
             this.grpRentalDetails.Controls.Add(this.lblmileage);
             this.grpRentalDetails.Controls.Add(this.materialLabel5);
             this.grpRentalDetails.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.grpRentalDetails.Location = new System.Drawing.Point(25, 230);
+            this.grpRentalDetails.Location = new System.Drawing.Point(19, 187);
+            this.grpRentalDetails.Margin = new System.Windows.Forms.Padding(2);
             this.grpRentalDetails.Name = "grpRentalDetails";
-            this.grpRentalDetails.Size = new System.Drawing.Size(450, 250);
+            this.grpRentalDetails.Padding = new System.Windows.Forms.Padding(2);
+            this.grpRentalDetails.Size = new System.Drawing.Size(338, 256);
             this.grpRentalDetails.TabIndex = 17;
             this.grpRentalDetails.TabStop = false;
             this.grpRentalDetails.Text = "Rental Details";
+            // 
+            // txtdeposit
+            // 
+            this.txtdeposit.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtdeposit.Location = new System.Drawing.Point(19, 47);
+            this.txtdeposit.Margin = new System.Windows.Forms.Padding(2);
+            this.txtdeposit.Name = "txtdeposit";
+            this.txtdeposit.Size = new System.Drawing.Size(301, 25);
+            this.txtdeposit.TabIndex = 19;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label1.ForeColor = System.Drawing.Color.DimGray;
+            this.label1.Location = new System.Drawing.Point(16, 30);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 15);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Deposited Amount:";
             // 
             // expectreturndt
             // 
             this.expectreturndt.Enabled = false;
             this.expectreturndt.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.expectreturndt.Location = new System.Drawing.Point(25, 190);
+            this.expectreturndt.Location = new System.Drawing.Point(19, 203);
+            this.expectreturndt.Margin = new System.Windows.Forms.Padding(2);
             this.expectreturndt.Name = "expectreturndt";
-            this.expectreturndt.Size = new System.Drawing.Size(400, 30);
+            this.expectreturndt.Size = new System.Drawing.Size(301, 25);
             this.expectreturndt.TabIndex = 17;
             this.expectreturndt.ValueChanged += new System.EventHandler(this.expectreturndt_ValueChanged);
             // 
@@ -83,18 +112,20 @@
             this.materialLabel8.AutoSize = true;
             this.materialLabel8.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.materialLabel8.ForeColor = System.Drawing.Color.DimGray;
-            this.materialLabel8.Location = new System.Drawing.Point(21, 165);
+            this.materialLabel8.Location = new System.Drawing.Point(16, 183);
+            this.materialLabel8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.materialLabel8.Name = "materialLabel8";
-            this.materialLabel8.Size = new System.Drawing.Size(158, 20);
+            this.materialLabel8.Size = new System.Drawing.Size(122, 15);
             this.materialLabel8.TabIndex = 16;
             this.materialLabel8.Text = "Expected Return Date:";
             // 
             // pickupdt
             // 
             this.pickupdt.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.pickupdt.Location = new System.Drawing.Point(25, 120);
+            this.pickupdt.Location = new System.Drawing.Point(19, 147);
+            this.pickupdt.Margin = new System.Windows.Forms.Padding(2);
             this.pickupdt.Name = "pickupdt";
-            this.pickupdt.Size = new System.Drawing.Size(400, 30);
+            this.pickupdt.Size = new System.Drawing.Size(301, 25);
             this.pickupdt.TabIndex = 8;
             this.pickupdt.ValueChanged += new System.EventHandler(this.pickupdt_ValueChanged);
             // 
@@ -103,18 +134,20 @@
             this.materialLabel6.AutoSize = true;
             this.materialLabel6.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.materialLabel6.ForeColor = System.Drawing.Color.DimGray;
-            this.materialLabel6.Location = new System.Drawing.Point(21, 95);
+            this.materialLabel6.Location = new System.Drawing.Point(16, 126);
+            this.materialLabel6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.materialLabel6.Name = "materialLabel6";
-            this.materialLabel6.Size = new System.Drawing.Size(92, 20);
+            this.materialLabel6.Size = new System.Drawing.Size(73, 15);
             this.materialLabel6.TabIndex = 9;
             this.materialLabel6.Text = "Pickup Date:";
             // 
             // lblmileage
             // 
             this.lblmileage.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblmileage.Location = new System.Drawing.Point(25, 55);
+            this.lblmileage.Location = new System.Drawing.Point(19, 94);
+            this.lblmileage.Margin = new System.Windows.Forms.Padding(2);
             this.lblmileage.Name = "lblmileage";
-            this.lblmileage.Size = new System.Drawing.Size(400, 30);
+            this.lblmileage.Size = new System.Drawing.Size(301, 25);
             this.lblmileage.TabIndex = 11;
             this.lblmileage.TextChanged += new System.EventHandler(this.lblmileage_TextChanged);
             // 
@@ -123,9 +156,10 @@
             this.materialLabel5.AutoSize = true;
             this.materialLabel5.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.materialLabel5.ForeColor = System.Drawing.Color.DimGray;
-            this.materialLabel5.Location = new System.Drawing.Point(21, 30);
+            this.materialLabel5.Location = new System.Drawing.Point(16, 73);
+            this.materialLabel5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(122, 20);
+            this.materialLabel5.Size = new System.Drawing.Size(96, 15);
             this.materialLabel5.TabIndex = 7;
             this.materialLabel5.Text = "Starting Mileage:";
             // 
@@ -138,21 +172,25 @@
             this.grpReservationInfo.Controls.Add(this.rsvtnID);
             this.grpReservationInfo.Controls.Add(this.materialLabel1);
             this.grpReservationInfo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.grpReservationInfo.Location = new System.Drawing.Point(25, 70);
+            this.grpReservationInfo.Location = new System.Drawing.Point(19, 57);
+            this.grpReservationInfo.Margin = new System.Windows.Forms.Padding(2);
             this.grpReservationInfo.Name = "grpReservationInfo";
-            this.grpReservationInfo.Size = new System.Drawing.Size(450, 150);
+            this.grpReservationInfo.Padding = new System.Windows.Forms.Padding(2);
+            this.grpReservationInfo.Size = new System.Drawing.Size(338, 122);
             this.grpReservationInfo.TabIndex = 16;
             this.grpReservationInfo.TabStop = false;
             this.grpReservationInfo.Text = "Reservation Info";
+            this.grpReservationInfo.Enter += new System.EventHandler(this.grpReservationInfo_Enter);
             // 
             // vehicletxt
             // 
             this.vehicletxt.AutoSize = true;
             this.vehicletxt.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.vehicletxt.ForeColor = System.Drawing.Color.Black;
-            this.vehicletxt.Location = new System.Drawing.Point(150, 110);
+            this.vehicletxt.Location = new System.Drawing.Point(112, 89);
+            this.vehicletxt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.vehicletxt.Name = "vehicletxt";
-            this.vehicletxt.Size = new System.Drawing.Size(125, 23);
+            this.vehicletxt.Size = new System.Drawing.Size(100, 19);
             this.vehicletxt.TabIndex = 13;
             this.vehicletxt.Text = "Vehicle Name";
             this.vehicletxt.Click += new System.EventHandler(this.vehicletxt_Click);
@@ -162,9 +200,10 @@
             this.materialLabel4.AutoSize = true;
             this.materialLabel4.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.materialLabel4.ForeColor = System.Drawing.Color.DimGray;
-            this.materialLabel4.Location = new System.Drawing.Point(21, 112);
+            this.materialLabel4.Location = new System.Drawing.Point(16, 91);
+            this.materialLabel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(60, 20);
+            this.materialLabel4.Size = new System.Drawing.Size(47, 15);
             this.materialLabel4.TabIndex = 6;
             this.materialLabel4.Text = "Vehicle:";
             // 
@@ -173,9 +212,10 @@
             this.txtcstmr.AutoSize = true;
             this.txtcstmr.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.txtcstmr.ForeColor = System.Drawing.Color.Black;
-            this.txtcstmr.Location = new System.Drawing.Point(150, 70);
+            this.txtcstmr.Location = new System.Drawing.Point(112, 57);
+            this.txtcstmr.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtcstmr.Name = "txtcstmr";
-            this.txtcstmr.Size = new System.Drawing.Size(139, 23);
+            this.txtcstmr.Size = new System.Drawing.Size(117, 19);
             this.txtcstmr.TabIndex = 14;
             this.txtcstmr.Text = "Customer Name";
             this.txtcstmr.Click += new System.EventHandler(this.materialLabel8_Click);
@@ -185,9 +225,10 @@
             this.materialLabel3.AutoSize = true;
             this.materialLabel3.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.materialLabel3.ForeColor = System.Drawing.Color.DimGray;
-            this.materialLabel3.Location = new System.Drawing.Point(21, 72);
+            this.materialLabel3.Location = new System.Drawing.Point(16, 58);
+            this.materialLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(75, 20);
+            this.materialLabel3.Size = new System.Drawing.Size(62, 15);
             this.materialLabel3.TabIndex = 5;
             this.materialLabel3.Text = "Customer:";
             this.materialLabel3.Click += new System.EventHandler(this.materialLabel3_Click);
@@ -197,9 +238,10 @@
             this.rsvtnID.AutoSize = true;
             this.rsvtnID.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.rsvtnID.ForeColor = System.Drawing.Color.Black;
-            this.rsvtnID.Location = new System.Drawing.Point(150, 30);
+            this.rsvtnID.Location = new System.Drawing.Point(112, 24);
+            this.rsvtnID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.rsvtnID.Name = "rsvtnID";
-            this.rsvtnID.Size = new System.Drawing.Size(20, 23);
+            this.rsvtnID.Size = new System.Drawing.Size(17, 19);
             this.rsvtnID.TabIndex = 12;
             this.rsvtnID.Text = "0";
             this.rsvtnID.Click += new System.EventHandler(this.rsvtnID_Click);
@@ -209,9 +251,10 @@
             this.materialLabel1.AutoSize = true;
             this.materialLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.materialLabel1.ForeColor = System.Drawing.Color.DimGray;
-            this.materialLabel1.Location = new System.Drawing.Point(21, 32);
+            this.materialLabel1.Location = new System.Drawing.Point(16, 26);
+            this.materialLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(108, 20);
+            this.materialLabel1.Size = new System.Drawing.Size(85, 15);
             this.materialLabel1.TabIndex = 2;
             this.materialLabel1.Text = "Reservation ID:";
             // 
@@ -220,9 +263,10 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
-            this.lblTitle.Location = new System.Drawing.Point(20, 20);
+            this.lblTitle.Location = new System.Drawing.Point(15, 16);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(183, 41);
+            this.lblTitle.Size = new System.Drawing.Size(147, 32);
             this.lblTitle.TabIndex = 15;
             this.lblTitle.Text = "Start Rental";
             // 
@@ -232,9 +276,10 @@
             this.cnclbttn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cnclbttn.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cnclbttn.ForeColor = System.Drawing.Color.DimGray;
-            this.cnclbttn.Location = new System.Drawing.Point(335, 510);
+            this.cnclbttn.Location = new System.Drawing.Point(252, 457);
+            this.cnclbttn.Margin = new System.Windows.Forms.Padding(2);
             this.cnclbttn.Name = "cnclbttn";
-            this.cnclbttn.Size = new System.Drawing.Size(140, 45);
+            this.cnclbttn.Size = new System.Drawing.Size(105, 37);
             this.cnclbttn.TabIndex = 1;
             this.cnclbttn.Text = "Cancel";
             this.cnclbttn.UseVisualStyleBackColor = false;
@@ -246,9 +291,10 @@
             this.strtbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.strtbtn.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.strtbtn.ForeColor = System.Drawing.Color.White;
-            this.strtbtn.Location = new System.Drawing.Point(25, 510);
+            this.strtbtn.Location = new System.Drawing.Point(19, 457);
+            this.strtbtn.Margin = new System.Windows.Forms.Padding(2);
             this.strtbtn.Name = "strtbtn";
-            this.strtbtn.Size = new System.Drawing.Size(200, 45);
+            this.strtbtn.Size = new System.Drawing.Size(150, 37);
             this.strtbtn.TabIndex = 0;
             this.strtbtn.Text = "Start Rental";
             this.strtbtn.UseVisualStyleBackColor = false;
@@ -256,12 +302,13 @@
             // 
             // STARTrentalform
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(500, 600);
+            this.ClientSize = new System.Drawing.Size(375, 547);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "STARTrentalform";
@@ -295,5 +342,7 @@
         private System.Windows.Forms.DateTimePicker pickupdt;
         private System.Windows.Forms.Label materialLabel8;
         private System.Windows.Forms.DateTimePicker expectreturndt;
+        private System.Windows.Forms.TextBox txtdeposit;
+        private System.Windows.Forms.Label label1;
     }
 }

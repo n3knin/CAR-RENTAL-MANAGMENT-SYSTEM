@@ -47,6 +47,15 @@ namespace RentalApp.Models.Services
 
             return _inspectionRepository.GetById(id);
         }
+        public VehicleInspection GetInspectionByRentalId(int rentalId)
+        {
+            if (rentalId <= 0)
+            {
+                throw new ArgumentException("Invalid rental ID.");
+            }
+
+            return _inspectionRepository.GetLatestByRentalId(rentalId);
+        }
 
         // Get all inspections for a rental
         public List<VehicleInspection> GetInspectionsByRentalId(int rentalId)

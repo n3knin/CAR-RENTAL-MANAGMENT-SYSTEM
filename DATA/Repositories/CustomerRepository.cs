@@ -79,7 +79,6 @@ namespace RentalApp.Data.Repositories
                     return Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
-            return 0;
         }
         public int CountNewCustomers()
         {
@@ -93,7 +92,6 @@ namespace RentalApp.Data.Repositories
                     return Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
-            return 0;
         }
 
         public List<Customer> GetAll()
@@ -220,6 +218,32 @@ namespace RentalApp.Data.Repositories
                     cmd.Parameters.AddWithValue("@id", id);
                     cmd.ExecuteNonQuery();
                 }
+            }
+        }
+
+        public double GetRetentionRate()
+        {
+            string sqlRepeat = "SELECT COUNT(*) FROM (SELECT CustomerID FROM Rentals GROUP BY CustomerID HAVING COUNT(*) > 1) as RepeatCust";
+            string sqlTotal = "SELECT COUNT(DISTINCT CustomerID) FROM Rentals";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                int repeat = 0;
+                int total = 0;
+
+                using (var cmd = new MySqlCommand(sqlRepeat, conn))
+                {
+                    repeat = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+
+                using (var cmd = new MySqlCommand(sqlTotal, conn))
+                {
+                    total = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+
+                if (total == 0) return 0;
+                return (double)repeat / total * 100;
             }
         }
 

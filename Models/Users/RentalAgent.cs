@@ -17,7 +17,7 @@ namespace RentalApp.Models.Users
         
         public override string GetRoleName()
         {
-            return "Rental Agent";
+            return "RentalAgent";
         }
         public override bool CanManageFleet()
         {

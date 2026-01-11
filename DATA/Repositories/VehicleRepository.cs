@@ -91,6 +91,29 @@ namespace RentalApp.Data.Repositories
 
             return null;
         }
+        public string GetVehicleStatus(int id)
+        {
+            string sql = "SELECT Status FROM Vehicles WHERE ID = @id";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return reader.GetString("Status");
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
 
         // READ - Get available vehicles
         public List<Vehicle> GetAvailable()
@@ -250,6 +273,45 @@ namespace RentalApp.Data.Repositories
             }
         }
 
+        public int CountAll()
+        {
+            string sql = "SELECT COUNT(*) FROM Vehicles WHERE Status != 'Retired' AND Status != 'OutOfService'";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+        }
+
+        public Dictionary<string, int> GetFleetDistribution()
+        {
+            Dictionary<string, int> distribution = new Dictionary<string, int>();
+            string sql = @"SELECT c.CategoryName as CategoryName, COUNT(v.ID) as Count 
+                           FROM vehiclecategories c
+                           LEFT JOIN Vehicles v ON c.ID = v.CategoryID AND v.Status = 'Available'
+                           GROUP BY c.CategoryName";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            distribution.Add(reader.GetString("CategoryName"), reader.GetInt32("Count"));
+                        }
+                    }
+                }
+            }
+            return distribution;
+        }
+
         // HELPER - Map database reader to Vehicle object
         private Vehicle MapReaderToVehicle(MySqlDataReader reader)
         {
@@ -280,10 +342,10 @@ namespace RentalApp.Data.Repositories
             vehicle.LicensePlate = reader.GetString("LicensePlate");
             vehicle.VIN = reader.GetString("VIN");
             vehicle.CategoryId = reader.GetInt32("CategoryID");
-            vehicle.Status = (VehicleStatus)Enum.Parse(typeof(VehicleStatus), reader.GetString("Status"));
+            vehicle.Status = (VehicleStatus)Enum.Parse(typeof(VehicleStatus), reader.GetString("Status"), true);
             vehicle.Mileage = reader.GetInt32("Mileage");
-            vehicle.Fuel = (FuelType)Enum.Parse(typeof(FuelType), reader.GetString("FuelType"));
-            vehicle.Transmission = (TransmissionType)Enum.Parse(typeof(TransmissionType), reader.GetString("Transmission"));
+            vehicle.Fuel = (FuelType)Enum.Parse(typeof(FuelType), reader.GetString("FuelType"), true);
+            vehicle.Transmission = (TransmissionType)Enum.Parse(typeof(TransmissionType), reader.GetString("Transmission"), true);
             vehicle.SeatingCapacity = reader.GetInt32("SeatingCapacity");
             vehicle.ImageUrl = reader.IsDBNull(reader.GetOrdinal("ImageUrl")) ? "" : reader.GetString("ImageUrl");
 

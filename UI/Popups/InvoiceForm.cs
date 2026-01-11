@@ -19,8 +19,11 @@ namespace RentalApp.UI.Popups
         private VehicleManager _vehicleManager;
         private CategoryManager _categoryManager;
         private RentalManager _rentalManager;
+        private DepositManager _depositManager;
         private Rental _rental;
         private VehicleCategory _category;
+        private DamageReportManager _damageReportManager;
+        private VehicleInspectionManager _inspectionManager;
 
         public InvoiceForm(Rental rental)
         {
@@ -29,7 +32,10 @@ namespace RentalApp.UI.Popups
             _vehicleManager = new VehicleManager();
             _categoryManager = new CategoryManager();
             _rentalManager = new RentalManager();
+            _depositManager = new DepositManager();
             _rental = rental;
+            _damageReportManager = new DamageReportManager();
+            _inspectionManager = new VehicleInspectionManager();
 
             InitializeForm();
         }
@@ -48,18 +54,18 @@ namespace RentalApp.UI.Popups
             {
                 _category = _categoryManager.GetCategoryById(vehicle.CategoryId);
             }
-
-            // Setup combo boxes
+            var deposit = _depositManager.GetDepositByRentalId(_rental.Id);
+            var inspection = _inspectionManager.GetInspectionByRentalId(_rental.Id);
+            var damageReport = inspection != null ? _damageReportManager.GetReportForInspection(inspection.Id) : null;
             cmbVT.DataSource = Enum.GetValues(typeof(RateType));
             cmbPM.DataSource = Enum.GetValues(typeof(PaymentMethod));
 
             // Default values for fees
-            txtLF.Text = "0.00";
-            textBox3.Text = "0.00";
+            txtLF.Text = "0.00";    
             txtCF.Text = "0.00";
             txtFC.Text = "0.00";
-
-            // Wire up events for real-time total update
+            txtdeposit.Text = (deposit != null ? deposit.Amount : 0).ToString("N2");
+            textBox3.Text = (damageReport != null ? damageReport.EstimatedCost : 0).ToString("N2");
             txtLF.TextChanged += (s, e) => CalculateTotal();
             textBox3.TextChanged += (s, e) => CalculateTotal();
             txtCF.TextChanged += (s, e) => CalculateTotal();
@@ -110,8 +116,8 @@ namespace RentalApp.UI.Popups
             decimal damageFee = TryParseDecimal(textBox3.Text);
             decimal cleaningFee = TryParseDecimal(txtCF.Text);
             decimal fuelCharge = TryParseDecimal(txtFC.Text);
-
-            decimal total = baseCharge + lateFee + damageFee + cleaningFee + fuelCharge;
+            decimal deposit = TryParseDecimal(txtdeposit.Text);
+            decimal total = baseCharge + lateFee + damageFee + cleaningFee + fuelCharge - deposit;
             materialLabel16.Text = total.ToString("N2");
         }
 
@@ -170,6 +176,12 @@ namespace RentalApp.UI.Popups
                 };
                 _billingManager.ProcessPayment(payment);
 
+                // 3. Mark Deposit as Applied (so it's not refunded later)
+                var deposit = _depositManager.GetDepositByRentalId(_rental.Id);
+                if (deposit != null)
+                {
+                    _depositManager.ApplyToInvoice(deposit.Id);
+                }
 
                 MessageBox.Show("Invoice processed and payment recorded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
@@ -241,6 +253,11 @@ namespace RentalApp.UI.Popups
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox3_TextChanged_1(object sender, EventArgs e)
+        {
+            CalculateTotal();
         }
 
         private void materialLabel11_Click(object sender, EventArgs e)

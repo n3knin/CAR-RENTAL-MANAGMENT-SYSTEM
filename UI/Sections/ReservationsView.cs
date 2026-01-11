@@ -135,6 +135,11 @@ namespace RentalApp.UI.Sections
 
         private void cancelbt_Click(object sender, EventArgs e)
         {
+            if(Session.CurrentUserRole != "Admin")
+            {
+                MessageBox.Show("You do not have permission to cancel a reservation.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if(reservationsGrid.CurrentCell != null && reservationsGrid.CurrentCell.RowIndex >= 0)
             {
                 var reservation = (Reservation)reservationsGrid.CurrentRow.DataBoundItem;

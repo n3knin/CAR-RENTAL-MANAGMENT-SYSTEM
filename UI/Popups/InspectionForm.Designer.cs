@@ -16,6 +16,16 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chkHasDamage = new System.Windows.Forms.CheckBox();
+            this.pnlDamage = new System.Windows.Forms.Panel();
+            this.txtDamageCost = new System.Windows.Forms.TextBox();
+            this.cmbDamageSeverity = new System.Windows.Forms.ComboBox();
+            this.txtDamageLocation = new System.Windows.Forms.TextBox();
+            this.cmbDamageType = new System.Windows.Forms.ComboBox();
+            this.materialLabel16 = new System.Windows.Forms.Label();
+            this.materialLabel15 = new System.Windows.Forms.Label();
+            this.materialLabel14 = new System.Windows.Forms.Label();
+            this.materialLabel13 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.materialLabel12 = new System.Windows.Forms.Label();
             this.cnbt = new System.Windows.Forms.Button();
@@ -46,11 +56,14 @@
             this.materialLabel1 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.pnlDamage.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.chkHasDamage);
+            this.panel1.Controls.Add(this.pnlDamage);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.materialLabel12);
             this.panel1.Controls.Add(this.cnbt);
@@ -83,24 +96,124 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(600, 650);
+            this.panel1.Size = new System.Drawing.Size(600, 826);
             this.panel1.TabIndex = 0;
             // 
-            // lblTitle
+            // chkHasDamage
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
-            this.lblTitle.Location = new System.Drawing.Point(20, 15);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(262, 41);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Vehicle Inspection";
+            this.chkHasDamage.AutoSize = true;
+            this.chkHasDamage.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.chkHasDamage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.chkHasDamage.Location = new System.Drawing.Point(25, 425);
+            this.chkHasDamage.Name = "chkHasDamage";
+            this.chkHasDamage.Size = new System.Drawing.Size(154, 23);
+            this.chkHasDamage.TabIndex = 28;
+            this.chkHasDamage.Text = "Damage Detected?";
+            this.chkHasDamage.UseVisualStyleBackColor = true;
+            this.chkHasDamage.CheckedChanged += new System.EventHandler(this.chkHasDamage_CheckedChanged);
+            // 
+            // pnlDamage
+            // 
+            this.pnlDamage.BackColor = System.Drawing.Color.LightGray;
+            this.pnlDamage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlDamage.Controls.Add(this.txtDamageCost);
+            this.pnlDamage.Controls.Add(this.cmbDamageSeverity);
+            this.pnlDamage.Controls.Add(this.txtDamageLocation);
+            this.pnlDamage.Controls.Add(this.cmbDamageType);
+            this.pnlDamage.Controls.Add(this.materialLabel16);
+            this.pnlDamage.Controls.Add(this.materialLabel15);
+            this.pnlDamage.Controls.Add(this.materialLabel14);
+            this.pnlDamage.Controls.Add(this.materialLabel13);
+            this.pnlDamage.Enabled = false;
+            this.pnlDamage.Location = new System.Drawing.Point(20, 455);
+            this.pnlDamage.Name = "pnlDamage";
+            this.pnlDamage.Size = new System.Drawing.Size(560, 140);
+            this.pnlDamage.TabIndex = 29;
+            this.pnlDamage.Visible = true;
+            // 
+            // txtDamageCost
+            // 
+            this.txtDamageCost.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtDamageCost.Location = new System.Drawing.Point(420, 85);
+            this.txtDamageCost.Name = "txtDamageCost";
+            this.txtDamageCost.Size = new System.Drawing.Size(120, 25);
+            this.txtDamageCost.TabIndex = 7;
+            this.txtDamageCost.Text = "0.00";
+            // 
+            // cmbDamageSeverity
+            // 
+            this.cmbDamageSeverity.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbDamageSeverity.FormattingEnabled = true;
+            this.cmbDamageSeverity.Location = new System.Drawing.Point(120, 85);
+            this.cmbDamageSeverity.Name = "cmbDamageSeverity";
+            this.cmbDamageSeverity.Size = new System.Drawing.Size(150, 25);
+            this.cmbDamageSeverity.TabIndex = 6;
+            // 
+            // txtDamageLocation
+            // 
+            this.txtDamageLocation.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtDamageLocation.Location = new System.Drawing.Point(120, 45);
+            this.txtDamageLocation.Name = "txtDamageLocation";
+            this.txtDamageLocation.Size = new System.Drawing.Size(420, 25);
+            this.txtDamageLocation.TabIndex = 5;
+            // 
+            // cmbDamageType
+            // 
+            this.cmbDamageType.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbDamageType.FormattingEnabled = true;
+            this.cmbDamageType.Location = new System.Drawing.Point(120, 5);
+            this.cmbDamageType.Name = "cmbDamageType";
+            this.cmbDamageType.Size = new System.Drawing.Size(200, 25);
+            this.cmbDamageType.TabIndex = 4;
+            // 
+            // materialLabel16
+            // 
+            this.materialLabel16.AutoSize = true;
+            this.materialLabel16.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.materialLabel16.ForeColor = System.Drawing.Color.DimGray;
+            this.materialLabel16.Location = new System.Drawing.Point(300, 90);
+            this.materialLabel16.Name = "materialLabel16";
+            this.materialLabel16.Size = new System.Drawing.Size(89, 15);
+            this.materialLabel16.TabIndex = 3;
+            this.materialLabel16.Text = "Estimated Cost:";
+            // 
+            // materialLabel15
+            // 
+            this.materialLabel15.AutoSize = true;
+            this.materialLabel15.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.materialLabel15.ForeColor = System.Drawing.Color.DimGray;
+            this.materialLabel15.Location = new System.Drawing.Point(5, 90);
+            this.materialLabel15.Name = "materialLabel15";
+            this.materialLabel15.Size = new System.Drawing.Size(51, 15);
+            this.materialLabel15.TabIndex = 2;
+            this.materialLabel15.Text = "Severity:";
+            // 
+            // materialLabel14
+            // 
+            this.materialLabel14.AutoSize = true;
+            this.materialLabel14.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.materialLabel14.ForeColor = System.Drawing.Color.DimGray;
+            this.materialLabel14.Location = new System.Drawing.Point(5, 50);
+            this.materialLabel14.Name = "materialLabel14";
+            this.materialLabel14.Size = new System.Drawing.Size(56, 15);
+            this.materialLabel14.TabIndex = 1;
+            this.materialLabel14.Text = "Location:";
+            // 
+            // materialLabel13
+            // 
+            this.materialLabel13.AutoSize = true;
+            this.materialLabel13.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.materialLabel13.ForeColor = System.Drawing.Color.DimGray;
+            this.materialLabel13.Location = new System.Drawing.Point(5, 10);
+            this.materialLabel13.Name = "materialLabel13";
+            this.materialLabel13.Size = new System.Drawing.Size(82, 15);
+            this.materialLabel13.TabIndex = 0;
+            this.materialLabel13.Text = "Damage Type:";
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.textBox1.Location = new System.Drawing.Point(25, 450);
+            this.textBox1.Location = new System.Drawing.Point(25, 635);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(540, 100);
@@ -111,9 +224,9 @@
             this.materialLabel12.AutoSize = true;
             this.materialLabel12.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.materialLabel12.ForeColor = System.Drawing.Color.DimGray;
-            this.materialLabel12.Location = new System.Drawing.Point(21, 425);
+            this.materialLabel12.Location = new System.Drawing.Point(21, 610);
             this.materialLabel12.Name = "materialLabel12";
-            this.materialLabel12.Size = new System.Drawing.Size(51, 20);
+            this.materialLabel12.Size = new System.Drawing.Size(41, 15);
             this.materialLabel12.TabIndex = 26;
             this.materialLabel12.Text = "Notes:";
             // 
@@ -123,7 +236,7 @@
             this.cnbt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cnbt.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cnbt.ForeColor = System.Drawing.Color.DimGray;
-            this.cnbt.Location = new System.Drawing.Point(325, 570);
+            this.cnbt.Location = new System.Drawing.Point(325, 755);
             this.cnbt.Name = "cnbt";
             this.cnbt.Size = new System.Drawing.Size(140, 45);
             this.cnbt.TabIndex = 25;
@@ -137,7 +250,7 @@
             this.svbt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.svbt.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.svbt.ForeColor = System.Drawing.Color.White;
-            this.svbt.Location = new System.Drawing.Point(80, 570);
+            this.svbt.Location = new System.Drawing.Point(80, 755);
             this.svbt.Name = "svbt";
             this.svbt.Size = new System.Drawing.Size(200, 45);
             this.svbt.TabIndex = 24;
@@ -151,7 +264,7 @@
             this.caNobt.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.caNobt.Location = new System.Drawing.Point(250, 390);
             this.caNobt.Name = "caNobt";
-            this.caNobt.Size = new System.Drawing.Size(53, 27);
+            this.caNobt.Size = new System.Drawing.Size(45, 23);
             this.caNobt.TabIndex = 23;
             this.caNobt.TabStop = true;
             this.caNobt.Text = "No";
@@ -164,7 +277,7 @@
             this.caYesbt.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.caYesbt.Location = new System.Drawing.Point(190, 390);
             this.caYesbt.Name = "caYesbt";
-            this.caYesbt.Size = new System.Drawing.Size(54, 27);
+            this.caYesbt.Size = new System.Drawing.Size(47, 23);
             this.caYesbt.TabIndex = 22;
             this.caYesbt.TabStop = true;
             this.caYesbt.Text = "Yes";
@@ -177,7 +290,7 @@
             this.svNobt.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.svNobt.Location = new System.Drawing.Point(250, 350);
             this.svNobt.Name = "svNobt";
-            this.svNobt.Size = new System.Drawing.Size(53, 27);
+            this.svNobt.Size = new System.Drawing.Size(45, 23);
             this.svNobt.TabIndex = 21;
             this.svNobt.TabStop = true;
             this.svNobt.Text = "No";
@@ -190,7 +303,7 @@
             this.svYesbt.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.svYesbt.Location = new System.Drawing.Point(190, 350);
             this.svYesbt.Name = "svYesbt";
-            this.svYesbt.Size = new System.Drawing.Size(54, 27);
+            this.svYesbt.Size = new System.Drawing.Size(47, 23);
             this.svYesbt.TabIndex = 20;
             this.svYesbt.TabStop = true;
             this.svYesbt.Text = "Yes";
@@ -203,7 +316,7 @@
             this.cmbFL.FormattingEnabled = true;
             this.cmbFL.Location = new System.Drawing.Point(190, 310);
             this.cmbFL.Name = "cmbFL";
-            this.cmbFL.Size = new System.Drawing.Size(150, 31);
+            this.cmbFL.Size = new System.Drawing.Size(150, 25);
             this.cmbFL.TabIndex = 19;
             this.cmbFL.SelectedIndexChanged += new System.EventHandler(this.cmbFL_SelectedIndexChanged);
             // 
@@ -213,7 +326,7 @@
             this.cmbEC.FormattingEnabled = true;
             this.cmbEC.Location = new System.Drawing.Point(190, 270);
             this.cmbEC.Name = "cmbEC";
-            this.cmbEC.Size = new System.Drawing.Size(250, 31);
+            this.cmbEC.Size = new System.Drawing.Size(250, 25);
             this.cmbEC.TabIndex = 18;
             this.cmbEC.SelectedIndexChanged += new System.EventHandler(this.cmbEC_SelectedIndexChanged);
             // 
@@ -223,7 +336,7 @@
             this.cmbIC.FormattingEnabled = true;
             this.cmbIC.Location = new System.Drawing.Point(190, 230);
             this.cmbIC.Name = "cmbIC";
-            this.cmbIC.Size = new System.Drawing.Size(250, 31);
+            this.cmbIC.Size = new System.Drawing.Size(250, 25);
             this.cmbIC.TabIndex = 17;
             this.cmbIC.SelectedIndexChanged += new System.EventHandler(this.cmbIC_SelectedIndexChanged);
             // 
@@ -232,7 +345,7 @@
             this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dateTimePicker2.Location = new System.Drawing.Point(190, 190);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(250, 30);
+            this.dateTimePicker2.Size = new System.Drawing.Size(250, 25);
             this.dateTimePicker2.TabIndex = 16;
             this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
@@ -242,7 +355,7 @@
             this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dateTimePicker1.Location = new System.Drawing.Point(190, 150);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(250, 30);
+            this.dateTimePicker1.Size = new System.Drawing.Size(250, 25);
             this.dateTimePicker1.TabIndex = 15;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
@@ -251,7 +364,7 @@
             this.txtem.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtem.Location = new System.Drawing.Point(420, 110);
             this.txtem.Name = "txtem";
-            this.txtem.Size = new System.Drawing.Size(140, 30);
+            this.txtem.Size = new System.Drawing.Size(140, 25);
             this.txtem.TabIndex = 14;
             this.txtem.TextChanged += new System.EventHandler(this.txtem_TextChanged);
             // 
@@ -261,7 +374,7 @@
             this.txtsm.Location = new System.Drawing.Point(150, 110);
             this.txtsm.Name = "txtsm";
             this.txtsm.ReadOnly = true;
-            this.txtsm.Size = new System.Drawing.Size(110, 30);
+            this.txtsm.Size = new System.Drawing.Size(110, 25);
             this.txtsm.TabIndex = 13;
             this.txtsm.TextChanged += new System.EventHandler(this.txtsm_TextChanged);
             // 
@@ -271,7 +384,7 @@
             this.txtcstmr.Location = new System.Drawing.Point(420, 70);
             this.txtcstmr.Name = "txtcstmr";
             this.txtcstmr.ReadOnly = true;
-            this.txtcstmr.Size = new System.Drawing.Size(140, 30);
+            this.txtcstmr.Size = new System.Drawing.Size(140, 25);
             this.txtcstmr.TabIndex = 12;
             this.txtcstmr.TextChanged += new System.EventHandler(this.txtcstmr_TextChanged);
             // 
@@ -281,7 +394,7 @@
             this.txtrsv.Location = new System.Drawing.Point(150, 70);
             this.txtrsv.Name = "txtrsv";
             this.txtrsv.ReadOnly = true;
-            this.txtrsv.Size = new System.Drawing.Size(110, 30);
+            this.txtrsv.Size = new System.Drawing.Size(110, 25);
             this.txtrsv.TabIndex = 11;
             this.txtrsv.TextChanged += new System.EventHandler(this.txtrsv_TextChanged);
             // 
@@ -292,7 +405,7 @@
             this.materialLabel11.ForeColor = System.Drawing.Color.DimGray;
             this.materialLabel11.Location = new System.Drawing.Point(21, 355);
             this.materialLabel11.Name = "materialLabel11";
-            this.materialLabel11.Size = new System.Drawing.Size(135, 20);
+            this.materialLabel11.Size = new System.Drawing.Size(110, 15);
             this.materialLabel11.TabIndex = 10;
             this.materialLabel11.Text = "Smoking Violation: ";
             // 
@@ -303,7 +416,7 @@
             this.materialLabel10.ForeColor = System.Drawing.Color.DimGray;
             this.materialLabel10.Location = new System.Drawing.Point(21, 395);
             this.materialLabel10.Name = "materialLabel10";
-            this.materialLabel10.Size = new System.Drawing.Size(155, 20);
+            this.materialLabel10.Size = new System.Drawing.Size(121, 15);
             this.materialLabel10.TabIndex = 9;
             this.materialLabel10.Text = "Complete Accesories:";
             // 
@@ -314,7 +427,7 @@
             this.materialLabel9.ForeColor = System.Drawing.Color.DimGray;
             this.materialLabel9.Location = new System.Drawing.Point(21, 315);
             this.materialLabel9.Name = "materialLabel9";
-            this.materialLabel9.Size = new System.Drawing.Size(77, 20);
+            this.materialLabel9.Size = new System.Drawing.Size(62, 15);
             this.materialLabel9.TabIndex = 8;
             this.materialLabel9.Text = "Fuel Level:";
             // 
@@ -325,7 +438,7 @@
             this.materialLabel8.ForeColor = System.Drawing.Color.DimGray;
             this.materialLabel8.Location = new System.Drawing.Point(21, 275);
             this.materialLabel8.Name = "materialLabel8";
-            this.materialLabel8.Size = new System.Drawing.Size(129, 20);
+            this.materialLabel8.Size = new System.Drawing.Size(105, 15);
             this.materialLabel8.TabIndex = 7;
             this.materialLabel8.Text = "Exterior Condition:";
             // 
@@ -336,7 +449,7 @@
             this.materialLabel7.ForeColor = System.Drawing.Color.DimGray;
             this.materialLabel7.Location = new System.Drawing.Point(21, 235);
             this.materialLabel7.Name = "materialLabel7";
-            this.materialLabel7.Size = new System.Drawing.Size(126, 20);
+            this.materialLabel7.Size = new System.Drawing.Size(104, 15);
             this.materialLabel7.TabIndex = 6;
             this.materialLabel7.Text = "Interior Condition:";
             // 
@@ -347,7 +460,7 @@
             this.materialLabel6.ForeColor = System.Drawing.Color.DimGray;
             this.materialLabel6.Location = new System.Drawing.Point(21, 195);
             this.materialLabel6.Name = "materialLabel6";
-            this.materialLabel6.Size = new System.Drawing.Size(138, 20);
+            this.materialLabel6.Size = new System.Drawing.Size(109, 15);
             this.materialLabel6.TabIndex = 5;
             this.materialLabel6.Text = "Actual Return Date:";
             // 
@@ -358,7 +471,7 @@
             this.materialLabel5.ForeColor = System.Drawing.Color.DimGray;
             this.materialLabel5.Location = new System.Drawing.Point(21, 155);
             this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(155, 20);
+            this.materialLabel5.Size = new System.Drawing.Size(122, 15);
             this.materialLabel5.TabIndex = 4;
             this.materialLabel5.Text = "Expected Return Date:";
             // 
@@ -369,7 +482,7 @@
             this.materialLabel4.ForeColor = System.Drawing.Color.DimGray;
             this.materialLabel4.Location = new System.Drawing.Point(280, 75);
             this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(127, 20);
+            this.materialLabel4.Size = new System.Drawing.Size(105, 15);
             this.materialLabel4.TabIndex = 3;
             this.materialLabel4.Text = "Customer\'s Name:";
             // 
@@ -380,7 +493,7 @@
             this.materialLabel3.ForeColor = System.Drawing.Color.DimGray;
             this.materialLabel3.Location = new System.Drawing.Point(280, 115);
             this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(113, 20);
+            this.materialLabel3.Size = new System.Drawing.Size(92, 15);
             this.materialLabel3.TabIndex = 2;
             this.materialLabel3.Text = "Ending Mileage:";
             // 
@@ -391,7 +504,7 @@
             this.materialLabel2.ForeColor = System.Drawing.Color.DimGray;
             this.materialLabel2.Location = new System.Drawing.Point(21, 115);
             this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(119, 20);
+            this.materialLabel2.Size = new System.Drawing.Size(96, 15);
             this.materialLabel2.TabIndex = 1;
             this.materialLabel2.Text = "Starting Mileage:";
             // 
@@ -402,16 +515,27 @@
             this.materialLabel1.ForeColor = System.Drawing.Color.DimGray;
             this.materialLabel1.Location = new System.Drawing.Point(21, 75);
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(108, 20);
+            this.materialLabel1.Size = new System.Drawing.Size(85, 15);
             this.materialLabel1.TabIndex = 0;
             this.materialLabel1.Text = "Reservation ID:";
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
+            this.lblTitle.Location = new System.Drawing.Point(20, 15);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(221, 32);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "Vehicle Inspection";
             // 
             // InspectionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(600, 650);
+            this.ClientSize = new System.Drawing.Size(600, 826);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -421,6 +545,8 @@
             this.Text = "Vehicle Inspection";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.pnlDamage.ResumeLayout(false);
+            this.pnlDamage.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -455,5 +581,15 @@
         private System.Windows.Forms.Button cnbt;
         private System.Windows.Forms.Label materialLabel12;
         public System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox chkHasDamage;
+        private System.Windows.Forms.Panel pnlDamage;
+        private System.Windows.Forms.Label materialLabel13;
+        private System.Windows.Forms.Label materialLabel14;
+        private System.Windows.Forms.Label materialLabel15;
+        private System.Windows.Forms.Label materialLabel16;
+        private System.Windows.Forms.ComboBox cmbDamageType;
+        private System.Windows.Forms.TextBox txtDamageLocation;
+        private System.Windows.Forms.ComboBox cmbDamageSeverity;
+        private System.Windows.Forms.TextBox txtDamageCost;
     }
 }

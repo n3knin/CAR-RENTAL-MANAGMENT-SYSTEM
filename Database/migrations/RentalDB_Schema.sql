@@ -90,6 +90,7 @@ CREATE TABLE IF NOT EXISTS Rentals (
     VehicleID INT NOT NULL,
     RentalAgentID INT NOT NULL,
     ActualPickupDate DATETIME NOT NULL,
+    ExpectedReturnDate DATETIME,
     ActualReturnDate DATETIME,
     StartMileage INT NOT NULL,
     EndMileage INT,
@@ -126,10 +127,11 @@ CREATE TABLE IF NOT EXISTS Payments (
 CREATE TABLE IF NOT EXISTS MaintenanceRecords (
     ID INT PRIMARY KEY AUTO_INCREMENT,
     VehicleID INT NOT NULL,
-    Description TEXT NOT NULL,
+    MaintenanceType VARCHAR(100) NOT NULL,
     Cost DECIMAL(10,2),
     StartDate DATE NOT NULL,
     EndDate DATE,
+    IsCompleted BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (VehicleID) REFERENCES Vehicles(ID)
 );
 

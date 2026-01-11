@@ -46,7 +46,9 @@ namespace RentalApp.Models.Services
                 throw new Exception("Error: Start Mileage cannot be negative.");
             }
 
-            _rentalRepository.Add(rental);
+            // Capture the new ID and assign it back to the rental object
+            int newId = _rentalRepository.Add(rental);
+            rental.Id = newId;
         }
 
         public void ReturnVehicle(Rental rental)
@@ -115,6 +117,21 @@ namespace RentalApp.Models.Services
         public List<Rental> GetByDateRange(DateTime start, DateTime end)
         {
             return _rentalRepository.GetByDateRange(start, end);
+        }
+
+        public double GetAverageRentalDuration(DateTime start, DateTime end)
+        {
+            return _rentalRepository.GetAverageRentalDuration(start, end);
+        }
+
+        public double GetDamageIncidentRate(DateTime start, DateTime end)
+        {
+            return _rentalRepository.GetDamageIncidentRate(start, end);
+        }
+
+        public int GetTotalRentalDays(DateTime start, DateTime end)
+        {
+            return _rentalRepository.GetTotalRentalDays(start, end);
         }
     }
 }

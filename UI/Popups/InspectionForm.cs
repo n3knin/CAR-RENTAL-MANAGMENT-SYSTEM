@@ -20,6 +20,7 @@
             private VehicleManager _vehicleManager;
             private VehicleInspectionManager _inspectionManager;
             private ReservationManager _reservationManager;
+            private DamageReportManager _damageManager;
 
             public InspectionForm()
             {
@@ -28,6 +29,7 @@
                 _vehicleManager = new VehicleManager();
                 _inspectionManager = new VehicleInspectionManager();
                 _reservationManager = new ReservationManager();
+                _damageManager = new DamageReportManager();
             
                 ConfigureDatePickers();
                 GroupRadioButtons();
@@ -49,37 +51,32 @@
                 Panel smokingPanel = new Panel();
                 smokingPanel.Location = new Point(svYesbt.Left - 5, svYesbt.Top - 5);
                 smokingPanel.Size = new Size(svNobt.Right - svYesbt.Left + 10, svYesbt.Height + 10);
-                smokingPanel.BackColor = this.BackColor;
-            
-                this.Controls.Remove(svYesbt);
-                this.Controls.Remove(svNobt);
+                smokingPanel.BackColor = Color.White; // Match panel1's background
             
                 svYesbt.Location = new Point(5, 5);
                 svNobt.Location = new Point(svNobt.Left - smokingPanel.Left + 5, 5);
             
                 smokingPanel.Controls.Add(svYesbt);
                 smokingPanel.Controls.Add(svNobt);
-                this.Controls.Add(smokingPanel);
+                panel1.Controls.Add(smokingPanel);
+                smokingPanel.BringToFront();
 
                 Panel accessoriesPanel = new Panel();
                 accessoriesPanel.Location = new Point(caYesbt.Left - 5, caYesbt.Top - 5);
                 accessoriesPanel.Size = new Size(caNobt.Right - caYesbt.Left + 10, caYesbt.Height + 10);
-                accessoriesPanel.BackColor = this.BackColor;
-            
-                this.Controls.Remove(caYesbt);
-                this.Controls.Remove(caNobt);
+                accessoriesPanel.BackColor = Color.White;
             
                 caYesbt.Location = new Point(5, 5);
                 caNobt.Location = new Point(caNobt.Left - accessoriesPanel.Left + 5, 5);
             
                 accessoriesPanel.Controls.Add(caYesbt);
                 accessoriesPanel.Controls.Add(caNobt);
-                this.Controls.Add(accessoriesPanel);
+                panel1.Controls.Add(accessoriesPanel);
+                accessoriesPanel.BringToFront();
             }
         
             private void PopulateComboBoxes()
             {
-                //   Condition
                 cmbIC.Items.Clear();
                 foreach (Condition condition in Enum.GetValues(typeof(Condition)))
                 {
@@ -87,7 +84,6 @@
                 }
                 cmbIC.SelectedIndex = 0;
             
-                // Exterior Condition
                 cmbEC.Items.Clear();
                 foreach (Condition condition in Enum.GetValues(typeof(Condition)))
                 {
@@ -95,13 +91,41 @@
                 }
                 cmbEC.SelectedIndex = 0;
             
-                // Fuel Level
                 cmbFL.Items.Clear();
                 foreach (FuelLevel fuel in Enum.GetValues(typeof(FuelLevel)))
                 {
                     cmbFL.Items.Add(fuel);
                 }
                 cmbFL.SelectedIndex = 0;
+
+                cmbDamageType.Items.Clear();
+                foreach (DamageType type in Enum.GetValues(typeof(DamageType)))
+                {
+                    cmbDamageType.Items.Add(type);
+                }
+                cmbDamageType.SelectedIndex = 0;
+
+               
+                cmbDamageSeverity.Items.Clear();
+                foreach (DamageSeverity severity in Enum.GetValues(typeof(DamageSeverity)))
+                {
+                    cmbDamageSeverity.Items.Add(severity);
+                }
+                cmbDamageSeverity.SelectedIndex = 0;
+            }
+
+            private void chkHasDamage_CheckedChanged(object sender, EventArgs e)
+            {
+                pnlDamage.Enabled = chkHasDamage.Checked;
+
+                if (chkHasDamage.Checked)
+                {
+                    pnlDamage.BackColor = Color.FromArgb(245, 245, 245);
+                }
+                else
+                {
+                    pnlDamage.BackColor = Color.LightGray;
+                }
             }
 
             public void LoadData(Rental rental)
@@ -124,67 +148,110 @@
 
             private void svbt_Click(object sender, EventArgs e)
             {
-
-                if (int.Parse(txtsm.Text)>int.Parse(txtem.Text))
-                {
-                    MessageBox.Show("End mileage cannot be less than start mileage.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
                 try
                 {
-                
-                    if (string.IsNullOrWhiteSpace(txtem.Text))
+                    if (!int.TryParse(txtsm.Text, out int startMileage))
                     {
-                        MessageBox.Show("Please enter the end mileage.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Invalid start mileage.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
-                
+
+                    if (!int.TryParse(txtem.Text, out int endMileage))
+                    {
+                        MessageBox.Show("Please enter a valid numeric value for end mileage.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (startMileage > endMileage)
+                    {
+                        MessageBox.Show("End mileage cannot be less than start mileage.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     if (cmbIC.SelectedItem == null || cmbEC.SelectedItem == null || cmbFL.SelectedItem == null)
                     {
                         MessageBox.Show("Please select all inspection conditions.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
-                
+
                     var inspection = new VehicleInspection
                     {
                         RentalId = _rental.Id,
                         Type = InspectionType.Return,
                         InspectedBy = Session.CurrentUserId,
                         InspectionDate = dateTimePicker2.Value,
-                        InteriorCondition = (Condition)Enum.Parse(typeof(Condition), cmbIC.SelectedItem.ToString()),
-                        ExteriorCondition = (Condition)Enum.Parse(typeof(Condition), cmbEC.SelectedItem.ToString()),
-                        Fuel = (FuelLevel)Enum.Parse(typeof(FuelLevel), cmbFL.SelectedItem.ToString()),
+                        InteriorCondition = (Condition)cmbIC.SelectedItem,
+                        ExteriorCondition = (Condition)cmbEC.SelectedItem,
+                        Fuel = (FuelLevel)cmbFL.SelectedItem,
                         HasSmokingViolation = svYesbt.Checked,
                         AllAccessoriesReturned = caYesbt.Checked,
-                        Mileage = int.Parse(txtem.Text),
+                        Mileage = endMileage,
                         Notes = textBox1.Text,
                     };
-                    _inspectionManager.AddInspection(inspection);
+
+                    int inspectionId = _inspectionManager.AddInspection(inspection);
+
+                    // Save Damage Report if detected
+                    if (chkHasDamage.Checked)
+                    {
+                        if (cmbDamageType.SelectedItem == null || cmbDamageSeverity.SelectedItem == null)
+                        {
+                            MessageBox.Show("Please fill in all damage details.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        if (!decimal.TryParse(txtDamageCost.Text, out decimal damageCost))
+                        {
+                            MessageBox.Show("Please enter a valid cost for damage.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        var damage = new DamageReport
+                        {
+                            InspectionId = inspectionId,
+                            Type = (DamageType)cmbDamageType.SelectedItem,
+                            Location = txtDamageLocation.Text,
+                            Severity = (DamageSeverity)cmbDamageSeverity.SelectedItem,
+                            Description = textBox1.Text, 
+                            EstimatedCost = damageCost
+                        };
+                        _damageManager.AddReport(damage);
+                    }
 
 
+                    // Update Rental Status
                     _rental.ActualReturnDate = dateTimePicker2.Value;
-                    _rental.EndMileage = int.Parse(txtem.Text);
+                    _rental.EndMileage = endMileage;
                     _rental.Status = RentalStatus.Completed;
                     _rentalManager.UpdateRental(_rental);
 
 
+                    // Update Vehicle Status and Mileage
                     var vehicle = _vehicleManager.GetVehicleById(_rental.VehicleId);
-                    vehicle.Mileage = int.Parse(txtem.Text);
-                    vehicle.Status = VehicleStatus.Available;
-                    _vehicleManager.UpdateVehicle(vehicle);
+                    if (vehicle != null)
+                    {
+                        vehicle.Mileage = endMileage;
+                        
+                        if (chkHasDamage.Checked)
+                            vehicle.Status = VehicleStatus.Maintenance;
+                        else
+                            vehicle.Status = VehicleStatus.Available;
 
+                        _vehicleManager.UpdateVehicle(vehicle);
+                    }
+
+                    // Update Reservation Status
                     if (_rental.ReservationId.HasValue)
                     {
                         _reservationManager.UpdateReservationStatus(_rental.ReservationId.Value, ReservationStatus.Completed);
                     }
 
-                
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error processing return: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Error processing return: {ex.Message}", "Application Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -257,5 +324,125 @@
             {
                 this.Close();
             }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
+
+        private void pnlDamage_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtDamageCost_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbDamageSeverity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDamageLocation_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbDamageType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
     }

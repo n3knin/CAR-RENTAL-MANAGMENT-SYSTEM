@@ -204,7 +204,60 @@ namespace RentalApp.Data.Repositories
                 }
             }
         }
+        public double GetAverageRentalDuration(DateTime start, DateTime end)
+        {
+            string sql = @"SELECT IFNULL(AVG(DATEDIFF(IFNULL(ActualReturnDate, ExpectedReturnDate), ActualPickupDate)), 0) 
+                          FROM Rentals 
+                          WHERE ActualPickupDate >= @start AND ActualPickupDate <= @end";
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@start", start.Date);
+                    cmd.Parameters.AddWithValue("@end", end.Date.AddDays(1).AddSeconds(-1));
+                    return Convert.ToDouble(cmd.ExecuteScalar());
+                }
+            }
+        }
 
+        public double GetDamageIncidentRate(DateTime start, DateTime end)
+        {
+            string sql = @"SELECT 
+                (SELECT COUNT(DISTINCT r.ID) FROM Rentals r JOIN VehicleInspections vi ON r.ID = vi.RentalID 
+                 WHERE (vi.ExteriorCondition = 'Poor' OR vi.InteriorCondition = 'Poor') 
+                 AND r.ActualPickupDate >= @start AND r.ActualPickupDate <= @end) / 
+                NULLIF((SELECT COUNT(*) FROM Rentals WHERE ActualPickupDate >= @start AND ActualPickupDate <= @end), 0) * 100";
+            
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@start", start.Date);
+                    cmd.Parameters.AddWithValue("@end", end.Date.AddDays(1).AddSeconds(-1));
+                    object result = cmd.ExecuteScalar();
+                    return result == DBNull.Value ? 0 : Convert.ToDouble(result);
+                }
+            }
+        }
+
+        public int GetTotalRentalDays(DateTime start, DateTime end)
+        {
+            string sql = @"SELECT IFNULL(SUM(DATEDIFF(IFNULL(ActualReturnDate, ExpectedReturnDate), ActualPickupDate)), 0) 
+                          FROM Rentals 
+                          WHERE ActualPickupDate >= @start AND ActualPickupDate <= @end";
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@start", start.Date);
+                    cmd.Parameters.AddWithValue("@end", end.Date.AddDays(1).AddSeconds(-1));
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+        }
         public int CountTodayPickups()
         {
             string sql = "SELECT COUNT(*) FROM Rentals WHERE DATE(ActualPickupDate) = CURDATE()";
@@ -290,7 +343,7 @@ namespace RentalApp.Data.Repositories
                 ActualReturnDate = reader.IsDBNull(reader.GetOrdinal("ActualReturnDate")) ? (DateTime?)null : reader.GetDateTime("ActualReturnDate"),
                 StartMileage = reader.GetInt32("StartMileage"),
                 EndMileage = reader.IsDBNull(reader.GetOrdinal("EndMileage")) ? (int?)null : reader.GetInt32("EndMileage"),
-                Status = (RentalStatus)Enum.Parse(typeof(RentalStatus), reader.GetString("Status"))
+                Status = (RentalStatus)Enum.Parse(typeof(RentalStatus), reader.GetString("Status"), true)
             };
 
             // Populate Customer if available from JOIN

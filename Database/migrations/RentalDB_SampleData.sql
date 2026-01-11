@@ -88,12 +88,12 @@ INSERT INTO Reservations (CustomerID, VehicleID, StartDate, EndDate, Status, Cre
 (3, 7, '2025-12-08 08:00:00', '2025-12-09 08:00:00', 'Completed', '2025-12-01 16:45:00');
 
 -- 8. INSERT ACTIVE RENTAL (Toyota RAV4 currently rented)
-INSERT INTO Rentals (ReservationID, CustomerID, VehicleID, RentalAgentID, ActualPickupDate, ActualReturnDate, StartMileage, EndMileage, Status) VALUES
-(NULL, 2, 5, 3, '2025-12-05 10:00:00', NULL, 18000, NULL, 'Active');
+INSERT INTO Rentals (ReservationID, CustomerID, VehicleID, RentalAgentID, ActualPickupDate, ExpectedReturnDate, ActualReturnDate, StartMileage, EndMileage, Status) VALUES
+(NULL, 2, 5, 3, '2025-12-05 10:00:00', '2025-12-07 10:00:00', NULL, 18000, NULL, 'Active');
 
 -- 9. INSERT COMPLETED RENTAL WITH INSPECTION
-INSERT INTO Rentals (ReservationID, CustomerID, VehicleID, RentalAgentID, ActualPickupDate, ActualReturnDate, StartMileage, EndMileage, Status) VALUES
-(3, 3, 7, 4, '2025-12-08 08:00:00', '2025-12-09 09:00:00', 20000, 20150, 'Completed');
+INSERT INTO Rentals (ReservationID, CustomerID, VehicleID, RentalAgentID, ActualPickupDate, ExpectedReturnDate, ActualReturnDate, StartMileage, EndMileage, Status) VALUES
+(3, 3, 7, 4, '2025-12-08 08:00:00', '2025-12-09 08:00:00', '2025-12-09 09:00:00', 20000, 20150, 'Completed');
 
 -- 10. INSERT VEHICLE INSPECTIONS
 -- Pickup inspection for completed rental
@@ -114,9 +114,9 @@ INSERT INTO Payments (InvoiceID, Amount, PaymentDate, PaymentMethod) VALUES
 (1, 50.00, '2025-12-09 09:20:00', 'CreditCard');
 
 -- 14. INSERT MAINTENANCE RECORD
-INSERT INTO MaintenanceRecords (VehicleID, Description, Cost, StartDate, EndDate) VALUES
-(10, 'Regular oil change and tire rotation', 150.00, '2025-12-01', '2025-12-01'),
-(10, 'Brake pad replacement', 350.00, '2025-12-03', '2025-12-04');
+INSERT INTO MaintenanceRecords (VehicleID, MaintenanceType, Cost, StartDate, EndDate, IsCompleted) VALUES
+(10, 'Oil Change', 150.00, '2025-12-01', '2025-12-01', TRUE),
+(10, 'Repair', 350.00, '2025-12-03', '2025-12-04', TRUE);
 
 -- ============================================
 -- VERIFICATION QUERIES

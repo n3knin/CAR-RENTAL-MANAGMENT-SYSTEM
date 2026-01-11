@@ -88,5 +88,9 @@ namespace RentalApp.Models.Services
         {
             return _invoiceRepository.GetCategoryUsageCurrentMonth();
         }
+        public decimal GetRevenuePerVehicle(DateTime start, DateTime end)
+        {
+            return _invoiceRepository.GetRevenuePerVehicle(start, end);
+        }
     }
 }
