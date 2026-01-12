@@ -199,22 +199,37 @@ namespace RentalApp.UI.Popups
             newVehicle.CategoryId = categoryId;
             
             
-            int newVehicleId = _vehiclemanager.Add(newVehicle);
-            
-            
-            foreach (var item in FEATURES.CheckedItems)
-            {   
-                string featureName = item.ToString();
-                int featureId = _featureRepository.GetFeatureIdByName(featureName);
-                if (featureId > 0)
-                {
-                    _featureRepository.AddFeatureToVehicle(newVehicleId, featureId);
+            try
+            {
+                int newVehicleId = _vehiclemanager.Add(newVehicle);
+                
+                
+                foreach (var item in FEATURES.CheckedItems)
+                {   
+                    string featureName = item.ToString();
+                    int featureId = _featureRepository.GetFeatureIdByName(featureName);
+                    if (featureId > 0)
+                    {
+                        _featureRepository.AddFeatureToVehicle(newVehicleId, featureId);
+                    }
                 }
+                
+                MessageBox.Show("Vehicle added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
-            
-            MessageBox.Show("Vehicle added successfully.");
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            catch (ArgumentException ex)
+            {
+                // Handle validation errors (duplicate VIN, license plate, etc.)
+                MessageBox.Show(ex.Message, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // Don't close the form - let user correct the error
+            }
+            catch (Exception ex)
+            {
+                // Handle any other unexpected errors
+                MessageBox.Show($"An error occurred while adding the vehicle:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Don't close the form - let user try again
+            }
         }
 
         private void btncancel_Click(object sender, EventArgs e)

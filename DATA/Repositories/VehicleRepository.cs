@@ -329,6 +329,23 @@ namespace RentalApp.Data.Repositories
             }
         }
 
+        // HELPER - Check if License Plate already exists
+        public bool LicensePlateExists(string licensePlate)
+        {
+            string sql = "SELECT COUNT(*) FROM Vehicles WHERE LicensePlate = @plate";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@plate", licensePlate);
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0;
+                }
+            }
+        }
+
         // HELPER - Map database reader to Vehicle object
         private Vehicle MapReaderToVehicle(MySqlDataReader reader)
         {

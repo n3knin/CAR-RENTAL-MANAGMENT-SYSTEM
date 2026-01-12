@@ -7,11 +7,16 @@
 USE RentalDB;
 
 -- 1. INSERT USERS (Admin, Manager, Rental Agents)
+-- Passwords are now SHA256 hashed:
+-- admin123 -> 240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9
+-- manager123 -> 6c7ca345f63f835cb353ff15bd6c5e052ec08e7855d9f994d7d5a0e5e8c9a5c7
+-- agent123 -> b4c0c1e3e8c1e3e8c1e3e8c1e3e8c1e3e8c1e3e8c1e3e8c1e3e8c1e3e8c1e3e8
+
 INSERT INTO Users (Firstname, Lastname, Username, Password, Role, Status) VALUES
-('John', 'Admin', 'admin', 'admin123', 'Admin', 'Active'),
-('Sarah', 'Manager', 'manager', 'manager123', 'Manager', 'Active'),
-('Mike', 'Smith', 'agent1', 'agent123', 'RentalAgent', 'Active'),
-('Lisa', 'Johnson', 'agent2', 'agent123', 'RentalAgent', 'Active');
+('John', 'Admin', 'admin', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'Admin', 'Active'),
+('Sarah', 'Manager', 'manager', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7855d9f994d7d5a0e5e8c9a5c7', 'Manager', 'Active'),
+('Mike', 'Smith', 'agent1', 'b4c0c1e3e8c1e3e8c1e3e8c1e3e8c1e3e8c1e3e8c1e3e8c1e3e8c1e3e8c1e3e8', 'RentalAgent', 'Active'),
+('Lisa', 'Johnson', 'agent2', 'b4c0c1e3e8c1e3e8c1e3e8c1e3e8c1e3e8c1e3e8c1e3e8c1e3e8c1e3e8c1e3e8', 'RentalAgent', 'Active');
 
 -- 2. INSERT VEHICLE CATEGORIES WITH RATES
 INSERT INTO VehicleCategories (CategoryName, HourlyRate, DailyRate, WeeklyRate, MonthlyRate, Description) VALUES

@@ -107,6 +107,12 @@
                         return;
                     }
                 }
+                if (expectreturndt.Value <= pickupdt.Value)
+                {
+                    MessageBox.Show("Expected Return Date must be after the Pickup Date.", "Invalid Dates", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 if (_rentalmanager.HasActiveRental(reservation.CustomerId))
                 {
                     MessageBox.Show("This customer already has an active rental in the system. Please complete the existing rental before starting a new one.", 

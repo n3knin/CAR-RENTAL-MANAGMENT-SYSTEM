@@ -88,33 +88,51 @@ namespace RentalApp.UI.Popups
 
         private void CalculateCharges()
         {
-            if (_category == null) return;
+            if (_category == null || cmbVT.SelectedItem == null) return;
 
-            RateType selectedType = (RateType)cmbVT.SelectedItem;
+            RateType selectedType;
+            if (!Enum.TryParse(cmbVT.SelectedItem.ToString(), out selectedType)) return;
+
             TimeSpan duration = dtpERD.Value - dtpSRD.Value;
-            decimal baseCharge = 0;
+            
+            // Simple check: if duration is zero or negative, no charge
+            if (duration.TotalMinutes <= 0)
+            {
+                txtBC.Text = "0.00";
+                CalculateTotal();
+                return;
+            }
+
+            decimal units = 0;
+            decimal rate = 0;
 
             switch (selectedType)
             {
                 case RateType.Hourly:
-                    txtAR.Text = _category.HourlyRate.ToString("C");
-                    baseCharge = (decimal)Math.Ceiling(duration.TotalHours) * _category.HourlyRate;
+                    rate = _category.HourlyRate;
+                    units = (decimal)Math.Ceiling(duration.TotalHours);
                     break;
                 case RateType.Daily:
-                    txtAR.Text = _category.DailyRate.ToString("C");
-                    baseCharge = (decimal)Math.Ceiling(duration.TotalDays) * _category.DailyRate;
+                    rate = _category.DailyRate;
+                    units = (decimal)Math.Ceiling(duration.TotalDays);
                     break;
                 case RateType.Weekly:
-                    txtAR.Text = _category.WeeklyRate.ToString("C");
-                    baseCharge = (decimal)Math.Ceiling(duration.TotalDays / 7.0) * _category.WeeklyRate;
+                    rate = _category.WeeklyRate;
+                    units = (decimal)Math.Ceiling(duration.TotalDays / 7.0);
                     break;
                 case RateType.Monthly:
-                    txtAR.Text = _category.MonthlyRate.ToString("C");
-                    baseCharge = (decimal)Math.Ceiling(duration.TotalDays / 30.0) * _category.MonthlyRate;
+                    rate = _category.MonthlyRate;
+                    units = (decimal)Math.Ceiling(duration.TotalDays / 30.0);
                     break;
             }
 
-            txtBC.Text = baseCharge.ToString("N2");
+            // Ensure at least 1 unit is charged
+            if (units < 1) units = 1;
+
+            txtAR.Text = rate.ToString("F2"); // Format as plain number for parsing safety
+            decimal baseCharge = units * rate;
+            txtBC.Text = baseCharge.ToString("F2");
+
             CalculateTotal();
         }
 

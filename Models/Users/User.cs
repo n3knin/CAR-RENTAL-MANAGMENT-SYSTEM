@@ -40,17 +40,39 @@ namespace RentalApp.Models.Users
         }
         public bool VerifyPassword(string password)
         {
-            // Verify against hash
+            if (string.IsNullOrEmpty(PasswordHash))
+                return false;
+
+            // Hash the input password
             string inputHash = ComputeSha256Hash(password);
-            // Backward compatibility for existing plain text passwords (optional, useful for dev)
-            if (PasswordHash == password) return true; 
             
-            return PasswordHash == inputHash;
+            // Compare: both hashed input and stored hash (case-insensitive)
+            // This handles both scenarios:
+            // 1. Stored password is already hashed -> direct comparison
+            // 2. Stored password is plain text -> won't match the hash, so we also check plain text
+            if (PasswordHash.Equals(inputHash, StringComparison.OrdinalIgnoreCase))
+            {
+                return true; // Hashed password matches
+            }
+            
+            // Fallback: check if stored password is plain text (backward compatibility)
+            if (PasswordHash.Equals(password, StringComparison.Ordinal))
+            {
+                return true; // Plain text password matches
+            }
+            
+            return false;
         }
 
         public void SetPassword(string password)
         {
             PasswordHash = ComputeSha256Hash(password);
+        }
+
+        // Internal method for repository to set already-hashed password from database
+        internal void SetPasswordHash(string hashedPassword)
+        {
+            PasswordHash = hashedPassword;
         }
 
         private static string ComputeSha256Hash(string rawData)

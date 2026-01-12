@@ -53,6 +53,12 @@ namespace RentalApp.Models.Services
                 throw new ArgumentException($"A vehicle with VIN '{vehicle.VIN}' already exists. Please use a unique VIN.");
             }
 
+            // Check if License Plate already exists
+            if (_vehicleRepository.LicensePlateExists(vehicle.LicensePlate))
+            {
+                throw new ArgumentException($"A vehicle with License Plate '{vehicle.LicensePlate}' already exists. Please use a unique license plate.");
+            }
+
             if (vehicle.CategoryId == 0)
             {
                 throw new ArgumentException("Category is required.");

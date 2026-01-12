@@ -224,8 +224,8 @@ namespace RentalApp.Data.Repositories
                 throw new Exception($"Unknown role: {role}");
             }
 
-            // Set password (using reflection or a setter method)
-            user.SetPassword(password);
+            // Set password hash directly (don't hash again - it's already hashed in DB)
+            user.SetPasswordHash(password);
             user.Status = status;
 
             return user;
