@@ -8,7 +8,8 @@ CREATE TABLE IF NOT EXISTS Users (
     Lastname VARCHAR(50) NOT NULL,
     Username VARCHAR(50) NOT NULL,
     Password VARCHAR(50) NOT NULL,
-    Role ENUM('Admin', 'Manager', 'RentalAgent') NOT NULL
+    Role ENUM('Admin', 'Manager', 'RentalAgent') NOT NULL,
+    Status ENUM('Active', 'Inactive') DEFAULT 'Active'
 );
 
 CREATE TABLE IF NOT EXISTS VehicleCategories (

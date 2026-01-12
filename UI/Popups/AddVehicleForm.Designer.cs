@@ -46,6 +46,7 @@
             this.btncancel = new System.Windows.Forms.Button();
             this.btnvhcl = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seat)).BeginInit();
             this.SuspendLayout();
@@ -53,6 +54,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.materialLabel13);
             this.panel1.Controls.Add(this.FEATURES);
             this.panel1.Controls.Add(this.seat);
@@ -83,7 +85,7 @@
             this.panel1.Controls.Add(this.btnvhcl);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(667, 800);
             this.panel1.TabIndex = 0;
@@ -106,7 +108,7 @@
             this.FEATURES.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.FEATURES.FormattingEnabled = true;
             this.FEATURES.Location = new System.Drawing.Point(39, 523);
-            this.FEATURES.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FEATURES.Margin = new System.Windows.Forms.Padding(4);
             this.FEATURES.Name = "FEATURES";
             this.FEATURES.Size = new System.Drawing.Size(587, 150);
             this.FEATURES.TabIndex = 31;
@@ -114,8 +116,8 @@
             // seat
             // 
             this.seat.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.seat.Location = new System.Drawing.Point(453, 382);
-            this.seat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.seat.Location = new System.Drawing.Point(451, 411);
+            this.seat.Margin = new System.Windows.Forms.Padding(4);
             this.seat.Name = "seat";
             this.seat.Size = new System.Drawing.Size(160, 30);
             this.seat.TabIndex = 30;
@@ -125,7 +127,7 @@
             this.materialLabel12.AutoSize = true;
             this.materialLabel12.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.materialLabel12.ForeColor = System.Drawing.Color.DimGray;
-            this.materialLabel12.Location = new System.Drawing.Point(448, 357);
+            this.materialLabel12.Location = new System.Drawing.Point(446, 386);
             this.materialLabel12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.materialLabel12.Name = "materialLabel12";
             this.materialLabel12.Size = new System.Drawing.Size(123, 20);
@@ -135,8 +137,8 @@
             // txtlicense
             // 
             this.txtlicense.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtlicense.Location = new System.Drawing.Point(39, 209);
-            this.txtlicense.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtlicense.Location = new System.Drawing.Point(37, 268);
+            this.txtlicense.Margin = new System.Windows.Forms.Padding(4);
             this.txtlicense.Name = "txtlicense";
             this.txtlicense.Size = new System.Drawing.Size(265, 30);
             this.txtlicense.TabIndex = 28;
@@ -147,7 +149,7 @@
             this.materialLabel11.AutoSize = true;
             this.materialLabel11.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.materialLabel11.ForeColor = System.Drawing.Color.DimGray;
-            this.materialLabel11.Location = new System.Drawing.Point(33, 185);
+            this.materialLabel11.Location = new System.Drawing.Point(31, 244);
             this.materialLabel11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.materialLabel11.Name = "materialLabel11";
             this.materialLabel11.Size = new System.Drawing.Size(97, 20);
@@ -158,8 +160,8 @@
             // 
             this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(39, 382);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Location = new System.Drawing.Point(37, 411);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(185, 31);
             this.comboBox1.TabIndex = 26;
@@ -168,8 +170,8 @@
             // txtmileage
             // 
             this.txtmileage.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtmileage.Location = new System.Drawing.Point(345, 123);
-            this.txtmileage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtmileage.Location = new System.Drawing.Point(343, 210);
+            this.txtmileage.Margin = new System.Windows.Forms.Padding(4);
             this.txtmileage.Name = "txtmileage";
             this.txtmileage.Size = new System.Drawing.Size(265, 30);
             this.txtmileage.TabIndex = 25;
@@ -177,8 +179,8 @@
             // txtvin
             // 
             this.txtvin.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtvin.Location = new System.Drawing.Point(345, 209);
-            this.txtvin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtvin.Location = new System.Drawing.Point(343, 268);
+            this.txtvin.Margin = new System.Windows.Forms.Padding(4);
             this.txtvin.Name = "txtvin";
             this.txtvin.Size = new System.Drawing.Size(265, 30);
             this.txtvin.TabIndex = 24;
@@ -186,8 +188,8 @@
             // txtcolor
             // 
             this.txtcolor.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtcolor.Location = new System.Drawing.Point(39, 295);
-            this.txtcolor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtcolor.Location = new System.Drawing.Point(37, 354);
+            this.txtcolor.Margin = new System.Windows.Forms.Padding(4);
             this.txtcolor.Name = "txtcolor";
             this.txtcolor.Size = new System.Drawing.Size(265, 30);
             this.txtcolor.TabIndex = 23;
@@ -195,36 +197,36 @@
             // txtyear
             // 
             this.txtyear.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtyear.Location = new System.Drawing.Point(39, 123);
-            this.txtyear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtyear.Location = new System.Drawing.Point(35, 210);
+            this.txtyear.Margin = new System.Windows.Forms.Padding(4);
             this.txtyear.Name = "txtyear";
-            this.txtyear.Size = new System.Drawing.Size(132, 30);
+            this.txtyear.Size = new System.Drawing.Size(267, 30);
             this.txtyear.TabIndex = 22;
             // 
             // txtmodel
             // 
             this.txtmodel.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtmodel.Location = new System.Drawing.Point(452, 80);
-            this.txtmodel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtmodel.Location = new System.Drawing.Point(342, 152);
+            this.txtmodel.Margin = new System.Windows.Forms.Padding(4);
             this.txtmodel.Name = "txtmodel";
-            this.txtmodel.Size = new System.Drawing.Size(159, 30);
+            this.txtmodel.Size = new System.Drawing.Size(266, 30);
             this.txtmodel.TabIndex = 21;
             // 
             // txtmake
             // 
             this.txtmake.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtmake.Location = new System.Drawing.Point(105, 80);
-            this.txtmake.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtmake.Location = new System.Drawing.Point(35, 152);
+            this.txtmake.Margin = new System.Windows.Forms.Padding(4);
             this.txtmake.Name = "txtmake";
-            this.txtmake.Size = new System.Drawing.Size(199, 30);
+            this.txtmake.Size = new System.Drawing.Size(267, 30);
             this.txtmake.TabIndex = 20;
             // 
             // CATEGORYCMB
             // 
             this.CATEGORYCMB.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.CATEGORYCMB.FormattingEnabled = true;
-            this.CATEGORYCMB.Location = new System.Drawing.Point(345, 295);
-            this.CATEGORYCMB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CATEGORYCMB.Location = new System.Drawing.Point(343, 354);
+            this.CATEGORYCMB.Margin = new System.Windows.Forms.Padding(4);
             this.CATEGORYCMB.Name = "CATEGORYCMB";
             this.CATEGORYCMB.Size = new System.Drawing.Size(265, 31);
             this.CATEGORYCMB.TabIndex = 19;
@@ -234,7 +236,7 @@
             this.materialLabel10.AutoSize = true;
             this.materialLabel10.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.materialLabel10.ForeColor = System.Drawing.Color.DimGray;
-            this.materialLabel10.Location = new System.Drawing.Point(340, 271);
+            this.materialLabel10.Location = new System.Drawing.Point(338, 330);
             this.materialLabel10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.materialLabel10.Name = "materialLabel10";
             this.materialLabel10.Size = new System.Drawing.Size(43, 20);
@@ -245,8 +247,8 @@
             // 
             this.BTNMANUAL.AutoSize = true;
             this.BTNMANUAL.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.BTNMANUAL.Location = new System.Drawing.Point(360, 431);
-            this.BTNMANUAL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTNMANUAL.Location = new System.Drawing.Point(358, 460);
+            this.BTNMANUAL.Margin = new System.Windows.Forms.Padding(4);
             this.BTNMANUAL.Name = "BTNMANUAL";
             this.BTNMANUAL.Size = new System.Drawing.Size(79, 24);
             this.BTNMANUAL.TabIndex = 17;
@@ -258,8 +260,8 @@
             // 
             this.BTNAUTOMATIC.AutoSize = true;
             this.BTNAUTOMATIC.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.BTNAUTOMATIC.Location = new System.Drawing.Point(240, 431);
-            this.BTNAUTOMATIC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTNAUTOMATIC.Location = new System.Drawing.Point(238, 460);
+            this.BTNAUTOMATIC.Margin = new System.Windows.Forms.Padding(4);
             this.BTNAUTOMATIC.Name = "BTNAUTOMATIC";
             this.BTNAUTOMATIC.Size = new System.Drawing.Size(99, 24);
             this.BTNAUTOMATIC.TabIndex = 16;
@@ -273,7 +275,7 @@
             this.materialLabel9.AutoSize = true;
             this.materialLabel9.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.materialLabel9.ForeColor = System.Drawing.Color.DimGray;
-            this.materialLabel9.Location = new System.Drawing.Point(33, 431);
+            this.materialLabel9.Location = new System.Drawing.Point(31, 460);
             this.materialLabel9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.materialLabel9.Name = "materialLabel9";
             this.materialLabel9.Size = new System.Drawing.Size(131, 20);
@@ -286,7 +288,7 @@
             this.materialLabel8.AutoSize = true;
             this.materialLabel8.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.materialLabel8.ForeColor = System.Drawing.Color.DimGray;
-            this.materialLabel8.Location = new System.Drawing.Point(33, 357);
+            this.materialLabel8.Location = new System.Drawing.Point(31, 386);
             this.materialLabel8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.materialLabel8.Name = "materialLabel8";
             this.materialLabel8.Size = new System.Drawing.Size(74, 20);
@@ -298,7 +300,7 @@
             this.materialLabel7.AutoSize = true;
             this.materialLabel7.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.materialLabel7.ForeColor = System.Drawing.Color.DimGray;
-            this.materialLabel7.Location = new System.Drawing.Point(340, 98);
+            this.materialLabel7.Location = new System.Drawing.Point(338, 186);
             this.materialLabel7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.materialLabel7.Name = "materialLabel7";
             this.materialLabel7.Size = new System.Drawing.Size(66, 20);
@@ -310,7 +312,7 @@
             this.materialLabel6.AutoSize = true;
             this.materialLabel6.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.materialLabel6.ForeColor = System.Drawing.Color.DimGray;
-            this.materialLabel6.Location = new System.Drawing.Point(340, 185);
+            this.materialLabel6.Location = new System.Drawing.Point(338, 244);
             this.materialLabel6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.materialLabel6.Name = "materialLabel6";
             this.materialLabel6.Size = new System.Drawing.Size(36, 20);
@@ -322,7 +324,7 @@
             this.materialLabel5.AutoSize = true;
             this.materialLabel5.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.materialLabel5.ForeColor = System.Drawing.Color.DimGray;
-            this.materialLabel5.Location = new System.Drawing.Point(33, 271);
+            this.materialLabel5.Location = new System.Drawing.Point(31, 330);
             this.materialLabel5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Size = new System.Drawing.Size(48, 20);
@@ -334,7 +336,7 @@
             this.materialLabel4.AutoSize = true;
             this.materialLabel4.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.materialLabel4.ForeColor = System.Drawing.Color.DimGray;
-            this.materialLabel4.Location = new System.Drawing.Point(33, 98);
+            this.materialLabel4.Location = new System.Drawing.Point(31, 186);
             this.materialLabel4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(40, 20);
@@ -346,7 +348,7 @@
             this.materialLabel3.AutoSize = true;
             this.materialLabel3.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.materialLabel3.ForeColor = System.Drawing.Color.DimGray;
-            this.materialLabel3.Location = new System.Drawing.Point(340, 86);
+            this.materialLabel3.Location = new System.Drawing.Point(339, 128);
             this.materialLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.materialLabel3.Name = "materialLabel3";
             this.materialLabel3.Size = new System.Drawing.Size(55, 20);
@@ -358,7 +360,7 @@
             this.materialLabel2.AutoSize = true;
             this.materialLabel2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.materialLabel2.ForeColor = System.Drawing.Color.DimGray;
-            this.materialLabel2.Location = new System.Drawing.Point(33, 86);
+            this.materialLabel2.Location = new System.Drawing.Point(33, 128);
             this.materialLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(48, 20);
@@ -385,7 +387,7 @@
             this.btncancel.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btncancel.ForeColor = System.Drawing.Color.DimGray;
             this.btncancel.Location = new System.Drawing.Point(425, 714);
-            this.btncancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btncancel.Margin = new System.Windows.Forms.Padding(4);
             this.btncancel.Name = "btncancel";
             this.btncancel.Size = new System.Drawing.Size(187, 55);
             this.btncancel.TabIndex = 1;
@@ -400,7 +402,7 @@
             this.btnvhcl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnvhcl.ForeColor = System.Drawing.Color.White;
             this.btnvhcl.Location = new System.Drawing.Point(39, 714);
-            this.btnvhcl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnvhcl.Margin = new System.Windows.Forms.Padding(4);
             this.btnvhcl.Name = "btnvhcl";
             this.btnvhcl.Size = new System.Drawing.Size(360, 55);
             this.btnvhcl.TabIndex = 0;
@@ -413,6 +415,18 @@
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
+            this.label1.Location = new System.Drawing.Point(33, 66);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(242, 31);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "Please fill up all fields.";
+            // 
             // AddVehicleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -421,7 +435,7 @@
             this.ClientSize = new System.Drawing.Size(667, 800);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddVehicleForm";
@@ -465,5 +479,6 @@
         private System.Windows.Forms.NumericUpDown seat;
         private System.Windows.Forms.CheckedListBox FEATURES;
         private System.Windows.Forms.Label materialLabel13;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -7,11 +7,11 @@
 USE RentalDB;
 
 -- 1. INSERT USERS (Admin, Manager, Rental Agents)
-INSERT INTO Users (Firstname, Lastname, Username, Password, Role) VALUES
-('John', 'Admin', 'admin', 'admin123', 'Admin'),
-('Sarah', 'Manager', 'manager', 'manager123', 'Manager'),
-('Mike', 'Smith', 'agent1', 'agent123', 'RentalAgent'),
-('Lisa', 'Johnson', 'agent2', 'agent123', 'RentalAgent');
+INSERT INTO Users (Firstname, Lastname, Username, Password, Role, Status) VALUES
+('John', 'Admin', 'admin', 'admin123', 'Admin', 'Active'),
+('Sarah', 'Manager', 'manager', 'manager123', 'Manager', 'Active'),
+('Mike', 'Smith', 'agent1', 'agent123', 'RentalAgent', 'Active'),
+('Lisa', 'Johnson', 'agent2', 'agent123', 'RentalAgent', 'Active');
 
 -- 2. INSERT VEHICLE CATEGORIES WITH RATES
 INSERT INTO VehicleCategories (CategoryName, HourlyRate, DailyRate, WeeklyRate, MonthlyRate, Description) VALUES

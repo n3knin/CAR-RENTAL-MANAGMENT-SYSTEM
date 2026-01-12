@@ -29,6 +29,11 @@ namespace RentalApp.UI.Popups
             _depositManager = new DepositManager();
             ConfigureDatePickers();
             loadcustomerdata();
+            cmbrenttype.Items.Add("Daily");
+            cmbrenttype.Items.Add("Weekly");
+            cmbrenttype.Items.Add("Monthly");
+            cmbrenttype.Items.Add("Hourly");
+            cmbrenttype.SelectedIndex = 0;
         }
 
         private void ConfigureDatePickers()
@@ -99,6 +104,51 @@ namespace RentalApp.UI.Popups
                 RentalAgentId = Session.CurrentUserId,
                 Status = RentalStatus.Active
             };
+
+            // Parse deposit
+            if (!decimal.TryParse(txtdeposit.Text, out decimal depositAmount))
+            {
+                MessageBox.Show("Please enter a valid deposit amount.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validation Logic
+            // Daily = index 0, Weekly = index 1, Monthly = index 2
+            // Limits: Daily <= 1000, Weekly <= 7000, Monthly <= 20000
+            
+            if (cmbrenttype.SelectedIndex == 0) // Daily
+            {
+                if (depositAmount > 1000)
+                {
+                    MessageBox.Show("Deposit for Daily rental cannot exceed 1000.", "Deposit Limit Exceeded", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            else if (cmbrenttype.SelectedIndex == 1) // Weekly
+            {
+                 if (depositAmount > 7000)
+                {
+                    MessageBox.Show("Deposit for Weekly rental cannot exceed 7000.", "Deposit Limit Exceeded", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            else if (cmbrenttype.SelectedIndex == 2) // Monthly
+            {
+                 if (depositAmount > 20000)
+                {
+                    MessageBox.Show("Deposit for Monthly rental cannot exceed 20000.", "Deposit Limit Exceeded", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            else if(cmbrenttype.SelectedIndex == 3) // Hourly
+            {
+                if (depositAmount > 70)
+                {
+                    MessageBox.Show("Deposit for Hourly rental cannot exceed 70.", "Deposit Limit Exceeded", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
             try
             {
                 _rentalManager.StartRental(startrental);
@@ -172,6 +222,66 @@ namespace RentalApp.UI.Popups
         private void cancelbt_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cmbrenttype_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtdeposit_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

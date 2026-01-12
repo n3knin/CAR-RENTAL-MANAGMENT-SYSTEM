@@ -56,5 +56,10 @@ namespace RentalApp.Models.Services
         {
             return _maintenanceRepository.CountMaintenanceRecords(vehicleId);
         }
+
+        public bool HasActiveMaintenance(int vehicleId)
+        {
+            return _maintenanceRepository.HasActiveMaintenance(vehicleId);
+        }
     }
 }

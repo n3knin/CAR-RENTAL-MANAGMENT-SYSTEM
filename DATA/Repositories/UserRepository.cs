@@ -10,8 +10,8 @@ namespace RentalApp.Data.Repositories
         // CREATE - Add new user to database
         public int Add(User user)
         {
-            string sql = @"INSERT INTO Users (Firstname, Lastname, Username, Password, Role) 
-                          VALUES (@firstname, @lastname, @username, @password, @role);
+            string sql = @"INSERT INTO Users (Firstname, Lastname, Username, Password, Role, Status) 
+                          VALUES (@firstname, @lastname, @username, @password, @role, @status);
                           SELECT LAST_INSERT_ID();";
 
             using (var conn = DatabaseHelper.GetConnection())
@@ -24,6 +24,7 @@ namespace RentalApp.Data.Repositories
                     cmd.Parameters.AddWithValue("@username", user.Username);
                     cmd.Parameters.AddWithValue("@password", user.GetPasswordHash());
                     cmd.Parameters.AddWithValue("@role", user.GetRoleName());
+                    cmd.Parameters.AddWithValue("@status", user.Status);
 
                     // Return the new user ID
                     return Convert.ToInt32(cmd.ExecuteScalar());
@@ -86,7 +87,7 @@ namespace RentalApp.Data.Repositories
         public List<User> GetAll()
         {
             List<User> users = new List<User>();
-            string sql = "SELECT * FROM Users ORDER BY Firstname, Lastname";
+            string sql = "SELECT * FROM Users WHERE Status = 'Active' ORDER BY Firstname, Lastname";
 
             using (var conn = DatabaseHelper.GetConnection())
             {
@@ -160,10 +161,10 @@ namespace RentalApp.Data.Repositories
             }
         }
 
-        // DELETE - Delete user by ID
+        // DELETE - Delete user by ID (Soft Delete)
         public void Delete(int id)
         {
-            string sql = "DELETE FROM Users WHERE ID = @id";
+            string sql = "UPDATE Users SET Status = 'Inactive' WHERE ID = @id";
 
             using (var conn = DatabaseHelper.GetConnection())
             {
@@ -202,6 +203,7 @@ namespace RentalApp.Data.Repositories
             string username = reader.GetString("Username");
             string password = reader.GetString("Password");
             string role = reader.GetString("Role");
+            string status = reader.IsDBNull(reader.GetOrdinal("Status")) ? "Active" : reader.GetString("Status");
 
             // Create the appropriate user type based on role
             User user;
@@ -224,6 +226,7 @@ namespace RentalApp.Data.Repositories
 
             // Set password (using reflection or a setter method)
             user.SetPassword(password);
+            user.Status = status;
 
             return user;
         }

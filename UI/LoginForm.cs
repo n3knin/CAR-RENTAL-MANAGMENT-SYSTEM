@@ -33,6 +33,12 @@ namespace RentalApp.UI
 
                 if (user != null && user.VerifyPassword(password))
                 {
+                    if (user.Status != "Active")
+                    {
+                         MessageBox.Show("Your account is inactive. Please contact your administrator.", "Account Inactive", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                         return;
+                    }
+
                     Session.CurrentUserId = user.Id;
                     Session.CurrentUsername = user.Username;
                     Session.CurrentUserRole = user.GetRoleName();

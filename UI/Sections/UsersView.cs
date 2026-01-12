@@ -50,9 +50,11 @@ namespace RentalApp.UI.Sections
             // Hide sensitive columns
             if (usersGrid.Columns["PasswordHash"] != null) usersGrid.Columns["PasswordHash"].Visible = false;
             
-            // Format Headers (if needed)
+            if (usersGrid.Columns["Id"] != null) usersGrid.Columns["Id"].Visible = false;
             if (usersGrid.Columns["Firstname"] != null) usersGrid.Columns["Firstname"].HeaderText = "First Name";
             if (usersGrid.Columns["Lastname"] != null) usersGrid.Columns["Lastname"].HeaderText = "Last Name";
+            if (usersGrid.Columns["Role"] != null) usersGrid.Columns["Role"].HeaderText = "Role";
+            if (usersGrid.Columns["Status"] != null) usersGrid.Columns["Status"].HeaderText = "Status";
             
             usersGrid.Refresh();
         }
@@ -82,7 +84,7 @@ namespace RentalApp.UI.Sections
 
         private void addUserButton_Click(object sender, EventArgs e)
         {
-            using (var addForm = new AddUserForm())
+            using (var addForm = new AddUserSimple())
             {
                 if (addForm.ShowDialog() == DialogResult.OK)
                 {
@@ -101,8 +103,8 @@ namespace RentalApp.UI.Sections
 
             var selectedUser = (User)usersGrid.CurrentRow.DataBoundItem;
             
-            var confirmResult = MessageBox.Show($"Are you sure you want to delete user '{selectedUser.Username}'?",
-                                     "Confirm Delete",
+            var confirmResult = MessageBox.Show($"Are you sure you want to deactivate user '{selectedUser.Username}'?",
+                                     "Confirm Deactivation",
                                      MessageBoxButtons.YesNo,
                                      MessageBoxIcon.Warning);
 
@@ -112,7 +114,7 @@ namespace RentalApp.UI.Sections
                 {
                     _userRepository.Delete(selectedUser.Id);
                     LoadUsers();
-                    MessageBox.Show("User deleted successfully.");
+                    MessageBox.Show("User deactivated successfully.");
                 }
                 catch (Exception ex)
                 {

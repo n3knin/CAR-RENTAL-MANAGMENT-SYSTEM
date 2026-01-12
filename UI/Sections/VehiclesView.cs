@@ -171,6 +171,15 @@ namespace RentalApp.UI.Sections
             if(vehiclesGrid.CurrentRow != null && vehiclesGrid.CurrentRow.Index >= 0)
             {
                 var selectedVehicle = (Vehicle)vehiclesGrid.CurrentRow.DataBoundItem;
+                
+                // Restriction: Can only edit Available vehicles (to prevent messing up active rentals/reservations)
+                if (selectedVehicle.Status != RentalApp.Models.Vehicles.VehicleStatus.Available)
+                {
+                    MessageBox.Show($"You can only edit a vehicle when its status is 'Available'.\nCurrent Status: {selectedVehicle.Status}", 
+                                    "Edit Restricted", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 using (var editForm = new Popups.EditVehicle(selectedVehicle))
                 {
                    if(editForm.ShowDialog() == DialogResult.OK)

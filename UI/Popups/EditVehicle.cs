@@ -48,7 +48,16 @@ namespace RentalApp.UI.Popups
             cmbTT.Enabled = false; 
             cmbVT.Enabled = false;
 
-            cmbStatus.DataSource = Enum.GetValues(typeof(VehicleStatus));
+           
+            
+            var allowedStatuses = new List<VehicleStatus> 
+            { 
+                VehicleStatus.Available, 
+                VehicleStatus.Retired, 
+                VehicleStatus.OutOfService 
+            };
+            
+            cmbStatus.DataSource = allowedStatuses;
             cmbStatus.SelectedItem = _vehicle.Status;
             
             _vehicleManager = new VehicleManager();

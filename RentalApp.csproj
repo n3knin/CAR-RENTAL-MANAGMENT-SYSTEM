@@ -164,6 +164,9 @@
     <Compile Include="UI\Popups\AddUserForm.Designer.cs">
       <DependentUpon>AddUserForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Popups\AddUserSimple.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\Popups\AddnewCustomer.cs">
       <SubType>Form</SubType>
     </Compile>

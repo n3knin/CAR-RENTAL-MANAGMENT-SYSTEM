@@ -41,7 +41,7 @@ namespace RentalApp.UI
             reportsButton.Visible = isFullAccess;
             dashboardButton.Visible = isFullAccess;
             
-            usersButton.Visible = _user.CanManageUsers();
+            usersButton.Visible = _user.GetRoleName() == "Admin";
             
             customersButton.Visible = true;
             reservationsButton.Visible = true;

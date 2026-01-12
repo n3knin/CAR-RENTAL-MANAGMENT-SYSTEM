@@ -99,5 +99,21 @@ namespace RentalApp.Data.Repositories
                 }
             }
         }
+
+        public bool HasActiveMaintenance(int vehicleId)
+        {
+            string sql = "SELECT COUNT(*) FROM MaintenanceRecords WHERE VehicleID = @vehId AND IsCompleted = 0";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@vehId", vehicleId);
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0;
+                }
+            }
+        }
     }
 }

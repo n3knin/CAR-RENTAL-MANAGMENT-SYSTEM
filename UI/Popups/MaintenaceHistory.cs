@@ -55,13 +55,13 @@ namespace RentalApp.UI.Popups
 
             if (status == "Retired" || status == "Rented"|| status == "Out of Service")
             {
-                MessageBox.Show("Vehicle is retired and cannot be scheduled for maintenance.");
+                MessageBox.Show("Vehicle is retired, out of service, or currently rented and cannot be scheduled for maintenance.");
                 return;
             }
            
-            if (count > 1 )
+            if (maintenanceManager.HasActiveMaintenance(vehicle.VehicleId))
             {
-                MessageBox.Show("Vehicle has already been scheduled for maintenance.");
+                MessageBox.Show("Vehicle already has an active maintenance task. Please complete the current task before scheduling a new one.");
                 return; 
             }
             using (var maintenanceForm = new Popups.AddMaitenance(vehicle))

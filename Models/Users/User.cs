@@ -12,6 +12,7 @@ namespace RentalApp.Models.Users
         public string  Firstname { get; set; }
         public string Lastname { get; set; }
         public string Username { get; set; }
+        public string Status { get; set; }
         protected string PasswordHash { get; set; }
         protected User()
         {
@@ -23,8 +24,11 @@ namespace RentalApp.Models.Users
             Firstname = firstname;
             Lastname = lastname;
             Username = username;
+            Status = "Active"; // Default status
             
         }
+        public string Role => GetRoleName();
+
         public abstract string GetRoleName();
         public abstract bool CanManageFleet();
         public abstract bool CanManageUsers();
@@ -36,13 +40,31 @@ namespace RentalApp.Models.Users
         }
         public bool VerifyPassword(string password)
         {
+            // Verify against hash
+            string inputHash = ComputeSha256Hash(password);
+            // Backward compatibility for existing plain text passwords (optional, useful for dev)
+            if (PasswordHash == password) return true; 
             
-            return PasswordHash == password;
+            return PasswordHash == inputHash;
         }
+
         public void SetPassword(string password)
         {
-           
-            PasswordHash = password;
+            PasswordHash = ComputeSha256Hash(password);
+        }
+
+        private static string ComputeSha256Hash(string rawData)
+        {
+            using (System.Security.Cryptography.SHA256 sha256Hash = System.Security.Cryptography.SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(System.Text.Encoding.UTF8.GetBytes(rawData));
+                System.Text.StringBuilder builder = new System.Text.StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
         }
 
         public string GetPasswordHash()
