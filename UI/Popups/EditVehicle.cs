@@ -17,6 +17,7 @@ namespace RentalApp.UI.Popups
     {
         private Vehicle _vehicle;
         private VehicleManager _vehicleManager;
+        private RentalManager _rentalManager;
         public EditVehicle(Vehicle vehicle)
         {
             InitializeComponent();
@@ -51,6 +52,7 @@ namespace RentalApp.UI.Popups
             cmbStatus.SelectedItem = _vehicle.Status;
             
             _vehicleManager = new VehicleManager();
+            _rentalManager = new RentalManager();
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -76,9 +78,24 @@ namespace RentalApp.UI.Popups
             if(int.TryParse(txtSC.Text, out int sc)) _vehicle.SeatingCapacity = sc;
 
             // Save the selected status
+            // Save the selected status
             if (cmbStatus.SelectedItem != null)
             {
-                _vehicle.Status = (VehicleStatus)cmbStatus.SelectedItem;
+                var newStatus = (VehicleStatus)cmbStatus.SelectedItem;
+                
+                // Check if attempting to change status while rented
+                if (_vehicle.Status == VehicleStatus.Rented && newStatus != VehicleStatus.Rented)
+                {
+                    // Double check with DB to be sure
+                    if (_rentalManager.IsVehicleRented(_vehicle.VehicleId))
+                    {
+                        MessageBox.Show("Cannot change status. This vehicle is currently associated with an ACTIVE RENTAL.\nPlease complete the return process first.", 
+                            "Action Denied", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        return;
+                    }
+                }
+                
+                _vehicle.Status = newStatus;
             }
 
             _vehicleManager.UpdateVehicle(_vehicle);

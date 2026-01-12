@@ -13,6 +13,7 @@ namespace RentalApp.UI.Sections
     public partial class VehiclesView : UserControl
     {
         private VehicleManager _vehicleManager;
+        private RentalManager _rentalManager;
         private List<Vehicle> _allVehicles;
 
         public VehiclesView()
@@ -24,6 +25,7 @@ namespace RentalApp.UI.Sections
             
             // Initialize Manager
             _vehicleManager = new VehicleManager();
+            _rentalManager = new RentalManager();
 
             // Load Data immediately
             LoadVehicles();
@@ -33,6 +35,8 @@ namespace RentalApp.UI.Sections
             // Link search event
             searchTextBox.TextChanged += searchTextBox_TextChanged;
         }
+
+
 
         private void InitializeDragAndDrop()
         {
@@ -99,7 +103,7 @@ namespace RentalApp.UI.Sections
             if (vehiclesGrid.Columns["CategoryId"] != null) vehiclesGrid.Columns["CategoryId"].Visible = false;
             if (vehiclesGrid.Columns["VehicleType"] != null) vehiclesGrid.Columns["VehicleType"].Visible = false;
             if (vehiclesGrid.Columns["VIN"] != null) vehiclesGrid.Columns["VIN"].Visible = false;
-            if (vehiclesGrid.Columns["VehicleName"] != null) vehiclesGrid.Columns["VehicleName"].HeaderText = "Vehicle Name";
+            if (vehiclesGrid.Columns["VehicleName"] != null) vehiclesGrid.Columns["VehicleName"].Visible = false;
             if (vehiclesGrid.Columns["LicensePlate"] != null) vehiclesGrid.Columns["LicensePlate"].HeaderText = "License Plate";
             if (vehiclesGrid.Columns["SeatingCapacity"] != null) vehiclesGrid.Columns["SeatingCapacity"].HeaderText = "Seating Capacity";
             vehiclesGrid.Refresh();
@@ -206,6 +210,15 @@ namespace RentalApp.UI.Sections
             if(vehiclesGrid.CurrentRow != null && vehiclesGrid.CurrentRow.Index >= 0)
             {
                 var selectedVehicle = (Vehicle)vehiclesGrid.CurrentRow.DataBoundItem;
+                
+                // Check if vehicle is currently rented
+                if (_rentalManager.IsVehicleRented(selectedVehicle.VehicleId))
+                {
+                    MessageBox.Show("Cannot remove vehicle. It is currently associated with an ACTIVE RENTAL.\nPlease complete the return process before removing this vehicle.", 
+                        "Action Denied", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    return;
+                }
+
                 if (MessageBox.Show("Are you sure you want to remove this vehicle from the active fleet?", "Retire Vehicle", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     _vehicleManager.RetireVehicle(selectedVehicle.VehicleId);
@@ -230,7 +243,10 @@ namespace RentalApp.UI.Sections
                 var selectedVehicle = (Vehicle)vehiclesGrid.CurrentRow.DataBoundItem;
                 using (var addMaintenanceForm = new Popups.MaintenaceHistory(selectedVehicle))
                 {
-                    addMaintenanceForm.ShowDialog();
+                    if (addMaintenanceForm.ShowDialog() == DialogResult.OK)
+                    {
+                        LoadVehicles();
+                    }
                 }
             }
         }

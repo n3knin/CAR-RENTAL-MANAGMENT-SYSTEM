@@ -328,6 +328,21 @@ namespace RentalApp.Data.Repositories
             }
         }
 
+        public int GetActiveRentalCountByVehicle(int vehicleId)
+        {
+            string sql = "SELECT COUNT(*) FROM Rentals WHERE VehicleID = @vehId AND Status = 'Active'";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@vehId", vehicleId);
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+        }
+
         // HELPER
         private Rental MapReaderToRental(MySqlDataReader reader)
         {

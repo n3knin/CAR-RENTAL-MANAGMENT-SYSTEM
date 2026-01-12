@@ -101,6 +101,11 @@ namespace RentalApp.Models.Services
             return _rentalRepository.GetActiveRentalCount(customerId) > 0;
         }
 
+        public bool IsVehicleRented(int vehicleId)
+        {
+            return _rentalRepository.GetActiveRentalCountByVehicle(vehicleId) > 0;
+        }
+
         public void UpdateRentalStatus(int rentalId, string status)
         {
             // Implementation of UpdateRentalStatus if needed, or use existing Update method

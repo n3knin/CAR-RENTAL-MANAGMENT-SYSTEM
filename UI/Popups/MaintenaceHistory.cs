@@ -69,6 +69,7 @@ namespace RentalApp.UI.Popups
                if (maintenanceForm.ShowDialog() == DialogResult.OK)
                {
                    loadMaintenanceHistory();
+                   this.DialogResult = DialogResult.OK; 
                }
             }
         }
@@ -91,6 +92,7 @@ namespace RentalApp.UI.Popups
             {
                 maintenanceManager.CompleteMaintenance(record.Id, record.VehicleId);
                 loadMaintenanceHistory();
+                this.DialogResult = DialogResult.OK; 
             }
         }
     }
