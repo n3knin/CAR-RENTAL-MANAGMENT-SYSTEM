@@ -97,8 +97,9 @@ namespace RentalApp.UI.Sections
             if (vehiclesGrid.Columns["VehicleId"] != null) vehiclesGrid.Columns["VehicleId"].Visible = false;
             if (vehiclesGrid.Columns["ImageUrl"] != null) vehiclesGrid.Columns["ImageUrl"].Visible = false;
             if (vehiclesGrid.Columns["CategoryId"] != null) vehiclesGrid.Columns["CategoryId"].Visible = false;
+            if (vehiclesGrid.Columns["VehicleType"] != null) vehiclesGrid.Columns["VehicleType"].Visible = false;
             if (vehiclesGrid.Columns["VIN"] != null) vehiclesGrid.Columns["VIN"].Visible = false;
-            
+            if (vehiclesGrid.Columns["VehicleName"] != null) vehiclesGrid.Columns["VehicleName"].HeaderText = "Vehicle Name";
             if (vehiclesGrid.Columns["LicensePlate"] != null) vehiclesGrid.Columns["LicensePlate"].HeaderText = "License Plate";
             if (vehiclesGrid.Columns["SeatingCapacity"] != null) vehiclesGrid.Columns["SeatingCapacity"].HeaderText = "Seating Capacity";
             vehiclesGrid.Refresh();

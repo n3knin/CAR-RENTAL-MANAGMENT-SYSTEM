@@ -30,7 +30,6 @@
                 _inspectionManager = new VehicleInspectionManager();
                 _reservationManager = new ReservationManager();
                 _damageManager = new DamageReportManager();
-            
                 ConfigureDatePickers();
                 GroupRadioButtons();
                 PopulateComboBoxes();

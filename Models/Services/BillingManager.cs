@@ -52,6 +52,15 @@ namespace RentalApp.Models.Services
                 _invoiceRepository.Update(invoice);
             }
         }
+        public Invoice GetInvoiceById(int id)
+        {
+            return _invoiceRepository.GetById(id);
+        }
+
+        public Invoice GetInvoiceByRentalId(int rentalId)
+        {
+            return _invoiceRepository.GetByRentalId(rentalId);
+        }
         public int CountToday()
         {
             return _invoiceRepository.CountToday();

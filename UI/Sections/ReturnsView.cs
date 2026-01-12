@@ -148,8 +148,9 @@ namespace RentalApp.UI.Sections
             if (returnsGrid.CurrentRow != null && returnsGrid.CurrentRow.Index >= 0)
             {
                 var selectedRental = (Rental)returnsGrid.Rows[returnsGrid.CurrentRow.Index].DataBoundItem;
-                using (var form = new Popups.InspectionForm(selectedRental))
+                using (var form = new Popups.InspectionForm())
                 {
+                    form.LoadData(selectedRental);
                     if (form.ShowDialog() == DialogResult.OK)
                     {
                         LoadRentalData();

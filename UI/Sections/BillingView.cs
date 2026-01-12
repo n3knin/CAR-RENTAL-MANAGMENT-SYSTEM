@@ -127,6 +127,7 @@ namespace RentalApp.UI.Sections
 
         private void billingGrid_DoubleClick(object sender, EventArgs e)
         {
+            
             try
             {
                 if (billingGrid.CurrentRow != null && billingGrid.CurrentRow.Index >= 0)
@@ -134,6 +135,13 @@ namespace RentalApp.UI.Sections
                     var rental = (Rental)billingGrid.CurrentRow.DataBoundItem;
                     if (rental != null)
                     {
+                        var existingInvoice = _billingManager.GetInvoiceByRentalId(rental.Id);
+                        if (existingInvoice != null)
+                        {
+                            MessageBox.Show("Cannot process payment twice. An invoice already exists for this rental.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
                         using (var invoiceForm = new InvoiceForm(rental))
                         {
                             if (invoiceForm.ShowDialog() == DialogResult.OK)
