@@ -46,6 +46,7 @@ namespace RentalApp.UI.Popups
             textBox1.Text = _rental.CustomerName;
             textBox2.Text = _rental.VehicleInfo;
             
+            
             // Configure DateTimePickers to show time
             dtpSRD.Format = DateTimePickerFormat.Custom;
             dtpSRD.CustomFormat = "MM/dd/yyyy hh:mm tt";
@@ -68,6 +69,25 @@ namespace RentalApp.UI.Popups
             var damageReport = inspection != null ? _damageReportManager.GetReportForInspection(inspection.Id) : null;
             cmbVT.DataSource = Enum.GetValues(typeof(RateType));
             cmbPM.DataSource = Enum.GetValues(typeof(PaymentMethod));
+
+            
+            decimal depositAmount = deposit != null ? deposit.Amount : 0;
+            if (depositAmount > 70 && depositAmount < 1000)
+            {
+                cmbVT.SelectedItem = RateType.Daily;
+            }
+            else if (depositAmount > 1000 && depositAmount < 7000)
+            {
+                cmbVT.SelectedItem = RateType.Weekly;
+            }
+            else if (depositAmount > 7000 && depositAmount < 20000)
+            {
+                cmbVT.SelectedItem = RateType.Monthly;
+            }
+            else
+            {
+                cmbVT.SelectedItem = RateType.Hourly;
+            }
 
             // Default values for fees
             txtLF.Text = "0.00";    
@@ -132,6 +152,18 @@ namespace RentalApp.UI.Popups
             txtAR.Text = rate.ToString("F2"); // Format as plain number for parsing safety
             decimal baseCharge = units * rate;
             txtBC.Text = baseCharge.ToString("F2");
+
+            // Calculate Late Fees (150 per hour for Daily rentals)
+            decimal lateFee = 0;
+            if (_rental.ExpectedReturnDate.HasValue && dtpERD.Value > _rental.ExpectedReturnDate.Value)
+            {
+                TimeSpan overdue = dtpERD.Value - _rental.ExpectedReturnDate.Value;
+                if (selectedType == RateType.Daily)
+                {
+                    lateFee = (decimal)overdue.TotalHours * 150;
+                }
+            }
+            txtLF.Text = lateFee.ToString("F2");
 
             CalculateTotal();
         }

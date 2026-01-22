@@ -246,7 +246,64 @@ namespace RentalApp.Data.Repositories
                 return (double)repeat / total * 100;
             }
         }
+        public bool RecordExistedbyEmail(string email)
+        {
+            string sql = "SELECT COUNT(*) FROM Customers WHERE Email = @email";
 
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@email", email);
+                    return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+                }
+            }
+        }
+        public bool RecordExistedbyDriverLicenseNumber(string driverLicenseNumber)
+        {
+            string sql = "SELECT COUNT(*) FROM Customers WHERE DriverLicenseNumber = @driverLicenseNumber";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@driverLicenseNumber", driverLicenseNumber);
+                    return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+                }
+            }
+        }
+        public bool RecordExistedbyPhone(string phone)
+        {
+            string sql = "SELECT COUNT(*) FROM Customers WHERE Phone = @phone";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@phone", phone);
+                    return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+                }
+            }
+        }
+
+        public bool RecordExistedbyName(string firstName, string lastName)
+        {
+            string sql = "SELECT COUNT(*) FROM Customers WHERE FirstName = @firstName AND LastName = @lastName";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@firstName", firstName);
+                    cmd.Parameters.AddWithValue("@lastName", lastName);
+                    return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+                }
+            }
+        }
         // HELPER
         private Customer MapReaderToCustomer(MySqlDataReader reader)
         {

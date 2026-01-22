@@ -20,7 +20,6 @@
             this.pnlDamage = new System.Windows.Forms.Panel();
             this.txtDamageCost = new System.Windows.Forms.TextBox();
             this.cmbDamageSeverity = new System.Windows.Forms.ComboBox();
-            this.txtDamageLocation = new System.Windows.Forms.TextBox();
             this.cmbDamageType = new System.Windows.Forms.ComboBox();
             this.materialLabel16 = new System.Windows.Forms.Label();
             this.materialLabel15 = new System.Windows.Forms.Label();
@@ -55,6 +54,7 @@
             this.materialLabel2 = new System.Windows.Forms.Label();
             this.materialLabel1 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.cmbdmgarea = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.pnlDamage.SuspendLayout();
             this.SuspendLayout();
@@ -98,6 +98,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(600, 826);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // chkHasDamage
             // 
@@ -116,9 +117,9 @@
             // 
             this.pnlDamage.BackColor = System.Drawing.Color.LightGray;
             this.pnlDamage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlDamage.Controls.Add(this.cmbdmgarea);
             this.pnlDamage.Controls.Add(this.txtDamageCost);
             this.pnlDamage.Controls.Add(this.cmbDamageSeverity);
-            this.pnlDamage.Controls.Add(this.txtDamageLocation);
             this.pnlDamage.Controls.Add(this.cmbDamageType);
             this.pnlDamage.Controls.Add(this.materialLabel16);
             this.pnlDamage.Controls.Add(this.materialLabel15);
@@ -129,7 +130,7 @@
             this.pnlDamage.Name = "pnlDamage";
             this.pnlDamage.Size = new System.Drawing.Size(560, 140);
             this.pnlDamage.TabIndex = 29;
-            this.pnlDamage.Visible = true;
+            this.pnlDamage.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlDamage_Paint);
             // 
             // txtDamageCost
             // 
@@ -139,6 +140,7 @@
             this.txtDamageCost.Size = new System.Drawing.Size(120, 25);
             this.txtDamageCost.TabIndex = 7;
             this.txtDamageCost.Text = "0.00";
+            this.txtDamageCost.TextChanged += new System.EventHandler(this.txtDamageCost_TextChanged);
             // 
             // cmbDamageSeverity
             // 
@@ -148,14 +150,7 @@
             this.cmbDamageSeverity.Name = "cmbDamageSeverity";
             this.cmbDamageSeverity.Size = new System.Drawing.Size(150, 25);
             this.cmbDamageSeverity.TabIndex = 6;
-            // 
-            // txtDamageLocation
-            // 
-            this.txtDamageLocation.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtDamageLocation.Location = new System.Drawing.Point(120, 45);
-            this.txtDamageLocation.Name = "txtDamageLocation";
-            this.txtDamageLocation.Size = new System.Drawing.Size(420, 25);
-            this.txtDamageLocation.TabIndex = 5;
+            this.cmbDamageSeverity.SelectedIndexChanged += new System.EventHandler(this.cmbDamageSeverity_SelectedIndexChanged);
             // 
             // cmbDamageType
             // 
@@ -165,6 +160,7 @@
             this.cmbDamageType.Name = "cmbDamageType";
             this.cmbDamageType.Size = new System.Drawing.Size(200, 25);
             this.cmbDamageType.TabIndex = 4;
+            this.cmbDamageType.SelectedIndexChanged += new System.EventHandler(this.cmbDamageType_SelectedIndexChanged);
             // 
             // materialLabel16
             // 
@@ -176,6 +172,7 @@
             this.materialLabel16.Size = new System.Drawing.Size(89, 15);
             this.materialLabel16.TabIndex = 3;
             this.materialLabel16.Text = "Estimated Cost:";
+            this.materialLabel16.Click += new System.EventHandler(this.materialLabel16_Click);
             // 
             // materialLabel15
             // 
@@ -187,6 +184,7 @@
             this.materialLabel15.Size = new System.Drawing.Size(51, 15);
             this.materialLabel15.TabIndex = 2;
             this.materialLabel15.Text = "Severity:";
+            this.materialLabel15.Click += new System.EventHandler(this.materialLabel15_Click);
             // 
             // materialLabel14
             // 
@@ -195,9 +193,10 @@
             this.materialLabel14.ForeColor = System.Drawing.Color.DimGray;
             this.materialLabel14.Location = new System.Drawing.Point(5, 50);
             this.materialLabel14.Name = "materialLabel14";
-            this.materialLabel14.Size = new System.Drawing.Size(56, 15);
+            this.materialLabel14.Size = new System.Drawing.Size(79, 15);
             this.materialLabel14.TabIndex = 1;
-            this.materialLabel14.Text = "Location:";
+            this.materialLabel14.Text = "Damage area:";
+            this.materialLabel14.Click += new System.EventHandler(this.materialLabel14_Click);
             // 
             // materialLabel13
             // 
@@ -209,6 +208,7 @@
             this.materialLabel13.Size = new System.Drawing.Size(82, 15);
             this.materialLabel13.TabIndex = 0;
             this.materialLabel13.Text = "Damage Type:";
+            this.materialLabel13.Click += new System.EventHandler(this.materialLabel13_Click);
             // 
             // textBox1
             // 
@@ -218,6 +218,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(540, 100);
             this.textBox1.TabIndex = 27;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // materialLabel12
             // 
@@ -229,6 +230,7 @@
             this.materialLabel12.Size = new System.Drawing.Size(41, 15);
             this.materialLabel12.TabIndex = 26;
             this.materialLabel12.Text = "Notes:";
+            this.materialLabel12.Click += new System.EventHandler(this.materialLabel12_Click);
             // 
             // cnbt
             // 
@@ -408,6 +410,7 @@
             this.materialLabel11.Size = new System.Drawing.Size(110, 15);
             this.materialLabel11.TabIndex = 10;
             this.materialLabel11.Text = "Smoking Violation: ";
+            this.materialLabel11.Click += new System.EventHandler(this.materialLabel11_Click);
             // 
             // materialLabel10
             // 
@@ -419,6 +422,7 @@
             this.materialLabel10.Size = new System.Drawing.Size(121, 15);
             this.materialLabel10.TabIndex = 9;
             this.materialLabel10.Text = "Complete Accesories:";
+            this.materialLabel10.Click += new System.EventHandler(this.materialLabel10_Click);
             // 
             // materialLabel9
             // 
@@ -430,6 +434,7 @@
             this.materialLabel9.Size = new System.Drawing.Size(62, 15);
             this.materialLabel9.TabIndex = 8;
             this.materialLabel9.Text = "Fuel Level:";
+            this.materialLabel9.Click += new System.EventHandler(this.materialLabel9_Click);
             // 
             // materialLabel8
             // 
@@ -441,6 +446,7 @@
             this.materialLabel8.Size = new System.Drawing.Size(105, 15);
             this.materialLabel8.TabIndex = 7;
             this.materialLabel8.Text = "Exterior Condition:";
+            this.materialLabel8.Click += new System.EventHandler(this.materialLabel8_Click);
             // 
             // materialLabel7
             // 
@@ -452,6 +458,7 @@
             this.materialLabel7.Size = new System.Drawing.Size(104, 15);
             this.materialLabel7.TabIndex = 6;
             this.materialLabel7.Text = "Interior Condition:";
+            this.materialLabel7.Click += new System.EventHandler(this.materialLabel7_Click);
             // 
             // materialLabel6
             // 
@@ -463,6 +470,7 @@
             this.materialLabel6.Size = new System.Drawing.Size(109, 15);
             this.materialLabel6.TabIndex = 5;
             this.materialLabel6.Text = "Actual Return Date:";
+            this.materialLabel6.Click += new System.EventHandler(this.materialLabel6_Click);
             // 
             // materialLabel5
             // 
@@ -474,6 +482,7 @@
             this.materialLabel5.Size = new System.Drawing.Size(122, 15);
             this.materialLabel5.TabIndex = 4;
             this.materialLabel5.Text = "Expected Return Date:";
+            this.materialLabel5.Click += new System.EventHandler(this.materialLabel5_Click);
             // 
             // materialLabel4
             // 
@@ -485,6 +494,7 @@
             this.materialLabel4.Size = new System.Drawing.Size(105, 15);
             this.materialLabel4.TabIndex = 3;
             this.materialLabel4.Text = "Customer\'s Name:";
+            this.materialLabel4.Click += new System.EventHandler(this.materialLabel4_Click);
             // 
             // materialLabel3
             // 
@@ -496,6 +506,7 @@
             this.materialLabel3.Size = new System.Drawing.Size(92, 15);
             this.materialLabel3.TabIndex = 2;
             this.materialLabel3.Text = "Ending Mileage:";
+            this.materialLabel3.Click += new System.EventHandler(this.materialLabel3_Click);
             // 
             // materialLabel2
             // 
@@ -507,6 +518,7 @@
             this.materialLabel2.Size = new System.Drawing.Size(96, 15);
             this.materialLabel2.TabIndex = 1;
             this.materialLabel2.Text = "Starting Mileage:";
+            this.materialLabel2.Click += new System.EventHandler(this.materialLabel2_Click);
             // 
             // materialLabel1
             // 
@@ -518,6 +530,7 @@
             this.materialLabel1.Size = new System.Drawing.Size(85, 15);
             this.materialLabel1.TabIndex = 0;
             this.materialLabel1.Text = "Reservation ID:";
+            this.materialLabel1.Click += new System.EventHandler(this.materialLabel1_Click);
             // 
             // lblTitle
             // 
@@ -529,6 +542,17 @@
             this.lblTitle.Size = new System.Drawing.Size(221, 32);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Vehicle Inspection";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
+            // 
+            // cmbdmgarea
+            // 
+            this.cmbdmgarea.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbdmgarea.FormattingEnabled = true;
+            this.cmbdmgarea.Location = new System.Drawing.Point(120, 45);
+            this.cmbdmgarea.Name = "cmbdmgarea";
+            this.cmbdmgarea.Size = new System.Drawing.Size(200, 25);
+            this.cmbdmgarea.TabIndex = 8;
+            this.cmbdmgarea.SelectedIndexChanged += new System.EventHandler(this.cmbdmgarea_SelectedIndexChanged);
             // 
             // InspectionForm
             // 
@@ -588,8 +612,8 @@
         private System.Windows.Forms.Label materialLabel15;
         private System.Windows.Forms.Label materialLabel16;
         private System.Windows.Forms.ComboBox cmbDamageType;
-        private System.Windows.Forms.TextBox txtDamageLocation;
         private System.Windows.Forms.ComboBox cmbDamageSeverity;
         private System.Windows.Forms.TextBox txtDamageCost;
+        private System.Windows.Forms.ComboBox cmbdmgarea;
     }
 }

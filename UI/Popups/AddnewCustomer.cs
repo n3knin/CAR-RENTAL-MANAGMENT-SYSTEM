@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.ComponentModel.DataAnnotations;
 using RentalApp.Models.Services;
 using RentalApp.Models.Core;
 
@@ -14,6 +15,14 @@ namespace RentalApp.UI.Popups
             InitializeComponent();
             _customerManager = new CustomerManager();
             LoadCustomerTypes();
+            comboBox1.Items.Add("Davao del Norte");
+            comboBox1.Items.Add("Davao del Sur");
+            comboBox1.Items.Add("Davao Oriental");
+            comboBox1.Items.Add("Davao City");
+            comboBox1.Items.Add("Davao de Oro");
+            comboBox1.Items.Add("Davao Occidental");
+            comboBox1.SelectedIndex = 0;
+            
         }
 
         private void LoadCustomerTypes()
@@ -39,7 +48,7 @@ namespace RentalApp.UI.Popups
         private void textBox1_TextChanged(object sender, EventArgs e) { }
         private void phone_TextChanged(object sender, EventArgs e) { }
         private void textBox2_TextChanged(object sender, EventArgs e) { }
-        private void txtlicensestate_TextChanged(object sender, EventArgs e) { }
+      
         private void cmbcustomertype_SelectedIndexChanged(object sender, EventArgs e) { }
         private void AddnewCustomer_Load(object sender, EventArgs e) { }
 
@@ -51,9 +60,15 @@ namespace RentalApp.UI.Popups
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtdlnumber.Text))
+            if (string.IsNullOrWhiteSpace(txtdlnumber.Text) || txtdlnumber.Text.Length != 11)
             {
-                MessageBox.Show("Driver's License Number is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Driver's License Number is required and must be exactly 11 characters.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (dtdateissue.Value > dtdateexpire.Value)
+            {
+                MessageBox.Show("License issue date cannot be after the expiration date.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -62,6 +77,37 @@ namespace RentalApp.UI.Popups
                 MessageBox.Show("License has expired! Cannot register customer.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if(_customerManager.RecordExistedbyEmail(textBox1.Text))
+            {
+                MessageBox.Show("Email already exists! Cannot register customer.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if(_customerManager.RecordExistedbyDriverLicenseNumber(txtdlnumber.Text))
+            {
+                MessageBox.Show("Driver's License Number already exists! Cannot register customer.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if(_customerManager.RecordExistedbyPhone(phone.Text))
+            {
+                MessageBox.Show("Phone already exists! Cannot register customer.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if(_customerManager.RecordExistedbyName(txtfirstname.Text, textxtlastname.Text))
+            {
+                MessageBox.Show("Name already exists! Cannot register customer.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(phone.Text) || phone.Text.Length != 11)
+            {
+                MessageBox.Show("Phone number is required and must be exactly 11 characters.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!new EmailAddressAttribute().IsValid(textBox1.Text))
+            {
+                MessageBox.Show("Please enter a valid email address.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
 
             // 2. Create Object with ALL properties mapped + User's Variable Names
             var newCustomer = new Customer
@@ -76,8 +122,8 @@ namespace RentalApp.UI.Popups
                 
                 DriverLicenseNumber = txtdlnumber.Text.Trim(),
                 LicenseIssueDate = dtdateissue.Value,
-                LicenseExpiryDate = dtdateexpire.Value,
-                LicenseState = txtlicensestate.Text.Trim(),
+                LicenseExpiryDate = dtdateexpire.Value,     
+                LicenseState = comboBox1.SelectedItem?.ToString() ?? "",
 
                 CreatedAt = DateTime.Now,
                 IsBlacklisted = false,
@@ -98,6 +144,66 @@ namespace RentalApp.UI.Popups
             {
                 MessageBox.Show("Error saving customer: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dadf_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -23,6 +23,8 @@ namespace RentalApp.UI.Popups
             _vehiclemanager = new VehicleManager();
             _featureRepository = new FeatureRepository();
             LoadVehicleTypes();
+            LoadMakes();
+            ConfigureYearPicker();
             LoadFeatures();
             BTNAUTOMATIC.Checked = true;
 
@@ -37,7 +39,22 @@ namespace RentalApp.UI.Popups
             CATEGORYCMB.Items.Add("Pickup");
             CATEGORYCMB.Items.Add("Hatchback");
             CATEGORYCMB.Items.Add("Van");
-            CATEGORYCMB.SelectedIndex = 0;
+            comboBox1.SelectedIndex = 0;
+        }
+
+        private void LoadMakes()
+        {
+            string[] commonMakes = { "Toyota", "Mitsubishi", "Ford", "Honda", "Nissan", "Hyundai", "Kia", "Isuzu", "Suzuki", "Chevrolet", "Mazda" };
+            cmbmake.Items.AddRange(commonMakes);
+            cmbmake.SelectedIndex = 0;
+        }
+
+        private void ConfigureYearPicker()
+        {
+            dtpyear.Format = DateTimePickerFormat.Custom;
+            dtpyear.CustomFormat = "yyyy";
+            dtpyear.ShowUpDown = true;
+            dtpyear.MaxDate = DateTime.Now;
         }
 
         private void LoadFeatures()
@@ -110,9 +127,9 @@ namespace RentalApp.UI.Popups
             }
 
             // Validate all required fields before proceeding
-            if (string.IsNullOrWhiteSpace(txtmake.Text))
+            if (string.IsNullOrWhiteSpace(cmbmake.Text))
             {
-                MessageBox.Show("Please enter the vehicle make.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter or select the vehicle make.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -122,9 +139,10 @@ namespace RentalApp.UI.Popups
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtyear.Text) || !int.TryParse(txtyear.Text, out int year))
+            int year = dtpyear.Value.Year;
+            if (year < 1900 || year > DateTime.Now.Year)
             {
-                MessageBox.Show("Please enter a valid year.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a valid year.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -134,9 +152,10 @@ namespace RentalApp.UI.Popups
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtvin.Text))
+            string vin = txtvin.Text.Trim().ToUpper();
+            if (vin.Length != 17)
             {
-                MessageBox.Show("Please enter the VIN.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("VIN must be exactly 17 characters.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -146,11 +165,13 @@ namespace RentalApp.UI.Popups
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtlicense.Text))
+            string license = txtlicense.Text.Trim().ToUpper();
+            if (!System.Text.RegularExpressions.Regex.IsMatch(license, @"^[A-Z]{3}[0-9]{4}$"))
             {
-                MessageBox.Show("Please enter the license plate.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("License Plate must be in the format 'ABC1234' (3 letters followed by 4 numbers).", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            license = license.ToUpper(); // Ensure it's uppercase
 
             if (comboBox1.SelectedItem == null)
             {
@@ -158,16 +179,16 @@ namespace RentalApp.UI.Popups
                 return;
             }
 
-            newVehicle.Make = txtmake.Text;
+            newVehicle.Make = cmbmake.Text;
             newVehicle.Model = txtmodel.Text;
             newVehicle.Year = year;
             newVehicle.Color = txtcolor.Text;
             newVehicle.Fuel = (FuelType)comboBox1.SelectedItem;
             newVehicle.Transmission = transmission;
-            newVehicle.VIN = txtvin.Text;
+            newVehicle.VIN = vin;
             newVehicle.Mileage = mileage;
             newVehicle.Status = VehicleStatus.Available;
-            newVehicle.LicensePlate = txtlicense.Text;
+            newVehicle.LicensePlate = license;
             newVehicle.SeatingCapacity = (int)seat.Value;
             
             // Map vehicle type to CategoryId
@@ -255,6 +276,126 @@ namespace RentalApp.UI.Popups
         private void btncancel_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cmbmake_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FEATURES_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void seat_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtmileage_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtvin_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtcolor_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtmodel_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CATEGORYCMB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BTNMANUAL_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dtpyear_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

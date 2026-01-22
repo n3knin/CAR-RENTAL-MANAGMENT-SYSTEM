@@ -33,6 +33,9 @@
                 ConfigureDatePickers();
                 GroupRadioButtons();
                 PopulateComboBoxes();
+                POPULATECMB();
+
+               
             }
 
             private void ConfigureDatePickers()
@@ -43,6 +46,26 @@
             
                 dateTimePicker2.Format = DateTimePickerFormat.Custom;
                 dateTimePicker2.CustomFormat = "MM/dd/yyyy hh:mm tt";
+            }
+            
+            private void POPULATECMB()
+            {
+                cmbdmgarea.Items.Add("Front Bumper");
+                cmbdmgarea.Items.Add("Rear Bumper");
+                cmbdmgarea.Items.Add("Hood");
+                cmbdmgarea.Items.Add("Trunk/Tailgate");
+                cmbdmgarea.Items.Add("Roof");
+                cmbdmgarea.Items.Add("Front Left Door");
+                cmbdmgarea.Items.Add("Front Right Door");
+                cmbdmgarea.Items.Add("Rear Left Door");
+                cmbdmgarea.Items.Add("Rear Right Door");
+                cmbdmgarea.Items.Add("Front Left Fender");
+                cmbdmgarea.Items.Add("Front Right Fender");
+                cmbdmgarea.Items.Add("Rear Left Quarter Panel");
+                cmbdmgarea.Items.Add("Rear Right Quarter Panel");
+                cmbdmgarea.Items.Add("Windshield");
+                cmbdmgarea.Items.Add("Side Mirror");
+                cmbdmgarea.SelectedIndex = 0;
             }
 
             private void GroupRadioButtons()
@@ -209,7 +232,7 @@
                         {
                             InspectionId = inspectionId,
                             Type = (DamageType)cmbDamageType.SelectedItem,
-                            Location = txtDamageLocation.Text,
+                            Location = cmbdmgarea.SelectedItem.ToString(),
                             Severity = (DamageSeverity)cmbDamageSeverity.SelectedItem,
                             Description = textBox1.Text, 
                             EstimatedCost = damageCost
@@ -440,6 +463,11 @@
         }
 
         private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbdmgarea_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

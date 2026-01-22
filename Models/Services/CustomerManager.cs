@@ -78,5 +78,21 @@ namespace RentalApp.Models.Services
         {
             return _customerRepository.GetRetentionRate();
         }
+        public bool RecordExistedbyEmail(string email)
+        {
+            return _customerRepository.RecordExistedbyEmail(email);
+        }
+        public bool RecordExistedbyDriverLicenseNumber(string driverLicenseNumber)
+        {
+            return _customerRepository.RecordExistedbyDriverLicenseNumber(driverLicenseNumber);
+        }
+        public bool RecordExistedbyPhone(string phone)
+        {
+            return _customerRepository.RecordExistedbyPhone(phone);
+        }
+        public bool RecordExistedbyName(string firstName, string lastName)
+        {
+            return _customerRepository.RecordExistedbyName(firstName, lastName);
+        }
     }
 }
