@@ -17,12 +17,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dtpyear = new System.Windows.Forms.DateTimePicker();
+            this.cmbmake = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.materialLabel13 = new System.Windows.Forms.Label();
             this.FEATURES = new System.Windows.Forms.CheckedListBox();
             this.seat = new System.Windows.Forms.NumericUpDown();
             this.materialLabel12 = new System.Windows.Forms.Label();
-            this.txtlicense = new System.Windows.Forms.TextBox();
             this.materialLabel11 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.txtmileage = new System.Windows.Forms.TextBox();
@@ -45,8 +46,7 @@
             this.btncancel = new System.Windows.Forms.Button();
             this.btnvhcl = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.cmbmake = new System.Windows.Forms.ComboBox();
-            this.dtpyear = new System.Windows.Forms.DateTimePicker();
+            this.txtlicense = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.seat)).BeginInit();
             this.SuspendLayout();
@@ -89,6 +89,24 @@
             this.panel1.Size = new System.Drawing.Size(500, 659);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // dtpyear
+            // 
+            this.dtpyear.Location = new System.Drawing.Point(26, 180);
+            this.dtpyear.Name = "dtpyear";
+            this.dtpyear.Size = new System.Drawing.Size(200, 20);
+            this.dtpyear.TabIndex = 35;
+            this.dtpyear.ValueChanged += new System.EventHandler(this.dtpyear_ValueChanged);
+            // 
+            // cmbmake
+            // 
+            this.cmbmake.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbmake.FormattingEnabled = true;
+            this.cmbmake.Location = new System.Drawing.Point(28, 122);
+            this.cmbmake.Name = "cmbmake";
+            this.cmbmake.Size = new System.Drawing.Size(200, 25);
+            this.cmbmake.TabIndex = 34;
+            this.cmbmake.SelectedIndexChanged += new System.EventHandler(this.cmbmake_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -146,15 +164,6 @@
             this.materialLabel12.Text = "Seating Capacity:";
             this.materialLabel12.Click += new System.EventHandler(this.materialLabel12_Click);
             // 
-            // txtlicense
-            // 
-            this.txtlicense.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtlicense.Location = new System.Drawing.Point(24, 236);
-            this.txtlicense.Name = "txtlicense";
-            this.txtlicense.Size = new System.Drawing.Size(200, 25);
-            this.txtlicense.TabIndex = 28;
-            this.txtlicense.TextChanged += new System.EventHandler(this.txtlicense_TextChanged);
-            // 
             // materialLabel11
             // 
             this.materialLabel11.AutoSize = true;
@@ -193,6 +202,7 @@
             this.txtvin.Name = "txtvin";
             this.txtvin.Size = new System.Drawing.Size(200, 25);
             this.txtvin.TabIndex = 24;
+            this.txtvin.Text = "Ex. 4Y1SL65848Z411439";
             this.txtvin.TextChanged += new System.EventHandler(this.txtvin_TextChanged);
             // 
             // txtcolor
@@ -403,23 +413,15 @@
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
-            // cmbmake
+            // txtlicense
             // 
-            this.cmbmake.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbmake.FormattingEnabled = true;
-            this.cmbmake.Location = new System.Drawing.Point(28, 122);
-            this.cmbmake.Name = "cmbmake";
-            this.cmbmake.Size = new System.Drawing.Size(200, 25);
-            this.cmbmake.TabIndex = 34;
-            this.cmbmake.SelectedIndexChanged += new System.EventHandler(this.cmbmake_SelectedIndexChanged);
-            // 
-            // dtpyear
-            // 
-            this.dtpyear.Location = new System.Drawing.Point(26, 180);
-            this.dtpyear.Name = "dtpyear";
-            this.dtpyear.Size = new System.Drawing.Size(200, 20);
-            this.dtpyear.TabIndex = 35;
-            this.dtpyear.ValueChanged += new System.EventHandler(this.dtpyear_ValueChanged);
+            this.txtlicense.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtlicense.Location = new System.Drawing.Point(23, 236);
+            this.txtlicense.Name = "txtlicense";
+            this.txtlicense.Size = new System.Drawing.Size(200, 25);
+            this.txtlicense.TabIndex = 28;
+            this.txtlicense.Text = "Ex.  ABC1234";
+            this.txtlicense.TextChanged += new System.EventHandler(this.txtlicense_TextChanged);
             // 
             // AddVehicleForm
             // 
@@ -465,7 +467,6 @@
         private System.Windows.Forms.TextBox txtmileage;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label materialLabel11;
-        private System.Windows.Forms.TextBox txtlicense;
         private System.Windows.Forms.Label materialLabel12;
         private System.Windows.Forms.NumericUpDown seat;
         private System.Windows.Forms.CheckedListBox FEATURES;
@@ -473,5 +474,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtpyear;
         private System.Windows.Forms.ComboBox cmbmake;
+        private System.Windows.Forms.TextBox txtlicense;
     }
 }

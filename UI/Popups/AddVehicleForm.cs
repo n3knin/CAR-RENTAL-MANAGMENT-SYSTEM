@@ -27,7 +27,9 @@ namespace RentalApp.UI.Popups
             ConfigureYearPicker();
             LoadFeatures();
             BTNAUTOMATIC.Checked = true;
-
+            
+            txtvin.CharacterCasing = CharacterCasing.Upper;
+            txtlicense.CharacterCasing = CharacterCasing.Upper;
         }
 
         private void LoadVehicleTypes()
@@ -153,9 +155,9 @@ namespace RentalApp.UI.Popups
             }
 
             string vin = txtvin.Text.Trim().ToUpper();
-            if (vin.Length != 17)
+            if (!System.Text.RegularExpressions.Regex.IsMatch(vin, @"^[A-HJ-NPR-Z0-9]{17}$"))
             {
-                MessageBox.Show("VIN must be exactly 17 characters.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter a valid 17-character VIN (Alphanumeric, excluding I, O, and Q).", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
