@@ -77,7 +77,7 @@
 
                 if(cmbrenttype.SelectedIndex == 0) // Daily
                 {
-                    if (depositAmount > 1000)
+                    if (depositAmount > 1000 && depositAmount < 70)
                     {
                         MessageBox.Show("Deposit for Daily rental cannot exceed 1000.", "Deposit Limit Exceeded", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
@@ -85,7 +85,7 @@
                 }
                 else if(cmbrenttype.SelectedIndex == 1) // Weekly
                 {
-                     if (depositAmount > 7000)
+                     if (depositAmount > 7000 && depositAmount < 1000)
                     {
                         MessageBox.Show("Deposit for Weekly rental cannot exceed 7000.", "Deposit Limit Exceeded", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
@@ -93,7 +93,7 @@
                 }
                 else if(cmbrenttype.SelectedIndex == 2) // Monthly
                 {
-                     if (depositAmount > 20000)
+                     if (depositAmount > 20000 && depositAmount < 7000)
                     {
                         MessageBox.Show("Deposit for Monthly rental cannot exceed 20000.", "Deposit Limit Exceeded", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
@@ -101,7 +101,7 @@
                 }
                 else if(cmbrenttype.SelectedIndex == 3) // Hourly
                 {
-                    if (depositAmount > 70)
+                    if (depositAmount > 70 && depositAmount < 0)
                     {
                         MessageBox.Show("Deposit for Hourly rental cannot exceed 70.", "Deposit Limit Exceeded", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;

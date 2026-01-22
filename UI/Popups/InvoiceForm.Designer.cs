@@ -135,7 +135,6 @@
             this.txtdeposit.ReadOnly = true;
             this.txtdeposit.Size = new System.Drawing.Size(135, 20);
             this.txtdeposit.TabIndex = 22;
-// this.txtdeposit.TextChanged += new System.EventHandler(this.txtdeposit_TextChanged);
             // 
             // materialLabel18
             // 
@@ -149,7 +148,6 @@
             this.materialLabel18.Size = new System.Drawing.Size(142, 19);
             this.materialLabel18.TabIndex = 21;
             this.materialLabel18.Text = "Deposited Amount: ";
-// this.materialLabel18.Click += new System.EventHandler(this.materialLabel18_Click);
             // 
             // cmbPM
             // 
@@ -158,7 +156,7 @@
             this.cmbPM.Name = "cmbPM";
             this.cmbPM.Size = new System.Drawing.Size(117, 21);
             this.cmbPM.TabIndex = 20;
-this.cmbPM.SelectedIndexChanged += new System.EventHandler(this.cmbPM_SelectedIndexChanged);
+            this.cmbPM.SelectedIndexChanged += new System.EventHandler(this.cmbPM_SelectedIndexChanged);
             // 
             // materialLabel17
             // 
@@ -172,7 +170,7 @@ this.cmbPM.SelectedIndexChanged += new System.EventHandler(this.cmbPM_SelectedIn
             this.materialLabel17.Size = new System.Drawing.Size(126, 19);
             this.materialLabel17.TabIndex = 19;
             this.materialLabel17.Text = "Payment Method:";
-this.materialLabel17.Click += new System.EventHandler(this.materialLabel17_Click);
+            this.materialLabel17.Click += new System.EventHandler(this.materialLabel17_Click);
             // 
             // panel3
             // 
@@ -198,7 +196,7 @@ this.materialLabel17.Click += new System.EventHandler(this.materialLabel17_Click
             this.txtFC.Name = "txtFC";
             this.txtFC.Size = new System.Drawing.Size(141, 20);
             this.txtFC.TabIndex = 24;
-this.txtFC.TextChanged += new System.EventHandler(this.txtFC_TextChanged);
+            this.txtFC.TextChanged += new System.EventHandler(this.txtFC_TextChanged);
             // 
             // materialLabel13
             // 
@@ -220,7 +218,7 @@ this.txtFC.TextChanged += new System.EventHandler(this.txtFC_TextChanged);
             this.txtCF.Name = "txtCF";
             this.txtCF.Size = new System.Drawing.Size(141, 20);
             this.txtCF.TabIndex = 22;
-this.txtCF.TextChanged += new System.EventHandler(this.txtCF_TextChanged);
+            this.txtCF.TextChanged += new System.EventHandler(this.txtCF_TextChanged);
             // 
             // materialLabel12
             // 
@@ -234,7 +232,7 @@ this.txtCF.TextChanged += new System.EventHandler(this.txtCF_TextChanged);
             this.materialLabel12.Size = new System.Drawing.Size(99, 19);
             this.materialLabel12.TabIndex = 21;
             this.materialLabel12.Text = "Cleaning Fee:";
-this.materialLabel12.Click += new System.EventHandler(this.materialLabel12_Click);
+            this.materialLabel12.Click += new System.EventHandler(this.materialLabel12_Click);
             // 
             // textBox3
             // 
@@ -257,7 +255,7 @@ this.materialLabel12.Click += new System.EventHandler(this.materialLabel12_Click
             this.materialLabel11.Size = new System.Drawing.Size(96, 19);
             this.materialLabel11.TabIndex = 19;
             this.materialLabel11.Text = "Damage Fee:";
-this.materialLabel11.Click += new System.EventHandler(this.materialLabel11_Click);
+            this.materialLabel11.Click += new System.EventHandler(this.materialLabel11_Click);
             // 
             // materialLabel10
             // 
@@ -271,7 +269,7 @@ this.materialLabel11.Click += new System.EventHandler(this.materialLabel11_Click
             this.materialLabel10.Size = new System.Drawing.Size(70, 19);
             this.materialLabel10.TabIndex = 18;
             this.materialLabel10.Text = "Late Fee:";
-this.materialLabel10.Click += new System.EventHandler(this.materialLabel10_Click);
+            this.materialLabel10.Click += new System.EventHandler(this.materialLabel10_Click);
             // 
             // materialLabel9
             // 
@@ -286,7 +284,7 @@ this.materialLabel10.Click += new System.EventHandler(this.materialLabel10_Click
             this.materialLabel9.Size = new System.Drawing.Size(136, 19);
             this.materialLabel9.TabIndex = 17;
             this.materialLabel9.Text = "Addtional Charges:";
-this.materialLabel9.Click += new System.EventHandler(this.materialLabel9_Click);
+            this.materialLabel9.Click += new System.EventHandler(this.materialLabel9_Click);
             // 
             // txtLF
             // 
@@ -295,7 +293,7 @@ this.materialLabel9.Click += new System.EventHandler(this.materialLabel9_Click);
             this.txtLF.ReadOnly = true;
             this.txtLF.Size = new System.Drawing.Size(141, 20);
             this.txtLF.TabIndex = 8;
-this.txtLF.TextChanged += new System.EventHandler(this.txtLF_TextChanged);
+            this.txtLF.TextChanged += new System.EventHandler(this.txtLF_TextChanged);
             // 
             // txtBC
             // 
@@ -304,7 +302,7 @@ this.txtLF.TextChanged += new System.EventHandler(this.txtLF_TextChanged);
             this.txtBC.ReadOnly = true;
             this.txtBC.Size = new System.Drawing.Size(141, 20);
             this.txtBC.TabIndex = 16;
-this.txtBC.TextChanged += new System.EventHandler(this.txtBC_TextChanged);
+            this.txtBC.TextChanged += new System.EventHandler(this.txtBC_TextChanged);
             // 
             // materialLabel8
             // 
@@ -318,7 +316,7 @@ this.txtBC.TextChanged += new System.EventHandler(this.txtBC_TextChanged);
             this.materialLabel8.Size = new System.Drawing.Size(97, 19);
             this.materialLabel8.TabIndex = 15;
             this.materialLabel8.Text = "Base Charge:";
-this.materialLabel8.Click += new System.EventHandler(this.materialLabel8_Click);
+            this.materialLabel8.Click += new System.EventHandler(this.materialLabel8_Click);
             // 
             // txtAR
             // 
@@ -327,7 +325,7 @@ this.materialLabel8.Click += new System.EventHandler(this.materialLabel8_Click);
             this.txtAR.ReadOnly = true;
             this.txtAR.Size = new System.Drawing.Size(141, 20);
             this.txtAR.TabIndex = 14;
-this.txtAR.TextChanged += new System.EventHandler(this.txtAR_TextChanged);
+            this.txtAR.TextChanged += new System.EventHandler(this.txtAR_TextChanged);
             // 
             // materialLabel7
             // 
@@ -341,7 +339,7 @@ this.txtAR.TextChanged += new System.EventHandler(this.txtAR_TextChanged);
             this.materialLabel7.Size = new System.Drawing.Size(101, 19);
             this.materialLabel7.TabIndex = 13;
             this.materialLabel7.Text = "Applied Rate: ";
-this.materialLabel7.Click += new System.EventHandler(this.materialLabel7_Click);
+            this.materialLabel7.Click += new System.EventHandler(this.materialLabel7_Click);
             // 
             // dtpERD
             // 
@@ -373,10 +371,11 @@ this.materialLabel7.Click += new System.EventHandler(this.materialLabel7_Click);
             this.materialLabel6.Size = new System.Drawing.Size(107, 19);
             this.materialLabel6.TabIndex = 10;
             this.materialLabel6.Text = "End Rent Date:";
-this.materialLabel6.Click += new System.EventHandler(this.materialLabel6_Click);
+            this.materialLabel6.Click += new System.EventHandler(this.materialLabel6_Click);
             // 
             // cmbVT
             // 
+            this.cmbVT.Enabled = false;
             this.cmbVT.FormattingEnabled = true;
             this.cmbVT.Location = new System.Drawing.Point(602, 74);
             this.cmbVT.Name = "cmbVT";
@@ -396,7 +395,7 @@ this.materialLabel6.Click += new System.EventHandler(this.materialLabel6_Click);
             this.materialLabel5.Size = new System.Drawing.Size(49, 19);
             this.materialLabel5.TabIndex = 7;
             this.materialLabel5.Text = "Type: ";
-this.materialLabel5.Click += new System.EventHandler(this.materialLabel5_Click);
+            this.materialLabel5.Click += new System.EventHandler(this.materialLabel5_Click);
             // 
             // materialLabel4
             // 
@@ -410,7 +409,7 @@ this.materialLabel5.Click += new System.EventHandler(this.materialLabel5_Click);
             this.materialLabel4.Size = new System.Drawing.Size(114, 19);
             this.materialLabel4.TabIndex = 6;
             this.materialLabel4.Text = "Start Rent Date:";
-this.materialLabel4.Click += new System.EventHandler(this.materialLabel4_Click);
+            this.materialLabel4.Click += new System.EventHandler(this.materialLabel4_Click);
             // 
             // textBox2
             // 
@@ -442,7 +441,7 @@ this.materialLabel4.Click += new System.EventHandler(this.materialLabel4_Click);
             this.materialLabel3.Size = new System.Drawing.Size(117, 19);
             this.materialLabel3.TabIndex = 3;
             this.materialLabel3.Text = "Vehicle Rented: ";
-this.materialLabel3.Click += new System.EventHandler(this.materialLabel3_Click);
+            this.materialLabel3.Click += new System.EventHandler(this.materialLabel3_Click);
             // 
             // panel2
             // 
@@ -452,7 +451,7 @@ this.materialLabel3.Click += new System.EventHandler(this.materialLabel3_Click);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(690, 45);
             this.panel2.TabIndex = 2;
-this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_1);
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_1);
             // 
             // panel4
             // 
@@ -477,7 +476,7 @@ this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Pain
             this.btcancel.TabIndex = 29;
             this.btcancel.Text = "CANCEL";
             this.btcancel.UseVisualStyleBackColor = true;
-this.btcancel.Click += new System.EventHandler(this.btcancel_Click);
+            this.btcancel.Click += new System.EventHandler(this.btcancel_Click);
             // 
             // btcheckout
             // 
@@ -504,7 +503,7 @@ this.btcancel.Click += new System.EventHandler(this.btcancel_Click);
             this.materialLabel16.Size = new System.Drawing.Size(73, 19);
             this.materialLabel16.TabIndex = 27;
             this.materialLabel16.Text = "12345657";
-this.materialLabel16.Click += new System.EventHandler(this.materialLabel16_Click);
+            this.materialLabel16.Click += new System.EventHandler(this.materialLabel16_Click);
             // 
             // materialLabel15
             // 
@@ -518,7 +517,7 @@ this.materialLabel16.Click += new System.EventHandler(this.materialLabel16_Click
             this.materialLabel15.Size = new System.Drawing.Size(19, 19);
             this.materialLabel15.TabIndex = 26;
             this.materialLabel15.Text = "₱";
-this.materialLabel15.Click += new System.EventHandler(this.materialLabel15_Click_1);
+            this.materialLabel15.Click += new System.EventHandler(this.materialLabel15_Click_1);
             // 
             // materialLabel14
             // 
@@ -532,7 +531,7 @@ this.materialLabel15.Click += new System.EventHandler(this.materialLabel15_Click
             this.materialLabel14.Size = new System.Drawing.Size(109, 19);
             this.materialLabel14.TabIndex = 25;
             this.materialLabel14.Text = "Total Amount: ";
-this.materialLabel14.Click += new System.EventHandler(this.materialLabel14_Click);
+            this.materialLabel14.Click += new System.EventHandler(this.materialLabel14_Click);
             // 
             // InvoiceForm
             // 

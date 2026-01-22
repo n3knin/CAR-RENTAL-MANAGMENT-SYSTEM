@@ -22,7 +22,19 @@ namespace RentalApp.UI.Popups
             comboBox1.Items.Add("Davao de Oro");
             comboBox1.Items.Add("Davao Occidental");
             comboBox1.SelectedIndex = 0;
-            
+
+            // Restrict input to numbers only while typing
+            txtdlnumber.KeyPress += NumericOnly_KeyPress;
+            phone.KeyPress += NumericOnly_KeyPress;
+        }
+
+        private void NumericOnly_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Only allow digits and control keys (like backspace)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
         private void LoadCustomerTypes()
@@ -60,9 +72,9 @@ namespace RentalApp.UI.Popups
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtdlnumber.Text) || txtdlnumber.Text.Length != 11)
+            if (string.IsNullOrWhiteSpace(txtdlnumber.Text) || txtdlnumber.Text.Length != 11 || !System.Text.RegularExpressions.Regex.IsMatch(txtdlnumber.Text, @"^\d+$"))
             {
-                MessageBox.Show("Driver's License Number is required and must be exactly 11 characters.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Driver's License Number is required, must be exactly 11 digits, and contain only numbers.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -97,9 +109,9 @@ namespace RentalApp.UI.Popups
                 MessageBox.Show("Name already exists! Cannot register customer.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (string.IsNullOrWhiteSpace(phone.Text) || phone.Text.Length != 11)
+            if (string.IsNullOrWhiteSpace(phone.Text) || phone.Text.Length != 11 || !System.Text.RegularExpressions.Regex.IsMatch(phone.Text, @"^\d+$"))
             {
-                MessageBox.Show("Phone number is required and must be exactly 11 characters.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Phone number is required, must be exactly 11 digits, and contain only numbers.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (!new EmailAddressAttribute().IsValid(textBox1.Text))

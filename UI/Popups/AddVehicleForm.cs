@@ -127,7 +127,8 @@ namespace RentalApp.UI.Popups
             {
                 newVehicle = new Van();
             }
-
+           
+            
             // Validate all required fields before proceeding
             if (string.IsNullOrWhiteSpace(cmbmake.Text))
             {
@@ -160,6 +161,11 @@ namespace RentalApp.UI.Popups
                 MessageBox.Show("Please enter a valid 17-character VIN (Alphanumeric, excluding I, O, and Q).", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+             if(txtvin.Text == "EX. 4Y1SL65848Z411439" || txtvin.Text == "4Y1SL65848Z411439" || txtvin.Text == "")
+            {
+                MessageBox.Show("Please enter a valid VIN.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             if (string.IsNullOrWhiteSpace(txtmileage.Text) || !int.TryParse(txtmileage.Text, out int mileage))
             {
@@ -171,6 +177,11 @@ namespace RentalApp.UI.Popups
             if (!System.Text.RegularExpressions.Regex.IsMatch(license, @"^[A-Z]{3}[0-9]{4}$"))
             {
                 MessageBox.Show("License Plate must be in the format 'ABC1234' (3 letters followed by 4 numbers).", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if(txtlicense.Text == "EX. ABC1234" || txtlicense.Text == "ABC1234" || txtlicense.Text == "")
+            {
+                MessageBox.Show("Please enter a valid license plate.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             license = license.ToUpper(); // Ensure it's uppercase

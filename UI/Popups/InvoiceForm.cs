@@ -72,15 +72,15 @@ namespace RentalApp.UI.Popups
 
             
             decimal depositAmount = deposit != null ? deposit.Amount : 0;
-            if (depositAmount > 70 && depositAmount < 1000)
+            if (depositAmount >= 70 && depositAmount < 1000)
             {
                 cmbVT.SelectedItem = RateType.Daily;
             }
-            else if (depositAmount > 1000 && depositAmount < 7000)
+            else if (depositAmount >= 1000 && depositAmount < 7000)
             {
                 cmbVT.SelectedItem = RateType.Weekly;
             }
-            else if (depositAmount > 7000 && depositAmount < 20000)
+            else if (depositAmount >= 7000 && depositAmount < 20000)
             {
                 cmbVT.SelectedItem = RateType.Monthly;
             }
